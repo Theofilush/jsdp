@@ -24,6 +24,7 @@
                         <section class="hk-sec-wrapper">
                             <!-- <h5 class="hk-sec-title">Data Table</h5>
                             <p class="mb-10">Add advanced interaction controls to HTML tables like <code>search, pagination & selectors</code>. For responsive table just add the <code>responsive: true</code> to your DataTables function. <a href="https://datatables.net/reference/option/" >View all options</a>.</p> -->
+                            <div class="table-responsive">
                             <table class="table mb-5">
                                 <tbody>
                                     <tr>
@@ -42,6 +43,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            </div>
                             <button class="mb-20 btn btn-light btn-wth-icon icon-wthot-bg btn-rounded icon-right"><span class="btn-text">Tambah Poin JSDP</span><span class="icon-label"><i class="fa fa-plus"></i> </span></button>
                             <div class="row">
                                 <div class="col-sm">
