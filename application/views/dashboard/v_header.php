@@ -27,6 +27,20 @@
 	
     <!-- Custom CSS -->
     <link href="<?php echo base_url() ?>assett/dist/css/style.css" rel="stylesheet" type="text/css">
+    <style>
+     table {
+        border-collapse: collapse;
+    }
+
+    table, th, tr, thead {
+        border-top: 1px dotted black;
+        border-bottom: 1px dotted black;
+    }
+    .table td{
+        border-top: 1px dotted black;
+        border-bottom: 1px dotted black;
+    }
+    </style>
 </head>
 
 <body><?php foreach($da as $row){$buba= $row->author;$bubi= $row->username;$bubc= $row->NIDN; }  ?>

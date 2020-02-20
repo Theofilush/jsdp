@@ -22,8 +22,26 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <section class="hk-sec-wrapper">
-                            <h5 class="hk-sec-title">Data Table</h5>
-                            <p class="mb-40">Add advanced interaction controls to HTML tables like <code>search, pagination & selectors</code>. For responsive table just add the <code>responsive: true</code> to your DataTables function. <a href="https://datatables.net/reference/option/" >View all options</a>.</p>
+                            <!-- <h5 class="hk-sec-title">Data Table</h5>
+                            <p class="mb-10">Add advanced interaction controls to HTML tables like <code>search, pagination & selectors</code>. For responsive table just add the <code>responsive: true</code> to your DataTables function. <a href="https://datatables.net/reference/option/" >View all options</a>.</p> -->
+                            <table class="table mb-5">
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align:right;width:25%;padding-bottom: 0px;padding-top: 0px; border-top: 1px dotted black; border-bottom: 1px dotted black;">NIM</td>
+                                        <td style="width:25%;padding-bottom: 0px;padding-top: 0px; border-top: 1px dotted black; border-bottom: 1px dotted black;">ASA</td>
+                                        <td style="text-align:right;width:25%; padding-bottom: 0px;padding-top: 0px; border-top: 1px dotted black; border-bottom: 1px dotted black;">Nama</td>
+                                        <td style="width:25%; padding-bottom: 0px;padding-top: 0px; border-top: 1px dotted black; border-bottom: 1px dotted black;">ASA</td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td style="width:25%; width:25%; padding-bottom: 0px;padding-top: 0px; border-top: 1px dotted black; border-bottom: 1px dotted black;">Program Studi</td>
+                                        <td style="width:25%; padding-bottom: 0px;padding-top: 0px; border-top: 1px dotted black; border-bottom: 1px dotted black;">Informatika</td>
+                                        <td style="text-align:right;width:25%; padding-bottom: 0px;padding-top: 0px; border-top: 1px dotted black; border-bottom: 1px dotted black;">Status</td>
+                                        <td style="width:25%; padding-bottom: 0px;padding-top: 0px; border-top: 1px dotted black; border-bottom: 1px dotted black;">Aktif</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             <button class="mb-20 btn btn-light btn-wth-icon icon-wthot-bg btn-rounded icon-right"><span class="btn-text">Tambah Poin JSDP</span><span class="icon-label"><i class="fa fa-plus"></i> </span></button>
                             <div class="row">
                                 <div class="col-sm">
