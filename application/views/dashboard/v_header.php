@@ -21,6 +21,9 @@
     <!-- Daterangepicker CSS -->
     <link href="<?php echo base_url() ?>assett/vendors/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
 
+    <!-- Morris Charts CSS -->
+    <link href="<?php echo base_url() ?>assett/vendors/morris.js/morris.css" rel="stylesheet" type="text/css" />
+
     <!-- Toggles CSS -->
     <link href="<?php echo base_url() ?>assett/vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url() ?>assett/vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
@@ -28,7 +31,7 @@
     <!-- Custom CSS -->
     <link href="<?php echo base_url() ?>assett/dist/css/style.css" rel="stylesheet" type="text/css">
     <style>
-     table {
+     /* table {
         border-collapse: collapse;
     }
 
@@ -39,7 +42,7 @@
     .table td{
         border-top: 1px dotted black;
         border-bottom: 1px dotted black;
-    }
+    } */
     </style>
 </head>
 

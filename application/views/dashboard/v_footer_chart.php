@@ -47,8 +47,8 @@
 	
     <!-- Init JavaScript -->
     <script src="<?php echo base_url() ?>assett/dist/js/init.js"></script>
-	<script src="<?php echo base_url() ?>assett/dist/js/dashboard3-data.js"></script>
-	
+	<!-- <script src="<?php echo base_url() ?>assett/dist/js/dashboard3-data.js"></script> -->
+	<script src="<?php echo base_url() ?>assett/dist/js/dashboard2-data.js"></script>
 </body>
 
 </html>
