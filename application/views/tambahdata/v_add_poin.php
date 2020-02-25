@@ -34,49 +34,79 @@
                                         echo form_open('Tambahpoin/savedok',$atribut);
                                 ?>
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tahun Akademik</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="firstName" placeholder="Tanggal">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tanggal Kegiatan</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="firstName" placeholder="Tanggal">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Domain</label>
+                                            <div class="col-sm-10">
+                                            <select class="form-control custom-select d-block w-100" id="country">
+                                                    <option value="">Choose...</option>
+                                                    <option>United States</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Kegiatan</label>
+                                            <div class="col-sm-10">
+                                            <select class="form-control custom-select d-block w-100" id="country">
+                                                    <option value="">Choose...</option>
+                                                    <option>United States</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Sub-Kegiatan</label>
+                                            <div class="col-sm-10">
+                                            <select class="form-control custom-select d-block w-100" id="country">
+                                                    <option value="">Choose...</option>
+                                                    <option>United States</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Kegiatan</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="firstName" placeholder="Tanggal">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Peran</label>
+                                            <div class="col-sm-10">
+                                            <select class="form-control custom-select d-block w-100" id="country">
+                                                    <option value="">Choose...</option>
+                                                    <option>United States</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tempat</label>
                                             <div class="col-sm-10">
                                                 <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                                            <label for="inputPassword3" class="col-sm-2 col-form-label">Lingkup</label>
                                             <div class="col-sm-10">
-                                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                            <select class="form-control custom-select d-block w-100" id="country">
+                                                    <option value="">Choose...</option>
+                                                    <option>United States</option>
+                                            </select>
                                             </div>
                                         </div>
-                                        <fieldset class="form-group mb-15">
-                                            <div class="row">
-                                                <label class="col-form-label col-sm-2 pt-0">Radios</label>
-                                                <div class="col-sm-10">
-                                                    <div class="custom-control custom-radio mb-5">
-                                                        <input id="option_1" name="optionHorizontal" class="custom-control-input" checked="" type="radio">
-                                                        <label class="custom-control-label" for="option_1">Option 1</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio mb-5">
-                                                        <input id="option_2" name="optionHorizontal" class="custom-control-input" type="radio">
-                                                        <label class="custom-control-label" for="option_2">Option 2</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio">
-                                                        <input id="option_3" name="optionHorizontal" class="custom-control-input" type="radio">
-                                                        <label class="custom-control-label" for="option_3">Option 3</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-sm-2 pt-0">Checkbox</label>
+                                        <div class="form-group row mb-0 mt-50">
                                             <div class="col-sm-10">
-                                                <div class="custom-control custom-checkbox mb-15">
-                                                    <input class="custom-control-input" id="chkbox_horizontal" type="checkbox" checked>
-                                                    <label class="custom-control-label" for="chkbox_horizontal">Checkbox</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row mb-0">
-                                            <div class="col-sm-10">
-                                                <button type="submit" class="btn btn-primary">Sign in</button>
-                                                <button type="submit" class="btn btn-light">Cancel</button>
+                                                <button type="button" onclick="window.history.back()" class="btn btn-indigo"><i class="fa fa-arrow-left"></i> Batal</button>
+                                                <button class="btn btn-light" type="reset">Reset</button>
+                                                <button type="submit" class="btn btn-success" name="btnUpload" value="Upload">Submit</button>
                                             </div>
                                         </div>
                                         <?php
