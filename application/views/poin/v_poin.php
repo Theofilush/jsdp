@@ -1,3 +1,4 @@
+<?php foreach($da as $row){$buba= $row->author;$bubi= $row->username; }  ?>
 <!-- Main Content -->
 <div class="hk-pg-wrapper">
             <!-- Breadcrumb -->
@@ -17,6 +18,25 @@
                     <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="database"></i></span></span>Poin JSDP Mahasiswa</h4>
                 </div>
                 <!-- /Title -->
+
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-xl-12">
+                        <section class="hk-sec-wrapper">
+                            <h5 class="hk-sec-title">Status Poin</h5>
+                            <p class="mb-10">Total Poin = 1000</p>
+                            <div class="progress mb-20">
+                                <div class="progress-bar  progress-bar-striped bg-primary progress-bar-animated w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" tiyle="16">
+                                    <div style="color: #000;position: absolute;bottom: 40px;/* display: block;font-size: 12px;font-weight: 500;left: 50%;transform: translate(-50%,-50%);*/"> 25% Sah (250 poin)</div> 
+                                </div>
+                                <div class="progress-bar  progress-bar-striped bg-warning progress-bar-animated w-70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" tiyle="16">
+                                    <div style="color: #000;position: absolute;bottom: 40px;/* display: block;font-size: 12px;font-weight: 500;left: 50%;transform: translate(-50%,-50%);*/"> 70% Menunggu diverifikasi (700 poin)</div> 
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <!-- /Row -->
 
                 <!-- Row -->
                 <div class="row">
@@ -51,29 +71,242 @@
                                         <table id="datable_3" class="table table-hover w-100 display">
                                             <thead>
                                                 <tr>
+                                                    <th></th>
+                                                    <th>#</th>
                                                     <th>No</th>
+                                                    <!-- <th>Tahun</th>
+                                                    <th>Tanggal Kegiatan</th> -->
+                                                    <th>Domain</th>
                                                     <th>Kegiatan</th>
                                                     <th>Sebagai</th>
-                                                    <th>Keterangan</th>
-                                                    <th>File Pendukung</th>
+                                                    <th>Tema Kegiatan</th>
                                                     <th>Lingkup</th>
+                                                    <th>File Pendukung</th>
                                                     <th>Poin</th>
                                                     <th>Status</th>
                                                     <th>Keterangan</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                    <td>$320,800</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                    <td>$320,800</td>
-                                                </tr>
+                                                 <?php
+                                                $no = 1; 
+                                                if($buba == 'administrator'){
+                                                    foreach($query as $row){
+                                                        ?> 
+                                                        <tr>
+                                                            <td></td>
+                                                            <td class="ketengah">    
+                                                                <?php
+                                                                if ($buba == 'administrator' || ($row->status == "TIDAK" || $row->status == NULL)) {
+                                                                    if($buba == 'administrator' || ($bubi ==  $row->penulis_publikasi || ($bubi ==  $row->penulis_anggota1) || ($bubi ==  $row->penulis_anggota2))){
+                                                                    ?>                                
+                                                                    <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/editdok/<?php echo $row->no; ?>" class="btn btn-primary btn-xs btnnomargin" ><i class="glyphicon glyphicon-pencil"></i></a> 
+                                                                    <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/deletedok/<?php echo $row->no; ?>" class="btn btn-danger btn-xs btnnomargin" onClick="return doconfirm();"><i class="glyphicon glyphicon-remove"></i></a>
+                                                                    <?php
+                                                                    }
+                                                                    }
+                                                                    ?> 
+                                                            </td>
+                                                        	<td><?php echo $no++ ?></td>
+                                                        	<!-- <td>
+                                                        		<b><?php echo $row->kegiatan; ?></b><br>
+                                                        		<b hidden><?php echo $row->id_mhs; ?></b><br>
+                                                        	</td>
+                                                        	<td>
+                                                        		<ul class="titiknya">
+                                                        			<li>
+                                                        				<?php echo $row->id_mhs;  ?>
+                                                        			</li>
+
+                                                        		</ul>
+                                                        	</td> -->
+                                                        	<td>
+                                                        		<b><?php echo $row->domain; ?></b><br>
+                                                            </td>
+                                                        <td>
+                                                            <b><?php echo $row->kegiatan; ?></b><br>
+                                                        </td>                       
+                                                        <td>
+                                                            <b><?php echo $row->sub_kegiatan; ?></b><br>
+                                                        </td>
+                                                        <td>
+                                                            <b><?php echo $row->detail_kegiatan; ?></b><br>
+                                                        </td>
+                                                        <td></td>
+                                                        	<td class="ketengah">
+                                                            <?php
+                                                            if ($buba == 'administrator' || ($row->status == "TIDAK" || $row->status == NULL)) {
+                                                            if($buba == 'administrator' || ($bubi ==  $row->penulis_publikasi || ($bubi ==  $row->penulis_anggota1) || ($bubi ==  $row->penulis_anggota2))){
+                                                                ?>
+                                                            <button type="button" class="btn btn-success btn-xs btnnomargin" data-toggle="modal"
+                                                            data-target="#modal-upload<?php echo $row->no;?>"><span
+                                                                class="glyphicon glyphicon-cloud-upload"></span></button>
+                                                            <?php
+                                                                if(($row->file == NULL) || ($row->file == "")){
+                                                                ?>
+                                                            <button class="btn btn-default btn-xs btnnomargin source" onclick="
+                                                                        new PNotify({
+                                                                            title: 'Terjadi Kesalahan !',
+                                                                            text: 'Berkas Pendukung belum diunggah !',
+                                                                            type: 'error',
+                                                                            delay: 5000,
+                                                                            styling: 'bootstrap3'
+                                                                            });  
+                                                                        "><i class="fa fa-fw fa-file-text"></i></button>
+                                                            <?php
+                                                                }else if(($row->file != NULL) || ($row->file != "") ){
+                                                                ?>
+                                                            <a href="<?php echo site_url().'fileupload/publikasi_jurnal/'.$row->file  ?>"
+                                                            class="btn btn-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
+                                                            <?php
+                                                                }
+                                                                }
+                                                            }
+                                                            ?>
+                                                        </td>
+                                                        <td class="ketengah"></td>
+                                                        <td class="ketengah">
+                                                        <?php
+                                                            if($row->status == "TIDAK") {
+                                                            echo '<span class="font_color_red">'.$row->status.'</span>';                            
+                                                            } elseif ($row->status == "YA" ) {
+                                                            echo '<span class="font_color_green">'.$row->status.'</span>';                          
+                                                            }                            
+                                                            if($buba == 'administrator' && ($row->status == NULL)) {
+                                                            ?>                            
+                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->id_publikasi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/tolakvalidasi/<?php echo $row->id_publikasi; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-thumbs-down"></i></a>
+                                                            <?php
+                                                            } elseif ($buba == 'administrator' && ($row->status ==  "TIDAK") ) {
+                                                            ?>
+                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->id_publikasi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </td>  
+                                                        <td></td>
+                                                        </tr>
+                                                        <?php
+                                                    }
+                                                } else if($buba == 'administrator'){
+                                                    foreach($queryByProdi as $row){
+                                                        ?> 
+                                                        <tr>
+                                                        <td><?php echo $no++ ?></td>
+                                                        <td>
+                                                            <b><?php echo $row->judul; ?></b><br>
+                                                            <b hidden><?php echo $row->cakupan_publikasi;?></b><br>
+                                                            <b hidden><?php echo $row->tahun_penerbitan;?></b><br>
+                                                        </td>
+                                                        <td>
+                                                            <ul class="titiknya">
+                                                            <li>
+                                                                <?php echo $row->penulis_publikasi;  ?> 
+                                                            </li>                              
+                                                            <?php
+                                                                if($row->penulis_anggota1 != NULL){
+                                                                ?>         
+                                                                    <li>
+                                                                    <?php echo $row->penulis_anggota1; ?>
+                                                                    </li>
+                                                                <?php
+                                                                }
+                                                                ?>     
+                                                                <?php
+                                                                if($row->penulis_anggota2 != NULL){
+                                                                ?>         
+                                                                    <li>
+                                                                    <?php echo $row->penulis_anggota2; ?>
+                                                                    </li>
+                                                                <?php
+                                                                }
+                                                                ?>  
+                                                                <?php
+                                                                if($row->penulis_non_dosen != NULL){
+                                                                ?>         
+                                                                    <li>
+                                                                    <?php echo $row->penulis_non_dosen; ?>
+                                                                    </li>
+                                                                <?php
+                                                                }
+                                                                ?>                               
+                                                            </ul>
+                                                        </td>
+                                                        <td>
+                                                            <b><?php echo $row->nama_jurnal; ?></b><br>                             
+                                                            ISSN :&nbsp;<span class="font_color_blue"><?php echo $row->issn; ?></span><br>
+                                                            Volume :&nbsp;<span class="font_color_blue"> <?php echo $row->volume; ?> </span><br>
+                                                            Nomor :&nbsp;<span class="font_color_blue"> <?php echo $row->nomor; ?> </span><br>
+                                                            Halaman :&nbsp;<span class="font_color_blue"><?php echo $row->halaman_awal; ?> s/d <?php echo $row->halaman_akhir; ?></span><br>
+                                                            URL :&nbsp;<span class="font_color_blue"><a href="<?php echo $row->url; ?>" class="link_url"> <?php echo $row->url; ?></a></span><br>
+                                                        </td>
+                                                        <td class="ketengah">
+                                                            <?php
+                                                            if ($buba == 'administrator' || ($row->status == "TIDAK" || $row->status == NULL)) {
+                                                            if($buba == 'administrator' || ($bubi ==  $row->penulis_publikasi || ($bubi ==  $row->penulis_anggota1) || ($bubi ==  $row->penulis_anggota2))){
+                                                                ?>
+                                                            <button type="button" class="btn btn-success btn-xs btnnomargin" data-toggle="modal"
+                                                            data-target="#modal-upload<?php echo $row->id_publikasi;?>"><span
+                                                                class="glyphicon glyphicon-cloud-upload"></span></button>
+                                                            <?php
+                                                                if(($row->file == NULL) || ($row->file == "")){
+                                                                ?>
+                                                            <button class="btn btn-default btn-xs btnnomargin source" onclick="
+                                                                        new PNotify({
+                                                                            title: 'Terjadi Kesalahan !',
+                                                                            text: 'Berkas Pendukung belum diunggah !',
+                                                                            type: 'error',
+                                                                            delay: 5000,
+                                                                            styling: 'bootstrap3'
+                                                                            });  
+                                                                        "><i class="fa fa-fw fa-file-text"></i></button>
+                                                            <?php
+                                                                }else if(($row->file != NULL) || ($row->file != "") ){
+                                                                ?>
+                                                            <a href="<?php echo site_url().'fileupload/publikasi_jurnal/'.$row->file  ?>"
+                                                            class="btn btn-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
+                                                            <?php
+                                                                }
+                                                                }
+                                                            }
+                                                            ?>
+                                                        </td>
+                                                        <td class="ketengah">    
+                                                        <?php
+                                                        if ($buba == 'administrator' || ($row->status == "TIDAK" || $row->status == NULL)) {
+                                                            if($buba == 'administrator' || ($bubi ==  $row->penulis_publikasi || ($bubi ==  $row->penulis_anggota1) || ($bubi ==  $row->penulis_anggota2))){
+                                                            ?>                                
+                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/editdok/<?php echo $row->id_publikasi; ?>" class="btn btn-primary btn-xs btnnomargin" ><i class="glyphicon glyphicon-pencil"></i></a> 
+                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/deletedok/<?php echo $row->id_publikasi; ?>" class="btn btn-danger btn-xs btnnomargin" onClick="return doconfirm();"><i class="glyphicon glyphicon-remove"></i></a>
+                                                            <?php
+                                                            }
+                                                            }
+                                                            ?> 
+                                                        </td>
+                                                        <td class="ketengah">
+                                                        <?php
+                                                            if($row->status == "TIDAK") {
+                                                            echo '<span class="font_color_red">'.$row->status.'</span>';                            
+                                                            } elseif ($row->status == "YA" ) {
+                                                            echo '<span class="font_color_green">'.$row->status.'</span>';                          
+                                                            }                            
+                                                            if($buba == 'administrator' && ($row->status == NULL)) {
+                                                            ?>                            
+                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->id_publikasi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/tolakvalidasi/<?php echo $row->id_publikasi; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-thumbs-down"></i></a>
+                                                            <?php
+                                                            } elseif ($buba == 'administrator' && ($row->status ==  "TIDAK") ) {
+                                                            ?>
+                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->id_publikasi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </td>                         
+                                                        </tr>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>

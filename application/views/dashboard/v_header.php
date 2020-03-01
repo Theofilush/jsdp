@@ -31,22 +31,11 @@
     <!-- Custom CSS -->
     <link href="<?php echo base_url() ?>assett/dist/css/style.css" rel="stylesheet" type="text/css">
     <style>
-     /* table {
-        border-collapse: collapse;
-    }
-
-    table, th, tr, thead {
-        border-top: 1px dotted black;
-        border-bottom: 1px dotted black;
-    }
-    .table td{
-        border-top: 1px dotted black;
-        border-bottom: 1px dotted black;
-    } */
+    
     </style>
 </head>
 
-<body><?php foreach($da as $row){$buba= $row->author;$bubi= $row->username;$bubc= $row->NIDN; }  ?>
+<body><?php foreach($da as $row){$buba= $row->author;$bubi= $row->username;$bubc= $row->ID_user; }  ?>
     
 	
 	<!-- HK Wrapper -->
@@ -216,21 +205,24 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url() ?>Transkip">Transkip Poin JSDP</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo site_url() ?>Verifikasi">Waiting List</a>
+                    </li>
                 </ul>
-                <form class="navbar-search-alt">
+                <!-- <form class="navbar-search-alt">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ion ion-ios-search"></i></span>
                         </div>
                         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                     </div>
-                </form>
+                </form> -->
             </div>
             <ul class="navbar-nav hk-navbar-content">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a id="settings_toggle_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><i class="ion ion-ios-settings"></i></a>
-                </li>
-                <li class="nav-item dropdown dropdown-notifications">
+                </li> -->
+                <!-- <li class="nav-item dropdown dropdown-notifications">
                     <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ion ion-ios-notifications"></i><span class="badge-wrap"><span class="badge badge-primary badge-indicator badge-indicator-sm badge-pill pulse"></span></span></a>
                     <div class="dropdown-menu dropdown-menu-right" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                         <h6 class="dropdown-header">Notifications <a href="javascript:void(0);" class="">View all</a></h6>
@@ -322,7 +314,7 @@
                             </a>
                         </div>
                     </div>
-                </li>
+                </li> -->
                 <li class="nav-item dropdown dropdown-authentication">
                     <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media">

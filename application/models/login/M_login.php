@@ -5,14 +5,14 @@ class M_login extends CI_Model{
 	var $tahun = 'tahun';
     function cek_login($table,$usn){		
 		$this->db->where("email", $usn);		
-		$this->db->or_where("NIDN",$usn);
+		$this->db->or_where("ID_user",$usn);
 		$query = $this->db->get("login");
     	
     	return $query;
 		//return $this->db->get_where("t_login",$where);
 	}	
 	function hak_ak($usan){          
-                $this->db->where("NIDN='$usan' OR email='$usan'");
+                $this->db->where("ID_user='$usan' OR email='$usan'");
                 $hasil=$this->db->get('login');
                 return $hasil->result();    	
 	}
@@ -36,8 +36,8 @@ class M_login extends CI_Model{
 		return $hasil;
 	    	}
 	}	 
-    function cek_nidn($nidn){     
-        $this->db->where("NIDN", $nidn);		
+    function cek_id($id_user){     
+        $this->db->where("ID_user", $id_user);		
 		$query = $this->db->get("t_login");
         return $query->result();
 	}

@@ -77,8 +77,60 @@
     <script src="<?php echo base_url() ?>assett/dist/js/toggle-data.js"></script>
 
     <!-- Init JavaScript -->
-    <script src="<?php echo base_url() ?>assett/dist/js/init.js"></script>
+    <script src = "<?php echo base_url() ?>assett/dist/js/init.js" > </script> 
+    <script >
+    	// $(document).ready(function () { // Ketika halaman sudah siap (sudah selesai di load)
+    	// 		// Kita sembunyikan dulu untuk loadingnya
+    	// 		// $("#loading").hide();
 
+    	// 		$("#kelompok").change(function () {
+    	// 			$.ajax({
+    	// 				type: "POST", // Method pengiriman data bisa dengan GET atau POST
+    	// 				url: "<?php echo base_url("Pengisian / listPerluasan "); ?>", // Isi dengan url/path file php yang dituju 
+    	// 				data: {
+    	// 					id_provinsi: $("#kelompok").val()
+    	// 				}, // data yang akan dikirim ke file yang dituju
+    	// 				dataType: "json",
+    	// 				beforeSend: function (e) {
+    	// 					if (e && e.overrideMimeType) {
+    	// 						e.overrideMimeType("application/json;charset=UTF-8");
+    	// 					}
+    	// 				},
+    	// 				success: function (response) { // Ketika proses pengiriman berhasil
+    	// 					//$("#loading").hide(); // Sembunyikan loadingnya
+    	// 					// set isi dari combobox kota
+    	// 					// lalu munculkan kembali combobox kotanya
+    	// 					$("#per_dok").html(response.list_perdok).show();
+    	// 				},
+    	// 				error: function (xhr, ajaxOptions, thrownError) { // Ketika ada error
+    	// 					alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+    	// 				}
+    	// 			});
+    	// 		});
+    	// 		//$("#per_dok").change(function(){ 
+    	// 		$.ajax({
+    	// 			type: "POST", // Method pengiriman data bisa dengan GET atau POST
+    	// 			url: "<?php echo base_url("Pengisian / listKelDok "); ?>", // Isi dengan url/path file php yang dituju
+    	// 			data: {
+    	// 				id_keldok: $("#per_dok").val()
+    	// 			}, // data yang akan dikirim ke file yang dituju
+    	// 			dataType: "json",
+    	// 			beforeSend: function (e) {
+    	// 				if (e && e.overrideMimeType) {
+    	// 					e.overrideMimeType("application/json;charset=UTF-8");
+    	// 				}
+    	// 			},
+    	// 			success: function (response) { // Ketika proses pengiriman berhasil
+    	// 				//$("#loading").hide(); // Sembunyikan loadingnya
+    	// 				// set isi dari combobox kota
+    	// 				// lalu munculkan kembali combobox kotanya
+    	// 				$("#keldok").html(response.list_keldok).show();
+    	// 			},
+    	// 			error: function (xhr, ajaxOptions, thrownError) { // Ketika ada error
+    	// 				alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+    	// 			}
+    	// 		}); 
+    </script>
 </body>
 
 </html>

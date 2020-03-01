@@ -20,10 +20,37 @@ $(document).ready(function() {
         language: { search: "", searchPlaceholder: "Search" }
     });
 
+    // Inline editing in responsive cell
+    $('#datable_3').on('click', 'tbody ul.dtr-details li', function(e) {
+        // Ignore the Responsive control and checkbox columns
+        if ($(this).hasClass('control') || $(this).hasClass('select-checkbox')) {
+            return;
+        }
+
+        // Edit the value, but this method allows clicking on label as well
+        editor.inline($('span.dtr-data', this));
+    });
+
     /*Export DataTable*/
     $('#datable_3').DataTable({
         dom: 'Bfrtip',
-        responsive: true,
+        //responsive: true,
+        responsive: {
+            details: {
+                type: 'column'
+            }
+        },
+        columnDefs: [{
+            className: 'control',
+            orderable: false,
+            targets: 0
+        }],
+        // columns: { // Responsive control column
+        //     data: null,
+        //     defaultContent: '',
+        //     className: 'control',
+        //     orderable: false
+        // },
         language: {
             search: "",
             searchPlaceholder: "Search",

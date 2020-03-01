@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Poin extends CI_Controller {
+class Bantuan extends CI_Controller {
 	
 	function __construct(){
 		parent::__construct();
@@ -15,17 +15,13 @@ class Poin extends CI_Controller {
 	{
 		$usan = $this->session->userdata('nama');
 		$kue = $this->M_login->hak_ak($usan);
-		$query = $this->M_dokumen->listPoint_byidMHS();
-		$Id_user =  $kue[0]->ID_user;
 
-		$dataHalaman = array(
-		  'title'=>"Poin",
-		  'da' => $kue,
-		  'query' => $query,
-		  'id_user' => $Id_user
+		$dataHalaman = array(   	
+            'title'=>"Transkip",	
+		  'da' => $kue
         );
-		$this->load->view('dashboard/v_header',$dataHalaman);
-		$this->load->view('poin/v_poin',$dataHalaman);
+        $this->load->view('dashboard/v_header',$dataHalaman);
+		$this->load->view('admin/v_verifikasi',$dataHalaman);
 		$this->load->view('dashboard/v_footer');
 	}
 }
