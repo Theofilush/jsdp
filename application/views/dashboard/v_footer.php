@@ -66,14 +66,17 @@
     <script src="<?php echo base_url() ?>assett/vendors/daterangepicker/daterangepicker.js"></script>
     <script src="<?php echo base_url() ?>assett/dist/js/daterangepicker-data.js"></script>
 
+    <!-- Dropzone JavaScript -->
+    <script src="<?php echo base_url() ?>assett/vendors/dropzone/dist/dropzone.js"></script>
+    
+    <!-- Form Flie Upload Data JavaScript -->
+	<script src="<?php echo base_url() ?>assett/dist/js/form-file-upload-data.js"></script>
+	
     <!-- Dropify JavaScript -->
 	<script src="<?php echo base_url() ?>assett/vendors/dropify/dist/js/dropify.min.js"></script>
 
     <!-- FeatherIcons JavaScript -->
     <script src="<?php echo base_url() ?>assett/dist/js/feather.min.js"></script>
-
-    <!-- Dropzone JavaScript -->
-    <script src="<?php echo base_url() ?>assett/vendors/dropzone/dist/dropzone.js"></script>
     
     <!-- Fancy Dropdown JS -->
     <script src="<?php echo base_url() ?>assett/dist/js/dropdown-bootstrap-extended.js"></script>
