@@ -92,13 +92,13 @@
                                                         ?> 
                                                         <tr>
                                                             <td></td>
-                                                            <td class="ketengah">    
+                                                            <td class="text-center">    
                                                                 <?php
-                                                                if ($buba == 'administrator' || ($row->status == "TIDAK" || $row->status == NULL)) {
+                                                                if ($buba == 'administrator' || ($row->status == "Tidak sah" || $row->status == "Menunggu")) {
                                                                     if($buba == 'administrator' || ($bubi ==  $row->penulis_publikasi || ($bubi ==  $row->penulis_anggota1) || ($bubi ==  $row->penulis_anggota2))){
                                                                     ?>                                
-                                                                    <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/editdok/<?php echo $row->no; ?>" class="btn btn-primary btn-xs btnnomargin" ><i class="glyphicon glyphicon-pencil"></i></a> 
-                                                                    <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/deletedok/<?php echo $row->no; ?>" class="btn btn-danger btn-xs btnnomargin" onClick="return doconfirm();"><i class="glyphicon glyphicon-remove"></i></a>
+                                                                    <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/editdok/<?php echo $row->no; ?>" class="btn btn-gradient-success btn-xs btnnomargin" ><i class="glyphicon glyphicon-pencil"></i></a> 
+                                                                    <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/deletedok/<?php echo $row->no; ?>" class="btn btn-gradient-danger btn-xs btnnomargin" onClick="return doconfirm();"><i class="glyphicon glyphicon-remove"></i></a>
                                                                     <?php
                                                                     }
                                                                     }
@@ -129,62 +129,69 @@
                                                         <td>
                                                             <b class="text-capitalize"><?php echo $row->lingkup; ?></b><br>
                                                         </td>
-                                                        	<td class="ketengah">
-                                                            <?php
-                                                            if ($buba == 'administrator' || ($row->status == "TIDAK" || $row->status == NULL)) {
-                                                            if($buba == 'administrator' || ($bubi ==  $row->penulis_publikasi || ($bubi ==  $row->penulis_anggota1) || ($bubi ==  $row->penulis_anggota2))){
-                                                                ?>
-                                                            <button type="button" class="btn btn-success btn-xs btnnomargin" data-toggle="modal"
-                                                            data-target="#modal-upload<?php echo $row->no;?>"><span
-                                                                class="glyphicon glyphicon-cloud-upload"></span></button>
-                                                            <?php
-                                                                if(($row->file == NULL) || ($row->file == "")){
-                                                                ?>
-                                                            <button class="btn btn-default btn-xs btnnomargin source" onclick="
-                                                                        new PNotify({
-                                                                            title: 'Terjadi Kesalahan !',
-                                                                            text: 'Berkas Pendukung belum diunggah !',
-                                                                            type: 'error',
-                                                                            delay: 5000,
-                                                                            styling: 'bootstrap3'
-                                                                            });  
-                                                                        "><i class="fa fa-fw fa-file-text"></i></button>
-                                                            <?php
-                                                                }else if(($row->file != NULL) || ($row->file != "") ){
-                                                                ?>
-                                                            <a href="<?php echo site_url().'fileupload/publikasi_jurnal/'.$row->file  ?>"
-                                                            class="btn btn-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
-                                                            <?php
-                                                                }
+                                                        <td class="text-center">
+                                                            <!-- <?php
+                                                            if ($buba == 'administrator' || ($row->status == "Tidak sah" || $row->status == "Menunggu")) {
+                                                                if($buba == 'administrator' || ($bubi ==  $row->penulis_publikasi || ($bubi ==  $row->penulis_anggota1) || ($bubi ==  $row->penulis_anggota2))){
+                                                                    ?>
+                                                                    <?php
+                                                                        if(($row->file == NULL) || ($row->file == "")){
+                                                                        ?>
+                                                                            <button class="btn btn-primary btn-xs btnnomargin source" onclick="
+                                                                                new PNotify({
+                                                                                    title: 'Terjadi Kesalahan !',
+                                                                                    text: 'Berkas Pendukung belum diunggah !',
+                                                                                    type: 'error',
+                                                                                    delay: 5000,
+                                                                                    styling: 'bootstrap3'
+                                                                                    });  
+                                                                                "><i class="fa fa-fw fa-file-text"></i></button>
+                                                                    <?php
+                                                                        }else if(($row->file != NULL) || ($row->file != "") ){
+                                                                        ?>
+                                                                            <a href="<?php echo site_url().'fileupload/publikasi_jurnal/'.$row->file  ?>"
+                                                                            class="btn btn-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
+                                                                        <?php
+                                                                        }
                                                                 }
                                                             }
-                                                            ?>
+                                                            ?> -->
+
+                                                            <a href="<?php echo site_url().'fileupload/publikasi_jurnal/'.$row->file  ?>"
+                                                               class="btn btn-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
                                                         </td>
-                                                        <td class="ketengah"></td>
-                                                        <td class="ketengah">
+                                                        <td class="text-center">
+                                                            <b class="text-capitalize"><?php echo $row->poin; ?></b><br>
+                                                        </td>
+                                                        <td class="text-center">
                                                         <?php
-                                                            if($row->status == "TIDAK") {
-                                                            echo '<span class="font_color_red">'.$row->status.'</span>';                            
-                                                            } elseif ($row->status == "YA" ) {
-                                                            echo '<span class="font_color_green">'.$row->status.'</span>';                          
-                                                            }                            
-                                                            if($buba == 'administrator' && ($row->status == NULL)) {
+                                                            if($row->status == "Tidak sah") {
+                                                              echo '<span class="font_color_red">'.$row->status.'</span>';                            
+                                                            } elseif ($row->status == "Sah" ) {
+                                                             echo '<span class="font_color_green">'.$row->status.'</span>';                          
+                                                            } elseif ($row->status == "Menunggu") {
+                                                                echo '<span class="">'.$row->status.'</span>';  
+                                                            }
+                                                                                    
+                                                            if($buba == 'administrator' && ($row->status == "Menunggu")) {
                                                             ?>                            
-                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->id_publikasi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
-                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/tolakvalidasi/<?php echo $row->id_publikasi; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-thumbs-down"></i></a>
+                                                                <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                                <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/tolakvalidasi/<?php echo $row->no; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
                                                             <?php
-                                                            } elseif ($buba == 'administrator' && ($row->status ==  "TIDAK") ) {
+                                                            } elseif ($buba == 'administrator' && ($row->status ==  "Tidak sah") ) {
                                                             ?>
-                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->id_publikasi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                                <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
                                                             <?php
                                                             }
                                                             ?>
                                                         </td>  
-                                                        <td></td>
+                                                        <td>
+                                                                <b class="text-capitalize"><?php echo $row->keterangan; ?></b><br>
+                                                        </td>
                                                         </tr>
                                                         <?php
                                                     }
-                                                } else if($buba == 'administrator'){
+                                                } else if($buba == 'mahasiswa'){
                                                     foreach($queryByProdi as $row){
                                                         ?> 
                                                         <tr>
@@ -236,64 +243,71 @@
                                                             Halaman :&nbsp;<span class="font_color_blue"><?php echo $row->halaman_awal; ?> s/d <?php echo $row->halaman_akhir; ?></span><br>
                                                             URL :&nbsp;<span class="font_color_blue"><a href="<?php echo $row->url; ?>" class="link_url"> <?php echo $row->url; ?></a></span><br>
                                                         </td>
-                                                        <td class="ketengah">
-                                                            <?php
-                                                            if ($buba == 'administrator' || ($row->status == "TIDAK" || $row->status == NULL)) {
-                                                            if($buba == 'administrator' || ($bubi ==  $row->penulis_publikasi || ($bubi ==  $row->penulis_anggota1) || ($bubi ==  $row->penulis_anggota2))){
-                                                                ?>
-                                                            <button type="button" class="btn btn-success btn-xs btnnomargin" data-toggle="modal"
-                                                            data-target="#modal-upload<?php echo $row->id_publikasi;?>"><span
-                                                                class="glyphicon glyphicon-cloud-upload"></span></button>
-                                                            <?php
-                                                                if(($row->file == NULL) || ($row->file == "")){
-                                                                ?>
-                                                            <button class="btn btn-default btn-xs btnnomargin source" onclick="
-                                                                        new PNotify({
-                                                                            title: 'Terjadi Kesalahan !',
-                                                                            text: 'Berkas Pendukung belum diunggah !',
-                                                                            type: 'error',
-                                                                            delay: 5000,
-                                                                            styling: 'bootstrap3'
-                                                                            });  
-                                                                        "><i class="fa fa-fw fa-file-text"></i></button>
-                                                            <?php
-                                                                }else if(($row->file != NULL) || ($row->file != "") ){
-                                                                ?>
-                                                            <a href="<?php echo site_url().'fileupload/publikasi_jurnal/'.$row->file  ?>"
-                                                            class="btn btn-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
-                                                            <?php
-                                                                }
+                                                        <td class="text-center">
+                                                            <!-- <?php
+                                                            if ($buba == 'administrator' || ($row->status == "Tidak sah" || $row->status == "Menunggu")) {
+                                                                if($buba == 'administrator' || ($bubi ==  $row->penulis_publikasi || ($bubi ==  $row->penulis_anggota1) || ($bubi ==  $row->penulis_anggota2))){
+                                                                    ?>
+                                                                    <button type="button" class="btn btn-success btn-xs btnnomargin" data-toggle="modal"
+                                                                    data-target="#modal-upload<?php echo $row->no;?>"><span
+                                                                        class="glyphicon glyphicon-cloud-upload"></span></button>
+                                                                    <?php
+                                                                        if(($row->file == NULL) || ($row->file == "")){
+                                                                        ?>
+                                                                    <button class="btn btn-primary btn-xs btnnomargin source"
+                                                                	    onclick="
+                                                                            new PNotify({
+                                                                                title: 'Terjadi Kesalahan !',
+                                                                                text: 'Berkas Pendukung belum diunggah !',
+                                                                                type: 'error',
+                                                                                delay: 5000,
+                                                                                styling: 'bootstrap3'
+                                                                                });  
+                                                                            "><i class="fa fa-fw fa-file-text"></i></button>
+                                                                    <?php
+                                                                    }else if(($row->file != NULL) || ($row->file != "") ){
+                                                                    ?>
+                                                                        <a href="<?php echo site_url().'fileupload/publikasi_jurnal/'.$row->file  ?>"
+                                                                        class="btn btn-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
+                                                                        <?php
+                                                                    }
                                                                 }
                                                             }
-                                                            ?>
+                                                            ?> -->
+
+                                                            <a href="<?php echo site_url().'fileupload/publikasi_jurnal/'.$row->file  ?>"
+                                                               class="btn btn-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
                                                         </td>
-                                                        <td class="ketengah">    
+                                                        <td class="text-center">    
                                                         <?php
-                                                        if ($buba == 'administrator' || ($row->status == "TIDAK" || $row->status == NULL)) {
+                                                        if ($buba == 'administrator' || ($row->status == "Tidak sah" || $row->status == "Menunggu")) {
                                                             if($buba == 'administrator' || ($bubi ==  $row->penulis_publikasi || ($bubi ==  $row->penulis_anggota1) || ($bubi ==  $row->penulis_anggota2))){
                                                             ?>                                
-                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/editdok/<?php echo $row->id_publikasi; ?>" class="btn btn-primary btn-xs btnnomargin" ><i class="glyphicon glyphicon-pencil"></i></a> 
-                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/deletedok/<?php echo $row->id_publikasi; ?>" class="btn btn-danger btn-xs btnnomargin" onClick="return doconfirm();"><i class="glyphicon glyphicon-remove"></i></a>
+                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/editdok/<?php echo $row->no; ?>" class="btn btn-gradient-success btn-xs btnnomargin" ><i class="glyphicon glyphicon-pencil"></i></a> 
+                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/deletedok/<?php echo $row->no; ?>" class="btn btn-danger btn-xs btnnomargin" onClick="return doconfirm();"><i class="glyphicon glyphicon-remove"></i></a>
                                                             <?php
                                                             }
                                                             }
                                                             ?> 
                                                         </td>
-                                                        <td class="ketengah">
+                                                        <td class="text-center">
                                                         <?php
-                                                            if($row->status == "TIDAK") {
-                                                            echo '<span class="font_color_red">'.$row->status.'</span>';                            
-                                                            } elseif ($row->status == "YA" ) {
-                                                            echo '<span class="font_color_green">'.$row->status.'</span>';                          
-                                                            }                            
-                                                            if($buba == 'administrator' && ($row->status == NULL)) {
-                                                            ?>                            
-                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->id_publikasi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
-                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/tolakvalidasi/<?php echo $row->id_publikasi; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-thumbs-down"></i></a>
-                                                            <?php
-                                                            } elseif ($buba == 'administrator' && ($row->status ==  "TIDAK") ) {
+                                                            if($row->status == "Tidak sah") {
+                                                             echo '<span class="font_color_red">'.$row->status.'</span>';                            
+                                                            } elseif ($row->status == "Sah" ) {
+                                                             echo '<span class="font_color_green">'.$row->status.'</span>';                          
+                                                            } elseif ($row->status == "Menunggu") {
+                                                                echo '<span class="">'.$row->status.'</span>';  
+                                                            }
+
+                                                            if($buba == 'administrator' && ($row->status == "Menunggu")) {
                                                             ?>
-                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->id_publikasi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/tolakvalidasi/<?php echo $row->no; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
+                                                            <?php
+                                                            } elseif ($buba == 'administrator' && ($row->status ==  "Tidak sah") ) {
+                                                            ?>
+                                                            <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
                                                             <?php
                                                             }
                                                             ?>

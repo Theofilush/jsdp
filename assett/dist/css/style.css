@@ -27945,3 +27945,12 @@ table.dataTable>tbody>tr.child span.dtr-data {
 .font_color_red {
     color: #f83812;
 }
+
+.btn-hitam {
+    background-color: #000;
+    color: #fff;
+}
+
+.btnnomargin {
+    margin-right: 0px;
+}

@@ -24,6 +24,12 @@
     <!-- Morris Charts CSS -->
     <link href="<?php echo base_url() ?>assett/vendors/morris.js/morris.css" rel="stylesheet" type="text/css" />
 
+    <!-- Bootstrap Dropzone CSS -->
+    <link href="<?php echo base_url() ?>assett/vendors/dropzone/dist/dropzone.css" rel="stylesheet" type="text/css"/>
+    
+    <!-- Bootstrap Dropzone CSS -->
+	<link href="<?php echo base_url() ?>assett/vendors/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css"/>
+
     <!-- Toggles CSS -->
     <link href="<?php echo base_url() ?>assett/vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url() ?>assett/vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
