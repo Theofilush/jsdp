@@ -44,13 +44,11 @@ $(document).ready(function() {
             className: 'control',
             orderable: false,
             targets: 0
+        },{
+            "width": "8%", "targets": 0,
+            "width": "8%", "targets": 2,
+            "width": "48%", "targets": 4
         }],
-        // columns: { // Responsive control column
-        //     data: null,
-        //     defaultContent: '',
-        //     className: 'control',
-        //     orderable: false
-        // },
         language: {
             search: "",
             searchPlaceholder: "Search",

@@ -71,20 +71,17 @@
                                         <table id="datable_3" class="table table-hover w-100 display">
                                             <thead>
                                                 <tr>
-                                                    <th></th>
-                                                    <th>#</th>
-                                                    <th>No</th>
-                                                    <!-- <th>Tahun</th>
-                                                    <th>Tanggal Kegiatan</th> -->
-                                                    <th>Domain</th>
-                                                    <th>Kegiatan</th>
-                                                    <th>Sebagai</th>
-                                                    <th>Tema Kegiatan</th>
-                                                    <th>Lingkup</th>
-                                                    <th>File Pendukung</th>
-                                                    <th>Poin</th>
-                                                    <th>Status</th>
-                                                    <th>Keterangan</th>
+                                                    <th class="text-center text-capitalize"></th>
+                                                    <th class="text-center text-capitalize">#</th>
+                                                    <th class="text-center text-capitalize">No</th>
+                                                    <th class="text-center text-capitalize">Domain</th>
+                                                    <th class="text-center text-capitalize">Kegiatan</th>
+                                                    <th class="text-center text-capitalize">Tema Kegiatan</th>
+                                                    <th class="text-center text-capitalize">Lingkup</th>
+                                                    <th class="text-center text-capitalize">File Pendukung</th>
+                                                    <th class="text-center text-capitalize">Poin</th>
+                                                    <th class="text-center text-capitalize">Status</th>
+                                                    <th class="text-center text-capitalize">Keterangan</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -121,18 +118,17 @@
                                                         		</ul>
                                                         	</td> -->
                                                         	<td>
-                                                        		<b><?php echo $row->domain; ?></b><br>
+                                                        		<b class="text-capitalize"><?php echo $row->domain; ?></b><br>
                                                             </td>
-                                                        <td>
-                                                            <b><?php echo $row->kegiatan; ?></b><br>
-                                                        </td>                       
-                                                        <td>
-                                                            <b><?php echo $row->sub_kegiatan; ?></b><br>
+                                                        <td class="text-center text-capitalize">
+                                                            <b><?php echo $row->kegiatan; ?></b> <small>sebagai</small> <b><?php echo $row->sub_kegiatan; ?></b><br>
                                                         </td>
                                                         <td>
                                                             <b><?php echo $row->detail_kegiatan; ?></b><br>
                                                         </td>
-                                                        <td></td>
+                                                        <td>
+                                                            <b class="text-capitalize"><?php echo $row->lingkup; ?></b><br>
+                                                        </td>
                                                         	<td class="ketengah">
                                                             <?php
                                                             if ($buba == 'administrator' || ($row->status == "TIDAK" || $row->status == NULL)) {
