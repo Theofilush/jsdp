@@ -34,72 +34,81 @@
                                         echo form_open('Tambahpoin/savedok',$atribut);
                                     ?>
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tahun Akademik</label>
+                                            <label for="thn_akademik" class="col-sm-2 col-form-label">Tahun Akademik</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control custom-select d-block w-100" id="country">
-                                                        <option value="">Choose...</option>
-                                                        <option>United States</option>
-                                                </select>
+                                                <input class="form-control" type="text" name="thn_akademik"  id="thn_akademik" />
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tanggal Kegiatan</label>
+                                            <label for="tgl_kegiatan" class="col-sm-2 col-form-label">Tanggal Kegiatan</label>
                                             <div class="col-sm-10">
-                                                <input class="form-control" type="text" name="tgl_kegiatan" value="02/02/2020" />
+                                                <input class="form-control" type="text" name="tgl_kegiatan"  />
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Domain</label>
+                                            <label for="domain" class="col-sm-2 col-form-label">Domain</label>
                                             <div class="col-sm-10">
-                                            <select class="form-control d-block w-100 select2_ok" id="country">
-                                                    <option value="">Choose...</option>
-                                                    <option>United States</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Kegiatan</label>
-                                            <div class="col-sm-10">
-                                            <select class="form-control custom-select d-block w-100" id="country">
-                                                    <option value="">Choose...</option>
-                                                    <option>United States</option>
+                                            <select class="form-control d-block w-100 select2_ok" id="domain" name="domain" required="required">
+                                                <option value="0">Pilih...</option>
+                                                <?php
+                                                foreach($domain as $row){
+                                                ?>
+                                                    <option value="<?php echo $row->id_domain; ?>"><?php echo $row->nama_domain; ?></option>
+                                                <?php
+                                                }
+                                                ?>
                                             </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Sub-Kegiatan</label>
+                                            <label for="per_kegiatan" class="col-sm-2 col-form-label">Kegiatan</label>
                                             <div class="col-sm-10">
-                                            <select class="form-control custom-select d-block w-100" id="country">
-                                                    <option value="">Choose...</option>
-                                                    <option>United States</option>
+                                            <select class="form-control custom2 d-block w-100" id="per_kegiatan" name="kegiatan">
+                                                    <option value="">Pilih...</option>
                                             </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tema Kegiatan</label>
+                                            <label for="per_subkegiatan" class="col-sm-2 col-form-label">Sub-Kegiatan</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="firstName" placeholder="Tanggal">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tempat</label>
-                                            <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="inputPassword3" class="col-sm-2 col-form-label">Lingkup</label>
-                                            <div class="col-sm-10">
-                                            <select class="form-control custom-select d-block w-100" id="country">
-                                                    <option value="">Choose...</option>
-                                                    <option>United States</option>
+                                            <select class="form-control custom2 d-block w-100" id="per_subkegiatan" name="subkegiatan">
+                                                <option value="">Pilih...</option>
                                             </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="detail_kegiatan" class="col-sm-2 col-form-label">Detail Kegiatan</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="detail_kegiatan" name="detail_kegiatan" placeholder="Seminar Mahasiswa Entrepreneurship Tangerang">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="tempat" class="col-sm-2 col-form-label">Tempat</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="tempat" name="tempat" placeholder="Aula Lt.3 Universitas Pembangunan Jaya, Tangerang Selatan">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="lingkup" class="col-sm-2 col-form-label">Lingkup</label>
+                                            <div class="col-sm-10">
+                                            <select class="form-control custom2 d-block w-100" id="per_lingkup" name="lingkup">
+                                                    <option value="">Pilih...</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputPassword3" class="col-sm-2 col-form-label">Poin</label>
+                                            <div class="col-sm-10">
+                                                 <p class="form-control" id="per_poin">0</p> 
+                                                <input type="hidden" id="per_poin2" name="per_poin2" value="0">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputPassword3" class="col-sm-2 col-form-label">Upload</label>
                                             <div class="col-sm-10">
-                                                <input type="file" id="input-file-now" class="dropify" />
+                                                <input type="file" class="form-control dropify" name="filepdf" id="upload" accept="application/pdf" required />
+                                                *<small>File yang bisa diupload hanya yang berformat .pdf. </small><br>
+                                                *<small>Ukuran file maximal: 1MB</small>
                                             </div>
                                         </div>
                                         <div class="form-group row mb-0 mt-50">

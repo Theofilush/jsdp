@@ -42,6 +42,12 @@ $(function() {
             //maxYear: parseInt(moment().format('YYYY'), 10)
     });
 
+    $("#thn_akademik").datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years"
+    });
+
     /* Limit selectable dates*/
     $('.input-limit-datepicker').daterangepicker({
         format: 'MM/DD/YYYY',

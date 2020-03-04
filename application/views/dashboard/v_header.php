@@ -19,6 +19,9 @@
     <link href="<?php echo base_url() ?>assett/vendors/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Daterangepicker CSS -->
+    <link href="<?php echo base_url() ?>assett/vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+    <!-- Daterangepicker CSS -->
     <link href="<?php echo base_url() ?>assett/vendors/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
 
     <!-- Morris Charts CSS -->

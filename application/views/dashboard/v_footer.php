@@ -61,6 +61,9 @@
     <!-- Bootstrap Tagsinput JavaScript -->
     <script src="<?php echo base_url() ?>assett/vendors/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
 
+    <!-- Datepicker JavaScript -->
+    <script src="<?php echo base_url() ?>assett/vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
     <!-- Daterangepicker JavaScript -->
     <script src="<?php echo base_url() ?>assett/vendors/moment/min/moment.min.js"></script>
     <script src="<?php echo base_url() ?>assett/vendors/daterangepicker/daterangepicker.js"></script>
@@ -87,58 +90,105 @@
 
     <!-- Init JavaScript -->
     <script src = "<?php echo base_url() ?>assett/dist/js/init.js" > </script> 
-    <script >
-    	// $(document).ready(function () { // Ketika halaman sudah siap (sudah selesai di load)
-    	// 		// Kita sembunyikan dulu untuk loadingnya
-    	// 		// $("#loading").hide();
+    <script>
+        $('.select2_ok').select2({
+            placeholder: 'Pilih....',
+            allowClear: true  
+        });
+    	$(document).ready(function () { // Ketika halaman sudah siap (sudah selesai di load)
+    			// Kita sembunyikan dulu untuk loadingnya
+    			// $("#loading").hide();
 
-    	// 		$("#kelompok").change(function () {
-    	// 			$.ajax({
-    	// 				type: "POST", // Method pengiriman data bisa dengan GET atau POST
-    	// 				url: "<?php echo base_url("Pengisian / listPerluasan "); ?>", // Isi dengan url/path file php yang dituju 
-    	// 				data: {
-    	// 					id_provinsi: $("#kelompok").val()
-    	// 				}, // data yang akan dikirim ke file yang dituju
-    	// 				dataType: "json",
-    	// 				beforeSend: function (e) {
-    	// 					if (e && e.overrideMimeType) {
-    	// 						e.overrideMimeType("application/json;charset=UTF-8");
-    	// 					}
-    	// 				},
-    	// 				success: function (response) { // Ketika proses pengiriman berhasil
-    	// 					//$("#loading").hide(); // Sembunyikan loadingnya
-    	// 					// set isi dari combobox kota
-    	// 					// lalu munculkan kembali combobox kotanya
-    	// 					$("#per_dok").html(response.list_perdok).show();
-    	// 				},
-    	// 				error: function (xhr, ajaxOptions, thrownError) { // Ketika ada error
-    	// 					alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
-    	// 				}
-    	// 			});
-    	// 		});
-    	// 		//$("#per_dok").change(function(){ 
-    	// 		$.ajax({
-    	// 			type: "POST", // Method pengiriman data bisa dengan GET atau POST
-    	// 			url: "<?php echo base_url("Pengisian / listKelDok "); ?>", // Isi dengan url/path file php yang dituju
-    	// 			data: {
-    	// 				id_keldok: $("#per_dok").val()
-    	// 			}, // data yang akan dikirim ke file yang dituju
-    	// 			dataType: "json",
-    	// 			beforeSend: function (e) {
-    	// 				if (e && e.overrideMimeType) {
-    	// 					e.overrideMimeType("application/json;charset=UTF-8");
-    	// 				}
-    	// 			},
-    	// 			success: function (response) { // Ketika proses pengiriman berhasil
-    	// 				//$("#loading").hide(); // Sembunyikan loadingnya
-    	// 				// set isi dari combobox kota
-    	// 				// lalu munculkan kembali combobox kotanya
-    	// 				$("#keldok").html(response.list_keldok).show();
-    	// 			},
-    	// 			error: function (xhr, ajaxOptions, thrownError) { // Ketika ada error
-    	// 				alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
-    	// 			}
-    	// 		}); 
+    			$("#domain").change(function () {
+    				$.ajax({
+    					type: "POST", // Method pengiriman data bisa dengan GET atau POST
+    					url: "<?php echo base_url("Tambahpoin/listKegiatan"); ?>", // Isi dengan url/path file php yang dituju 
+    					data: {
+    						id_domain: $("#domain").val()
+    					}, // data yang akan dikirim ke file yang dituju
+    					dataType: "json",
+    					beforeSend: function (e) {
+    						if (e && e.overrideMimeType) {
+    							e.overrideMimeType("application/json;charset=UTF-8");
+    						}
+    					},
+    					success: function (response) { // Ketika proses pengiriman berhasil
+    						//$("#loading").hide(); // Sembunyikan loadingnya
+    						// set isi dari combobox kota
+    						// lalu munculkan kembali combobox kotanya
+    						$("#per_kegiatan").html(response.list_perkegiatan).show();
+    					},
+    					error: function (xhr, ajaxOptions, thrownError) { // Ketika ada error
+    						alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+    					}
+    				});
+                });
+                $("#per_kegiatan").change(function () {
+                    $.ajax({
+                        type: "POST", // Method pengiriman data bisa dengan GET atau POST
+                        url: "<?php echo base_url("Tambahpoin/listSubKegiatan "); ?>", // Isi dengan url/path file php yang dituju
+                        data: {
+                            id_kegiatan: $("#per_kegiatan").val()
+                        }, // data yang akan dikirim ke file yang dituju
+                        dataType: "json",
+                        beforeSend: function (e) {
+                            if (e && e.overrideMimeType) {
+                                e.overrideMimeType("application/json;charset=UTF-8");
+                            }
+                        },
+                        success: function (response) { // Ketika proses pengiriman berhasil
+                            $("#per_subkegiatan").html(response.list_persubkegiatan).show();
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) { // Ketika ada error
+                            alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                        }
+                    }); 
+                });
+                $("#per_subkegiatan").change(function () {
+                    $.ajax({
+                        type: "POST", // Method pengiriman data bisa dengan GET atau POST
+                        url: "<?php echo base_url("Tambahpoin/listLingkup "); ?>", // Isi dengan url/path file php yang dituju
+                        data: {
+                            id_subkegiatan: $("#per_subkegiatan").val()
+                        }, // data yang akan dikirim ke file yang dituju
+                        dataType: "json",
+                        beforeSend: function (e) {
+                            if (e && e.overrideMimeType) {
+                                e.overrideMimeType("application/json;charset=UTF-8");
+                            }
+                        },
+                        success: function (response) { // Ketika proses pengiriman berhasil
+                            $("#per_lingkup").html(response.list_perlingkup).show();
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) { // Ketika ada error
+                            alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                        }
+                    }); 
+                });
+                $("#per_lingkup").change(function () {
+                    $.ajax({
+                        type: "POST", // Method pengiriman data bisa dengan GET atau POST
+                        url: "<?php echo base_url("Tambahpoin/getPoin "); ?>", // Isi dengan url/path file php yang dituju
+                        data: {
+                            id_lingkup: $("#per_lingkup").val()
+                        }, // data yang akan dikirim ke file yang dituju
+                        dataType: "json",
+                        beforeSend: function (e) {
+                            if (e && e.overrideMimeType) {
+                                e.overrideMimeType("application/json;charset=UTF-8");
+                            }
+                        },
+                        success: function (response) { // Ketika proses pengiriman berhasil
+                            // $("#per_poin").html(response.list_perpoin).show();
+                            $("#per_poin").text(response.list_perpoin);
+                            $('#per_poin2').val(response.list_perpoin);
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) { // Ketika ada error
+                            alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                        }
+                    }); 
+                });
+        });
     </script>
 </body>
 
