@@ -44,10 +44,17 @@ $(document).ready(function() {
             className: 'control',
             orderable: false,
             targets: 0
-        },{
-            "width": "8%", "targets": 0,
-            "width": "8%", "targets": 2,
-            "width": "48%", "targets": 4
+        }, {
+            "width": "8%",
+            "targets": 0,
+            "width": "8%",
+            "targets": 2,
+            "width": "48%",
+            "targets": 4,
+            "width": "8%",
+            "targets": 7,
+            "width": "8%",
+            "targets": 8,
         }],
         language: {
             search: "",

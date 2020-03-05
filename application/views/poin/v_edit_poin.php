@@ -31,12 +31,14 @@
                                             'data-parsley-validate' => '',
                                             'id'=>'demo-form2'
                                     );                                        
-                                        echo form_open_multipart('Tambahpoin/savedok',$atribut);
+                                        echo form_open_multipart('edit/savedok',$atribut);
+                                            foreach ($query as $rou) {    
+                                            echo form_hidden('id',$rou->no);
                                     ?>
                                         <div class="form-group row">
                                             <label for="thn_akademik" class="col-sm-2 col-form-label">Tahun Akademik</label>
                                             <div class="col-sm-10">
-                                                <input class="form-control" type="text" name="thn_akademik"  id="thn_akademik" placeholder="2020"/>
+                                                <input class="form-control" type="text" name="thn_akademik"  id="thn_akademik" placeholder="2020" value="<?php echo $rou->tahun; ?>"/>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -49,7 +51,7 @@
                                             <label for="domain" class="col-sm-2 col-form-label">Domain</label>
                                             <div class="col-sm-10">
                                             <select class="form-control d-block w-100 select2_ok" id="domain" name="domain" required="required">
-                                                <option value="0">Pilih...</option>
+                                               <option><?php echo $rou->nama_domain; ?></option>
                                                 <?php
                                                 foreach($domain as $row){
                                                 ?>
@@ -64,7 +66,7 @@
                                             <label for="per_kegiatan" class="col-sm-2 col-form-label">Kegiatan</label>
                                             <div class="col-sm-10">
                                             <select class="form-control custom2 d-block w-100" id="per_kegiatan" name="kegiatan">
-                                                    <option value="">Pilih...</option>
+                                                <option><?php echo $rou->nama_kegiatan; ?></option>
                                             </select>
                                             </div>
                                         </div>
@@ -72,41 +74,42 @@
                                             <label for="per_subkegiatan" class="col-sm-2 col-form-label">Sub-Kegiatan</label>
                                             <div class="col-sm-10">
                                             <select class="form-control custom2 d-block w-100" id="per_subkegiatan" name="subkegiatan">
-                                                <option value="">Pilih...</option>
+                                            <option><?php echo $rou->nama_subkegiatan; ?></option>
                                             </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="detail_kegiatan" class="col-sm-2 col-form-label">Detail Kegiatan</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="detail_kegiatan" name="detail_kegiatan" placeholder="Seminar Mahasiswa Entrepreneurship Tangerang">
+                                                <input type="text" class="form-control" id="detail_kegiatan" name="detail_kegiatan" value="<?php echo $rou->detail_kegiatan; ?>" placeholder="Seminar Mahasiswa Entrepreneurship Tangerang">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="tempat" class="col-sm-2 col-form-label">Tempat</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="tempat" name="tempat" placeholder="Aula Lt.3 Universitas Pembangunan Jaya, Tangerang Selatan">
+                                                <input type="text" class="form-control" id="tempat" name="tempat" value="<?php echo $rou->tempat; ?>" placeholder="Aula Lt.3 Universitas Pembangunan Jaya, Tangerang Selatan">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="lingkup" class="col-sm-2 col-form-label">Lingkup</label>
                                             <div class="col-sm-10">
                                             <select class="form-control custom2 d-block w-100" id="per_lingkup" name="lingkup">
-                                                    <option value="">Pilih...</option>
+                                                <option><?php echo $rou->nama_lingkup; ?></option>
                                             </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputPassword3" class="col-sm-2 col-form-label">Poin</label>
                                             <div class="col-sm-10">
-                                                 <p class="form-control" id="per_poin">0</p> 
-                                                <input type="hidden" id="per_poin2" name="per_poin2" value="0">
+                                                 <p class="form-control" id="per_poin"><?php echo $rou->poin; ?></p> 
+                                                <input type="hidden" id="per_poin2" name="per_poin2" value="<?php echo $rou->poin; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputPassword3" class="col-sm-2 col-form-label">Upload</label>
                                             <div class="col-sm-10">
-                                                <input type="file" class="form-control dropify" name="filepdf" id="upload" accept="application/pdf" required />
+                                                <small class="mb-20">File sudah ada. <a href="<?php echo site_url().'fileupload/'.$rou->file?>" class="btn btn-gradient-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a> Mau diganti? <i class="fa fa-arrow-bottom"></i></small><br>
+                                                <input type="file" class="form-control dropify" name="filepdf" id="upload" accept="application/pdf" <?php echo $rou->file; ?> required />
                                                 *<small>File yang bisa diupload hanya yang berformat .pdf. </small><br>
                                                 *<small>Ukuran file maximal: 1MB</small>
                                             </div>
@@ -119,8 +122,9 @@
                                             </div>
                                         </div>
                                         <?php
-                                    echo form_close();
-                                ?>
+                                            }
+                                            echo form_close();
+                                        ?>
                                 </div>
                             </div>
                         </section>

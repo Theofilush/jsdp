@@ -3,10 +3,35 @@ defined('BASEPATH') OR exit('Anda tidak boleh mengakses file ini secara langsung
 class M_dokumen extends CI_Model{
     var $t_poin= 'poin';
 
-	function listPoint_byidMHS(){
+	function listPoint_byidMHSa(){
         $query = $this->db->get($this->t_poin);
         return $query->result();
-    } 
+    }
+
+    function listPoint_byidMHS(){
+        $this->db->select('*');
+        $this->db->from('poin');
+        $this->db->join('domain', 'poin.domain = domain.id_domain','inner');
+        $this->db->join('kegiatan', 'domain.id_domain = kegiatan.id_domain','inner');
+        $this->db->join('subkegiatan', 'kegiatan.id_kegiatan = subkegiatan.id_kegiatan','inner');
+        $this->db->join('lingkup', 'subkegiatan.id_subkegiatan = lingkup.id_subkegiatan','inner');
+        $this->db->group_by('poin.no'); 
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function listEditPoint_byidMHS($id){
+        $this->db->select('*');
+        $this->db->from('poin');
+        $this->db->join('domain', 'poin.domain = domain.id_domain','inner');
+        $this->db->join('kegiatan', 'domain.id_domain = kegiatan.id_domain','inner');
+        $this->db->join('subkegiatan', 'kegiatan.id_kegiatan = subkegiatan.id_kegiatan','inner');
+        $this->db->join('lingkup', 'subkegiatan.id_subkegiatan = lingkup.id_subkegiatan','inner');
+        $this->db->where('no',$id);
+        $this->db->group_by('poin.no'); 
+        $query = $this->db->get();
+        return $query->result();
+    }
 
     function tampil_domain(){ //query untuk menampilkan tahun pada form input
         $query = $this->db->get('domain'); 

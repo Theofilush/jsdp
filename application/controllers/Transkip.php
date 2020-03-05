@@ -15,10 +15,20 @@ class Transkip extends CI_Controller {
 	{
 		$usan = $this->session->userdata('nama');
 		$kue = $this->M_login->hak_ak($usan);
+		$query = $this->M_dokumen->listPoint_byidMHS();
+		$Id_user =  $kue[0]->ID_user;
+		$nama_lengkap =  $kue[0]->nama_lengkap;
+		$prodi =  $kue[0]->prodi;
+		$status =  $kue[0]->status;
 
 		$dataHalaman = array(   	
             'title'=>"Transkip",	
-		  'da' => $kue
+		  'da' => $kue,
+		  'query' => $query,
+		  'id_user' => $Id_user,
+		  'nama_lengkap' => $nama_lengkap,
+		  'prodi' => $prodi,
+		  'status' => $status
         );
         $this->load->view('dashboard/v_header',$dataHalaman);
 		$this->load->view('transkip/v_transkip',$dataHalaman);

@@ -23,7 +23,7 @@ class Tambahpoin extends CI_Controller {
 		  'domain' => $domain
         );
 		$this->load->view('dashboard/v_header',$dataHalaman);
-		$this->load->view('tambahdata/v_add_poin');
+		$this->load->view('poin/v_edit_poin');
 		$this->load->view('dashboard/v_footer');
 	}
 
@@ -127,6 +127,85 @@ class Tambahpoin extends CI_Controller {
 				redirect(site_url('Poin'));
 			}
 		}
+    }
+    
+    public function editdok($id)
+	{ 
+		$usan = $this->session->userdata('nama');
+		$kue = $this->M_login->hak_ak($usan); 
+		$query = $this->M_dokumen->listEdit_publikasi($id);		
+		$query_tampil_tahun = $this->M_dokumen->tampil_tahun(); 
+		$cakupan =  $this->M_dokumen->tampil_cakupan(); 
+		$query_tampil_dosen = $this->M_dokumen->tampil_dosen(); 	
+		$dataHalaman = array( 
+			'query' =>  $query,
+			'da' => $kue,
+			'tampil_tahun'=> $query_tampil_tahun,
+			'cakupan'=> $cakupan,
+			'tampil_dosen'=>$query_tampil_dosen
+        );
+		$this->load->view('dashboard/v_header',$dataHalaman);
+		$this->load->view('teditdata/v_edit_publikasi');
+		$this->load->view('dashboard/v_footer');
+	}
+	public function updatedok(){
+        if ($this->input->post('btnUpload') == "Upload") {
+			$_tingkat = $this->input->post('tingkat', TRUE);
+			$_tahun_publikasi = $this->input->post('tahun_publikasi', TRUE);
+			$_judul = $this->input->post('judul', TRUE);
+			$_nama_jurnal = $this->input->post('nama_jurnal', TRUE);
+			$_issn = $this->input->post('issn', TRUE);
+			$_volume = $this->input->post('volume', TRUE);
+			$_nomor = $this->input->post('nomor', TRUE);
+			$_halaman_awal = $this->input->post('halaman_awal', TRUE);
+			$_halaman_akhir = $this->input->post('halaman_akhir', TRUE);
+			$_url = $this->input->post('url', TRUE);
+			$_penulis = $this->input->post('pesan_penulis', TRUE);
+			$_anggota1 = $this->input->post('pesan_penulis2', TRUE);
+			$_anggota2 = $this->input->post('pesan_penulis3', TRUE);
+			$id = $this->input->post('id', TRUE);
+			if(($_anggota1 == "") && ($_anggota2 != "")){
+				$_anggota1 =$_anggota2;
+				$_anggota2= NULL;
+			}elseif($_anggota1 == ""){
+				$_anggota1 = NULL;
+			}
+			if($_anggota2 == ""){
+				$_anggota2 = NULL;
+			}
+          
+              $data = array(
+				'cakupan_publikasi' => $_tingkat,
+				'tahun_penerbitan' =>  $_tahun_publikasi,
+				'judul' =>  $_judul,
+				'nama_jurnal' =>  $_nama_jurnal,
+				'issn' =>  $_issn,
+				'volume' =>  $_volume,
+				'nomor' =>  $_nomor,
+				'halaman_awal' =>  $_halaman_awal,
+				'halaman_akhir' =>  $_halaman_akhir,
+				'url' =>  $_url,
+				'penulis_publikasi' =>  $_penulis,
+				'penulis_anggota1' =>  $_anggota1,
+				'penulis_anggota2' =>  $_anggota2
+              );              
+          $query= $this->M_dokumen->updateDok_publikasi($data,$id);
+          if ($query) {
+            redirect("publikasi/PublikasiJurnal");
+          }
+          else{
+			$this->session->set_flashdata('notification', 'Gagal Melakukan Update');	
+            redirect("publikasi/PublikasiJurnal");
+          }
+        }
+	} 
+	public function deletedok($id){		
+		$this->db->where('id_publikasi', $id);
+        $query = $this->db->get('t_publikasi_jurnal');
+        $row = $query->row();
+        unlink("./fileupload/publikasi_jurnal/$row->file");
+		$this->M_dokumen->deleteDok_publikasi($id);
+		redirect('publikasi/PublikasiJurnal');
 	}
 
 }
