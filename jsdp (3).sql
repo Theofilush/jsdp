@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Mar 2020 pada 18.11
+-- Waktu pembuatan: 11 Mar 2020 pada 15.10
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.9
 
@@ -63,7 +63,7 @@ INSERT INTO `domain` (`id_domain`, `nama_domain`) VALUES
 (2, 'Organisasi Kemahasiswaan Internal UPJ'),
 (3, 'Organisasi Di luar UPJ'),
 (4, 'Kepanitiaan / Event (setingkat Prodi)'),
-(5, 'Kepanitiaan / Event (setingkat UPJ'),
+(5, 'Kepanitiaan / Event (setingkat UPJ)'),
 (6, 'Seminar/Workshop/Pelatihan/Kuliah Umum prodi lain'),
 (7, 'Lomba / Kompetensi'),
 (8, 'Penelitian / Pengabdian Pada Masyarakat'),
@@ -109,14 +109,14 @@ INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `id_domain`) VALUES
 (16, 'Organisasi di Luar UPJ', 3),
 (17, 'Kepanitiaan / Event (Setingkat Prodi)', 4),
 (18, 'Kepanitiaan / Event (Setingkat UPJ)', 5),
-(19, 'Seminar/Workshop/Pelatihan/Kuliah Umum Prodi Lain', 6),
-(20, 'Peserta', 6),
+(19, 'Lainnya Seminar/Workshop/Pelatihan/Kuliah Umum Prodi Lain', 6),
+(20, 'Peserta Seminar/Workshop/Pelatihan', 6),
 (21, 'Lomba/Kompetisi', 7),
 (22, 'Penelitian / Pengabdian Pada Masyarakat', 8),
 (23, 'Karya/Publikasi', 9),
 (24, 'Asisten Dosen', 10),
 (25, 'Kewirausahaan (Berjalan per semester dengan bukti)', 11),
-(26, 'Marketing UPJ (Internal UPJ', 12),
+(26, 'Marketing UPJ (Internal UPJ)', 12),
 (27, 'Duta di luar UPJ', 13),
 (28, 'Fasilitator JSDP', 14);
 
@@ -326,6 +326,7 @@ CREATE TABLE `login` (
   `prodi` varchar(30) NOT NULL,
   `email` varchar(70) NOT NULL,
   `password` varchar(70) NOT NULL,
+  `status` varchar(20) DEFAULT NULL,
   `author` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -333,12 +334,13 @@ CREATE TABLE `login` (
 -- Dumping data untuk tabel `login`
 --
 
-INSERT INTO `login` (`id`, `ID_user`, `username`, `nama_lengkap`, `prodi`, `email`, `password`, `author`) VALUES
-(1, '9999999998', 'admin', 'admin', 'Teknik Sipil', 'admin@upj.ac.id', '$2y$12$qzCd/DZweNWvYwzu26uVl.t06q0UrSTQ/MhQgaJrszJ24vDzpEmnO', 'administrator'),
-(2, '9999999997', 'admin1', 'admin1', 'Teknik Sipil', 'admin1@upj.ac.id', '$2y$12$hnVN4pXpsR58wdWsbRx94.2pv/R8aseFIdBTgHGeCFNeMGPRmtn0G', 'administrator'),
-(3, '9999999999', 'dosen', 'dosen', 'Akuntansi', 'dosen@upj.ac.id', '$2y$12$.J2zWQHTzhrAJ1093nTfYOBjR.bZHM3nzOgp8TYKasWJ1a3738mm6', 'dosen'),
-(4, '2016071013', 'mhs ku', 'mahasiswa bisa lebih', 'Akuntansi', 'mhs@upj.ac.id', '$2y$12$czoGtR7qYymPT0/G.mOFcuK7cB.qln5HcKXCuONbZRN0.979/vj6q', 'mahasiswa'),
-(5, '2016071014', 'mhs ku 2', 'mahasiswa bisa lebih bisa', 'Informatika', 'mhs2@upj.ac.id', '$2y$12$czoGtR7qYymPT0/G.mOFcuK7cB.qln5HcKXCuONbZRN0.979/vj6q', 'mahasiswa');
+INSERT INTO `login` (`id`, `ID_user`, `username`, `nama_lengkap`, `prodi`, `email`, `password`, `status`, `author`) VALUES
+(1, '9999999998', 'admin', 'admin', 'Teknik Sipil', 'admin@upj.ac.id', '$2y$12$qzCd/DZweNWvYwzu26uVl.t06q0UrSTQ/MhQgaJrszJ24vDzpEmnO', 'Aktif', 'administrator'),
+(2, '9999999997', 'admin1', 'admin1', 'Teknik Sipil', 'admin1@upj.ac.id', '$2y$12$hnVN4pXpsR58wdWsbRx94.2pv/R8aseFIdBTgHGeCFNeMGPRmtn0G', 'Aktif', 'administrator'),
+(3, '9999999999', 'dosen', 'dosen', 'Akuntansi', 'dosen@upj.ac.id', '$2y$12$.J2zWQHTzhrAJ1093nTfYOBjR.bZHM3nzOgp8TYKasWJ1a3738mm6', 'Aktif', 'dosen'),
+(4, '2016071013', 'mhs ku', 'mahasiswa bisa lebih', 'Akuntansi', 'mhs@upj.ac.id', '$2y$12$czoGtR7qYymPT0/G.mOFcuK7cB.qln5HcKXCuONbZRN0.979/vj6q', 'Aktif', 'mahasiswa'),
+(5, '2016071014', 'mhs ku 2', 'mahasiswa bisa lebih bisa', 'Informatika', 'mhs2@upj.ac.id', '$2y$12$czoGtR7qYymPT0/G.mOFcuK7cB.qln5HcKXCuONbZRN0.979/vj6q', 'Aktif', 'mahasiswa'),
+(6, '9999999996', 'koordinator', 'admin1', 'Teknik Sipil', 'koordinator@upj.ac.id', '$2y$12$pmPZhILHN4s72Jw4J1qsueSlqnzinhOdnxCz1cX89mFORIdBiQvYy', 'Aktif', 'administrator');
 
 -- --------------------------------------------------------
 
@@ -350,19 +352,19 @@ CREATE TABLE `poin` (
   `no` int(10) NOT NULL,
   `id_mhs` varchar(50) NOT NULL,
   `tahun` varchar(50) NOT NULL,
-  `tanggal_kegiatan` date NOT NULL,
+  `tanggal_kegiatan` date NOT NULL DEFAULT current_timestamp(),
   `domain` varchar(50) NOT NULL,
   `kegiatan` varchar(50) NOT NULL,
   `sub_kegiatan` varchar(50) NOT NULL,
   `detail_kegiatan` varchar(50) DEFAULT NULL,
-  `peran` varchar(50) NOT NULL,
+  `peran` varchar(50) DEFAULT NULL,
   `tempat` varchar(50) NOT NULL,
   `lingkup` varchar(50) NOT NULL,
   `file` varchar(500) DEFAULT NULL,
   `poin` int(5) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   `keterangan` varchar(250) DEFAULT NULL,
-  `id_verfikator` varchar(50) NOT NULL,
+  `id_verfikator` varchar(50) DEFAULT NULL,
   `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -371,9 +373,19 @@ CREATE TABLE `poin` (
 --
 
 INSERT INTO `poin` (`no`, `id_mhs`, `tahun`, `tanggal_kegiatan`, `domain`, `kegiatan`, `sub_kegiatan`, `detail_kegiatan`, `peran`, `tempat`, `lingkup`, `file`, `poin`, `status`, `keterangan`, `id_verfikator`, `created_at`) VALUES
-(1, '2016071013', '2019', '2020-02-05', 'wajib', 'seminar', 'peserta 1-4 jam', 'mahasiswa preunership', 'peserta', 'upj', 'lokal', 'BC.pdf', 10, 'Menunggu', '', '9999999997', '2020-02-29'),
-(2, '2016071013', '2019', '2020-02-05', 'primer', 'panitia', 'panitia konser', 'konser akbar oleh X', 'panitia', 'jakarta', 'nasional', 'BC.pdf', 20, 'Tidak sah', 'kurang naik', '9999999997', '2020-02-29'),
-(3, '2016071013', '2019', '2020-02-05', 'primer', 'panitia', 'panitia konser', 'konser akbar oleh X', 'panitia', 'jakarta', 'nasional', NULL, 30, 'Sah', '', '9999999997', '2020-02-29');
+(1, '9999999998', '2019', '0000-00-00', '4', '12', '12', 'mahasiswa preunershipp', 'peserta', 'upj', '3', 'BC.pdf', 10, 'Menunggu', '', '9999999997', '2020-02-29'),
+(2, '2016071013', '2019', '2020-02-05', '4', '15', '12', 'konser akbar oleh X', 'panitia', 'jakarta', '3', 'BC.pdf', 20, 'Tidak sah', 'kurang naik', '9999999997', '2020-02-29'),
+(3, '2016071013', '2019', '2020-02-05', '4', '12', '30', 'konser akbar oleh X', 'panitia', 'jakarta', '3', NULL, 30, 'Sah', '', '9999999997', '2020-02-29'),
+(4, '9999999998', '2015', '0000-00-00', '4', '17', '46', 'test', '', 'test', '160', '', 150, 'Menunggu', NULL, NULL, '2020-03-04'),
+(5, '9999999998', '2021', '0000-00-00', '1', '12', '32', '', NULL, '', '3', '', 150, 'Sah', NULL, NULL, '2020-03-04'),
+(6, '9999999998', '2020', '0000-00-00', '1', '12', '32', '', NULL, '', '2', '', 250, 'Menunggu', NULL, NULL, '2020-03-04'),
+(7, '9999999998', '2020', '0000-00-00', '1', '12', '32', 'test', NULL, 'test', '3', '', 350, 'Menunggu', NULL, NULL, '2020-03-04'),
+(8, '9999999998', '2020', '2020-03-12', 'Asisten Dosen', 'Asisten Dosen', 'Asisten Dosen (2SKS)', 'PBOoooooooooooooo', NULL, 'upj', 'Lokal', '', 50, 'Menunggu', NULL, NULL, '2020-03-05'),
+(9, '9999999998', '2020', '0000-00-00', '3', '16', '42', '', NULL, '', '4', 'JSDP_Poin_(1).pdf', 60, 'Menunggu', NULL, NULL, '2020-03-05'),
+(10, '9999999998', '2021', '2020-03-12', '4', '17', '44', '', NULL, '', '158', 'JSDP_Poin_(1)1.pdf', 10, 'Menunggu', NULL, NULL, '2020-03-05'),
+(11, '9999999998', '2020', '0000-00-00', '1', '12', '32', '', NULL, 'dataon', '2', 'JSDP_Poin_(1).pdf', 250, 'Menunggu', NULL, NULL, '2020-03-05'),
+(12, '9999999998', '2020', '0000-00-00', '10', '24', '71', 'matematika dasar', NULL, 'upj', '165', 'JSDP_Poin_(1)1.pdf', 100, 'Menunggu', NULL, NULL, '2020-03-10'),
+(13, '9999999998', '2020', '0000-00-00', '9', '23', '', 'karya publikasi kontrol ruang hijau', NULL, 'hijau', '', 'JSDP_Transkip.pdf', 20, 'Menunggu', NULL, NULL, '2020-03-11');
 
 -- --------------------------------------------------------
 
@@ -595,13 +607,13 @@ ALTER TABLE `lingkup`
 -- AUTO_INCREMENT untuk tabel `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `poin`
 --
 ALTER TABLE `poin`
-  MODIFY `no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `program_studi`

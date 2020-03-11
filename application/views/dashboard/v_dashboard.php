@@ -5,14 +5,14 @@
             <div class="container-fluid mt-xl-50 mt-sm-30 mt-15">
 				<!-- Row -->
                 <div class="row">
-                    <div class="col-xl-12">
+                    <div class="col-xl-6">
 						<div class="card card-refresh">
 									<div class="refresh-container">
 										<div class="loader-pendulums"></div>
 									</div>
 									<div class="card-header card-header-action">
 										<div>
-											<h6 class="mb-10">XYZ - Stock Analysis (2009 - 2016)</h6>
+											<h6 class="mb-10">Poin JSDP</h6>
 											<p class="font-14 w-80">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
 										</div>
 										<div class="d-flex align-items-center card-action-wrap">
@@ -29,11 +29,35 @@
 									</div>
 						</div>
 					</div>
+					<div class="col-xl-6">
+						<div class="card card-refresh">
+									<div class="refresh-container">
+										<div class="loader-pendulums"></div>
+									</div>
+									<div class="card-header card-header-action">
+										<div>
+											<h6 class="mb-10">Poin Tertinggi JSDP</h6>
+											<p class="font-14 w-80">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+										</div>
+										<div class="d-flex align-items-center card-action-wrap">
+											<a href="#" class="inline-block refresh mr-15">
+												<i class="ion ion-md-radio-button-off"></i>
+											</a>
+											<a href="#" class="inline-block full-screen">
+												<i class="ion ion-md-expand"></i>
+											</a>
+										</div>
+									</div>
+									<div class="card-body">
+										<div id="chart_bar" style="height: 194px;"></div>
+									</div>
+						</div>
+					</div>
                 </div>
                 <!-- /Row -->
 
 				<!-- Row -->
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-xl-12">
 						<div class="card card-refresh">
 									<div class="refresh-container">
@@ -58,7 +82,7 @@
 									</div>
 						</div>
 					</div>
-                </div>
+                </div> -->
                 <!-- /Row -->
 
 				<!-- Row -->

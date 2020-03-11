@@ -46,27 +46,30 @@
                                     </div>
                                 </div>
                             <?php } ?>
-                            <div class="row">
-                                        <div class="col-md-12">
-                                            <ul class="list-group">
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <small><code><?php echo $total_sah_poin!=NULL ?  $total_sah_poin : "0"; ?></code> Poin Sah</small>
-                                                    <span class="badge badge-primary badge-pill"><?php  echo $percent_sah; ?> %</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <small><code class="bg-warning"><?php echo $sisa!=NULL ?  $sisa : "0"; ?></code> Sisa Poin</small>
-                                                    <span class="badge badge-warning badge-pill"><?php  echo $percent_sisa; ?> %</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <small><code><?php echo $total_menunggu!=NULL ?  $total_menunggu : "0" ;?></code> Poin Menunggu Diverifikasi</small>
-                                                    <!-- <span class="badge badge-warning badge-pill"><?php  echo $percent_menunggu; ?> %</span> -->
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <small><code><?php echo $total_tidaksah_poin!=NULL ?  $total_tidaksah_poin : "0" ;?></code>  Poin Tidak Sah</small>
-                                                    <!-- <span class="badge badge-pumpkin badge-pill"><?php  echo $percent_tidaksah; ?> %</span> -->
-                                                </li>
-                                            </ul>
-                                        </div>
+                            <div class="row justify-content-center">
+                            	<div class="col-md-12 mb-20">
+                            		<ul class="list-group">
+                            			<li class="list-group-item d-flex justify-content-between align-items-center">
+                            				<small><code><?php echo $total_sah_poin!=NULL ?  $total_sah_poin : "0"; ?></code> Poin Sah</small>
+                            				<span class="badge badge-primary badge-pill"><?php  echo $percent_sah; ?> %</span>
+                            			</li>
+                            			<li class="list-group-item d-flex justify-content-between align-items-center">
+                            				<small><code class="bg-warning"><?php echo $sisa!=NULL ?  $sisa : "0"; ?></code> Sisa Poin</small>
+                            				<span class="badge badge-warning badge-pill"><?php  echo $percent_sisa; ?> %</span>
+                            			</li>
+                            			<li class="list-group-item d-flex justify-content-between align-items-center">
+                            				<small><code><?php echo $total_menunggu!=NULL ?  $total_menunggu : "0" ;?></code> Poin Menunggu Diverifikasi</small>
+                            				<!-- <span class="badge badge-warning badge-pill"><?php  echo $percent_menunggu; ?> %</span> -->
+                            			</li>
+                            			<li class="list-group-item d-flex justify-content-between align-items-center">
+                            				<small><code><?php echo $total_tidaksah_poin!=NULL ?  $total_tidaksah_poin : "0" ;?></code> Poin Tidak Sah</small>
+                            				<!-- <span class="badge badge-pumpkin badge-pill"><?php  echo $percent_tidaksah; ?> %</span> -->
+                            			</li>
+                            		</ul>
+                            	</div>
+                            	<a href="<?php echo site_url() ?>Tambahpoin" class="btn btn-light btn-wth-icon icon-wthot-bg btn-rounded icon-right" role="button">
+                                    <span class="btn-text">Tambah Poin JSDP</span><span class="icon-label"><i class="fa fa-plus"></i> </span>
+                                </a>
                             </div>
                         </section>
                     </div>
@@ -99,7 +102,7 @@
                                 </tbody>
                             </table>
                             </div>
-                            <a href="<?php echo site_url() ?>Tambahpoin" class="mb-20 btn btn-light btn-wth-icon icon-wthot-bg btn-rounded icon-right" role="button"><span class="btn-text">Tambah Poin JSDP</span><span class="icon-label"><i class="fa fa-plus"></i> </span></a>
+                            
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="table-wrap">
