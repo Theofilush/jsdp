@@ -1,11 +1,11 @@
-<?php foreach($da as $row){$buba= $row->author;$bubi= $row->username; }  ?>
+<?php foreach($da as $row){$buba= $row->author;$bubi= $row->username; }   if ($buba == 'administrator' || $buba == 'koordinator' ){ ?>
 <!-- Main Content -->
 <div class="hk-pg-wrapper">
             <!-- Breadcrumb -->
             <nav class="hk-breadcrumb" aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-light bg-transparent">
                     <li class="breadcrumb-item"><a href="<?php echo site_url(); ?>">JSDP</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Poin JSDP</li>
+                    <li class="breadcrumb-item active" aria-current="page">Menunggu Verifikasi Poin JSDP</li>
                 </ol>
             </nav>
             <!-- /Breadcrumb -->
@@ -24,49 +24,30 @@
                     <div class="col-xl-12">
                         <section class="hk-sec-wrapper">
                             <h5 class="hk-sec-title">Status Poin</h5>
-                            <p class="mb-10">Total Minimal Pencapaian Poin = 1000</p>
-                            <div class="progress mb-20">
-                                <div class="progress-bar  progress-bar-striped bg-primary progress-bar-animated w-<?php  echo $percent_sah; ?>" role="progressbar" aria-valuenow="<?php  echo $percent_sah; ?>" aria-valuemin="0" aria-valuemax="100">
-                                    <!-- <div style="color: #000;position: absolute;bottom: 135px;/* display: block;font-size: 12px;font-weight: 500;left: 50%;transform: translate(-50%,-50%);*/"> <?php  echo $percent_sah; ?>% Sah ( <?php  echo $total_sah_poin; ?> poin)</div> 
-                                    <div style="color: #000;position: absolute;bottom: 115px;/* display: block;font-size: 12px;font-weight: 500;left: 50%;transform: translate(-50%,-50%);*/"> 40% Menunggu diverifikasi (700 poin)</div>  -->
-                                </div>
-                                <?php if($percent_sah <= 90 ){ ?>
-                                    <div class="progress-bar  progress-bar-striped bg-warning progress-bar-animated w-40" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-                                    </div>
-                                    <div class="progress-bar  progress-bar-striped bg-pumpkin progress-bar-animated w-10" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-                                    </div>
-                                <?php } ?>
+                            <div class="row mb-20">
+                            	<div class="col-md-12">
+                            		<ul class="list-group">
+                            			<li class="list-group-item d-flex justify-content-between align-items-center">
+                            				<small><span class="badge badge-primary">1000</span> Poin Sah</small>
+                            				<span class="badge badge-primary badge-pill">o</span>
+                            			</li>
+                            			<li class="list-group-item d-flex justify-content-between align-items-center">
+                            				<small><span class="badge badge-warning">100</span> Poin Menunggu Diverifikasi</small>
+                            				<span class="badge badge-warning badge-pill">o</span>
+                            			</li>
+                            			<li class="list-group-item d-flex justify-content-between align-items-center">
+                            				<small><span class="badge badge-pumpkin">100</span> Poin Tidak Sah</small>
+                            				<span class="badge badge-pumpkin badge-pill">o</span>
+                            			</li>
+                            		</ul>
+                            	</div>
                             </div>
-                            <?php if($percent_sah >= 90 ){ ?>
-                                <p class="mb-10">Poin menunggu di verifikasi</p>
-                                <div class="progress mb-20">
-                                    <div class="progress-bar  progress-bar-striped bg-warning progress-bar-animated w-40" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-                                    </div>
-                                    <div class="progress-bar  progress-bar-striped bg-pumpkin progress-bar-animated w-10" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-                                    </div>
+                            <div class="row justify-content-center">
+                                <div class="btn-group mb-15" role="group" aria-label="Basic example">
+                                    <a type="button" class="btn btn-warning" href="#">Menunggu diverifikasi</a>
+                                    <a type="button" class="btn btn-primary" href="<?php echo site_url() ?>Sah">Sah</a>
+                                    <a type="button" class="btn btn-pumpkin" href="<?php echo site_url() ?>TidakSah">Tidak Sah</a>
                                 </div>
-                            <?php } ?>
-                            <div class="row">
-                                        <div class="col-md-12">
-                                            <ul class="list-group">
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <small><code><?php echo $total_sah_poin!=NULL ?  $total_sah_poin : "0"; ?></code> Poin Sah</small>
-                                                    <span class="badge badge-primary badge-pill"><?php  echo $percent_sah; ?> %</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <small><code class="bg-warning"><?php echo $sisa!=NULL ?  $sisa : "0"; ?></code> Sisa Poin</small>
-                                                    <span class="badge badge-warning badge-pill"><?php  echo $percent_sisa; ?> %</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <small><code><?php echo $total_menunggu!=NULL ?  $total_menunggu : "0" ;?></code> Poin Menunggu Diverifikasi</small>
-                                                    <!-- <span class="badge badge-warning badge-pill"><?php  echo $percent_menunggu; ?> %</span> -->
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <small><code><?php echo $total_tidaksah_poin!=NULL ?  $total_tidaksah_poin : "0" ;?></code>  Poin Tidak Sah</small>
-                                                    <!-- <span class="badge badge-pumpkin badge-pill"><?php  echo $percent_tidaksah; ?> %</span> -->
-                                                </li>
-                                            </ul>
-                                        </div>
                             </div>
                         </section>
                     </div>
@@ -83,18 +64,10 @@
                             <table class="table mb-10">
                                 <tbody>
                                     <tr>
-                                        <td class="text-right py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;">NIM</td>
+                                        <td class="text-right py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;">ID User</td>
                                         <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $id_user?></td>
                                         <td class="text-right py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;">Nama</td>
                                         <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $nama_lengkap?></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-right py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;">Program Studi</td>
-                                        <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $prodi?></td>
-                                        <td class="text-right py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;">Status</td>
-                                        <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $status?></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -103,7 +76,7 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="table-wrap">
-                                        <table id="datable_3" class="table table-hover w-100 display" style="font-size:0.8em;">
+                                        <table id="datable_menunggu" class="table table-striped table-bordered dt-responsive w-100 display" style="font-size:0.8em;">
                                             <thead>
                                                 <tr>
                                                     <th class="text-center text-capitalize"></th>
@@ -616,3 +589,12 @@
 
             </div>
             <!-- /Container -->
+            
+<?php
+} else{
+  echo '<div class="hk-pg-wrapper">
+  <div class="container">
+  <h2>Halaman Tidak tidak ditemukan</h2>
+  </div>
+  </div>';
+}?>

@@ -78,7 +78,7 @@ License: You must have a valid license purchased only from templatemonster to le
                                         <h1 class="display-4 mb-20 text-center">Login Form</h1>
                                         <img src="<?php echo base_url() ?>assett/dist/img/logo6.png" class="text-center mb-20">
                                         <div class="form-group">
-                                            <input class="form-control" name="username" placeholder="Email" type="email" >
+                                            <input class="form-control" name="username" placeholder="Email / NIM / NIP" type="text" >
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">

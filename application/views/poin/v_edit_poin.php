@@ -13,7 +13,7 @@
             <div class="container">
                 <!-- Title -->
                 <div class="hk-pg-header">
-                    <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="align-left"></i></span></span>Tambah Poin JSDP Mahasiswa</h4>
+                    <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="align-left"></i></span></span>Edit Poin JSDP Mahasiswa</h4>
                 </div>
                 <!-- /Title -->
 
@@ -31,28 +31,30 @@
                                             'data-parsley-validate' => '',
                                             'id'=>'demo-form2'
                                     );                                        
-                                        echo form_open_multipart('edit/savedok',$atribut);
+                                        echo form_open_multipart('Poin/updatepoin',$atribut);
                                             foreach ($query as $rou) {    
                                             echo form_hidden('id',$rou->no);
                                     ?>
                                         <div class="form-group row">
-                                            <label for="thn_akademik" class="col-sm-2 col-form-label">Tahun Akademik</label>
+                                            <label for="thn_akademik" class="col-sm-2 col-form-label">Tahun Akademik *</label>
                                             <div class="col-sm-10">
-                                                <input class="form-control" type="text" name="thn_akademik"  id="thn_akademik" placeholder="2020" value="<?php echo $rou->tahun; ?>"/>
+                                                <input class="form-control" type="text" name="thn_akademik"  id="thn_akademik" placeholder="2020" value="<?php echo $rou->tahun; ?>" required="required"/>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="tgl_kegiatan" class="col-sm-2 col-form-label">Tanggal Kegiatan</label>
+                                            <label for="tgl_kegiatan" class="col-sm-2 col-form-label">Tanggal Kegiatan *</label>
                                             <div class="col-sm-10">
-                                                <input class="form-control" type="text" name="tgl_kegiatan" id="tgl_kegiatan" />
+                                                <input class="form-control" type="text" name="tgl_kegiatan" id="tgl_kegiatan" required="required" />
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="domain" class="col-sm-2 col-form-label">Domain</label>
+                                            <label for="domain" class="col-sm-2 col-form-label">Domain *</label>
                                             <div class="col-sm-10">
                                             <select class="form-control d-block w-100 select2_ok" id="domain" name="domain" required="required">
-                                               <option><?php echo $rou->nama_domain; ?></option>
-                                                <?php
+                                                <?php  foreach($select_domain as $row){
+                                                            echo "<option value=".$row->id_domain.">".$row->nama_domain."</option>";
+                                                        } 
+
                                                 foreach($domain as $row){
                                                 ?>
                                                     <option value="<?php echo $row->id_domain; ?>"><?php echo $row->nama_domain; ?></option>
@@ -63,18 +65,27 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="per_kegiatan" class="col-sm-2 col-form-label">Kegiatan</label>
+                                            <label for="per_kegiatan" class="col-sm-2 col-form-label">Kegiatan *</label>
                                             <div class="col-sm-10">
-                                            <select class="form-control custom2 d-block w-100" id="per_kegiatan" name="kegiatan">
-                                                <option><?php echo $rou->nama_kegiatan; ?></option>
+                                            <select class="form-control custom2 d-block w-100" id="per_kegiatan" name="kegiatan" required="required">
+                                                <!-- <option><?php echo $rou->nama_kegiatan; ?></option> -->
+                                                <?php  foreach($select_kegiatan as $row){
+                                                            echo "<option value=".$row->id_kegiatan.">".$row->nama_kegiatan."</option>";
+                                                        }
+                                                ?>
                                             </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="per_subkegiatan" class="col-sm-2 col-form-label">Sub-Kegiatan</label>
+                                            <label for="per_subkegiatan" class="col-sm-2 col-form-label">Sub-Kegiatan *</label>
                                             <div class="col-sm-10">
-                                            <select class="form-control custom2 d-block w-100" id="per_subkegiatan" name="subkegiatan">
-                                            <option><?php echo $rou->nama_subkegiatan; ?></option>
+                                            <select class="form-control custom2 d-block w-100" id="per_subkegiatan" name="subkegiatan" required="required">
+                                            <!-- <option><?php echo $rou->nama_subkegiatan; ?></option> -->
+
+                                                <?php  foreach($select_subKegiatan as $row){
+                                                            echo "<option value=".$row->id_subkegiatan.">".$row->nama_subkegiatan."</option>";
+                                                        }
+                                                ?>
                                             </select>
                                             </div>
                                         </div>
@@ -91,10 +102,15 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="lingkup" class="col-sm-2 col-form-label">Lingkup</label>
+                                            <label for="lingkup" class="col-sm-2 col-form-label">Lingkup *</label>
                                             <div class="col-sm-10">
-                                            <select class="form-control custom2 d-block w-100" id="per_lingkup" name="lingkup">
-                                                <option><?php echo $rou->nama_lingkup; ?></option>
+                                            <select class="form-control custom2 d-block w-100" id="per_lingkup" name="lingkup" required="required">
+                                                <!-- <option><?php echo $rou->nama_lingkup; ?></option> -->
+
+                                                <?php  foreach($select_lingkup as $row){
+                                                            echo "<option value=".$row->id_lingkup.">".$row->nama_lingkup."</option>";
+                                                        }
+                                                ?>
                                             </select>
                                             </div>
                                         </div>
@@ -108,8 +124,8 @@
                                         <div class="form-group row">
                                             <label for="inputPassword3" class="col-sm-2 col-form-label">Upload</label>
                                             <div class="col-sm-10">
-                                                <small class="mb-20">File sudah ada. <a href="<?php echo site_url().'fileupload/'.$rou->file?>" class="btn btn-gradient-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a> Mau diganti? <i class="fa fa-arrow-bottom"></i></small><br>
-                                                <input type="file" class="form-control dropify" name="filepdf" id="upload" accept="application/pdf" <?php echo $rou->file; ?> required />
+                                                <small class="mb-20">File sudah ada. <a href="<?php echo site_url().'fileupload/'.$rou->file?>" class="btn btn-gradient-danger btn-xs btnnomargin" target="_blank"><i class="fa fa-fw fa-file-text"></i></a> Mau diganti? <i class="fa fa-arrow-bottom"></i></small><br>
+                                                <input type="file" class="form-control dropify" name="filepdf" id="upload" accept="application/pdf" <?php echo $rou->file; ?> />
                                                 *<small>File yang bisa diupload hanya yang berformat .pdf. </small><br>
                                                 *<small>Ukuran file maximal: 1MB</small>
                                             </div>

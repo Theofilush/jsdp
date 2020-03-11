@@ -96,9 +96,6 @@
             allowClear: true  
         });
     	$(document).ready(function () { // Ketika halaman sudah siap (sudah selesai di load)
-    			// Kita sembunyikan dulu untuk loadingnya
-    			// $("#loading").hide();
-
     			$("#domain").change(function () {
     				$.ajax({
     					type: "POST", // Method pengiriman data bisa dengan GET atau POST

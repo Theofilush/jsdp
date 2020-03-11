@@ -58,7 +58,7 @@
             </a>
             <div class="collapse navbar-collapse" id="navbarCollapseAlt">
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown show-on-hover active">
+                    <!-- <li class="nav-item dropdown show-on-hover active">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Dashboard
 							</a>
@@ -67,7 +67,7 @@
 							<a class="dropdown-item" href="dashboard2.html">Project</a>
 							<a class="dropdown-item active" href="dashboard3.html">Statistics</a>
                         </div>
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item dropdown show-on-hover">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Pages
@@ -214,9 +214,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url() ?>Transkip">Transkip Poin JSDP</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url() ?>Verifikasi">Waiting List</a>
-                    </li>
+                    <?php
+                    if ($buba == 'administrator') {
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo site_url() ?>Menunggu">Menunggu Verifikasi</a>
+                        </li>
+                    <?php
+                    }
+                    ?>
                 </ul>
                 <!-- <form class="navbar-search-alt">
                     <div class="input-group">
@@ -339,12 +345,12 @@
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
-                        <a class="dropdown-item" href="profile.html"><i class="dropdown-icon zmdi zmdi-account"></i><span>Profile</span></a>
+                        <!-- <a class="dropdown-item" href="profile.html"><i class="dropdown-icon zmdi zmdi-account"></i><span>Profile</span></a>
                         <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-card"></i><span>My balance</span></a>
                         <a class="dropdown-item" href="inbox.html"><i class="dropdown-icon zmdi zmdi-email"></i><span>Inbox</span></a>
                         <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-settings"></i><span>Settings</span></a>
-                        <div class="dropdown-divider"></div>
-                        <div class="sub-dropdown-menu show-on-hover">
+                        <div class="dropdown-divider"></div> -->
+                        <!-- <div class="sub-dropdown-menu show-on-hover">
                             <a href="#" class="dropdown-toggle dropdown-item no-caret"><i class="zmdi zmdi-check text-success"></i>Online</a>
                             <div class="dropdown-menu open-left-side">
                                 <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-check text-success"></i><span>Online</span></a>
@@ -352,7 +358,8 @@
                                 <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-minus-circle-outline text-danger"></i><span>Offline</span></a>
                             </div>
                         </div>
-                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-divider"></div> -->
+                        <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-check text-success"></i><span>Online</span></a>
                         <a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>"><i class="dropdown-icon zmdi zmdi-power"></i><span>Log out</span></a>
                     </div>
                 </li>

@@ -34,19 +34,19 @@
                                         echo form_open_multipart('Tambahpoin/savedok',$atribut);
                                     ?>
                                         <div class="form-group row">
-                                            <label for="thn_akademik" class="col-sm-2 col-form-label">Tahun Akademik</label>
+                                            <label for="thn_akademik" class="col-sm-2 col-form-label">Tahun Akademik *</label>
                                             <div class="col-sm-10">
-                                                <input class="form-control" type="text" name="thn_akademik"  id="thn_akademik" placeholder="2020"/>
+                                                <input class="form-control" type="text" name="thn_akademik"  id="thn_akademik" placeholder="2020" required="required"/>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="tgl_kegiatan" class="col-sm-2 col-form-label">Tanggal Kegiatan</label>
+                                            <label for="tgl_kegiatan" class="col-sm-2 col-form-label">Tanggal Kegiatan *</label>
                                             <div class="col-sm-10">
-                                                <input class="form-control" type="text" name="tgl_kegiatan" id="tgl_kegiatan" />
+                                                <input class="form-control" type="text" name="tgl_kegiatan" id="tgl_kegiatan" required="required"/>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="domain" class="col-sm-2 col-form-label">Domain</label>
+                                            <label for="domain" class="col-sm-2 col-form-label">Domain *</label>
                                             <div class="col-sm-10">
                                             <select class="form-control d-block w-100 select2_ok" id="domain" name="domain" required="required">
                                                 <option value="0">Pilih...</option>
@@ -61,17 +61,17 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="per_kegiatan" class="col-sm-2 col-form-label">Kegiatan</label>
+                                            <label for="per_kegiatan" class="col-sm-2 col-form-label">Kegiatan *</label>
                                             <div class="col-sm-10">
-                                            <select class="form-control custom2 d-block w-100" id="per_kegiatan" name="kegiatan">
+                                            <select class="form-control custom2 d-block w-100" id="per_kegiatan" name="kegiatan" required="required">
                                                     <option value="">Pilih...</option>
                                             </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="per_subkegiatan" class="col-sm-2 col-form-label">Sub-Kegiatan</label>
+                                            <label for="per_subkegiatan" class="col-sm-2 col-form-label">Sub-Kegiatan *</label>
                                             <div class="col-sm-10">
-                                            <select class="form-control custom2 d-block w-100" id="per_subkegiatan" name="subkegiatan">
+                                            <select class="form-control custom2 d-block w-100" id="per_subkegiatan" name="subkegiatan" required="required">
                                                 <option value="">Pilih...</option>
                                             </select>
                                             </div>
@@ -89,9 +89,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="lingkup" class="col-sm-2 col-form-label">Lingkup</label>
+                                            <label for="lingkup" class="col-sm-2 col-form-label">Lingkup *</label>
                                             <div class="col-sm-10">
-                                            <select class="form-control custom2 d-block w-100" id="per_lingkup" name="lingkup">
+                                            <select class="form-control custom2 d-block w-100" id="per_lingkup" name="lingkup" required="required">
                                                     <option value="">Pilih...</option>
                                             </select>
                                             </div>
@@ -104,7 +104,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputPassword3" class="col-sm-2 col-form-label">Upload</label>
+                                            <label for="inputPassword3" class="col-sm-2 col-form-label">Upload *</label>
                                             <div class="col-sm-10">
                                                 <input type="file" class="form-control dropify" name="filepdf" id="upload" accept="application/pdf" required />
                                                 *<small>File yang bisa diupload hanya yang berformat .pdf. </small><br>
