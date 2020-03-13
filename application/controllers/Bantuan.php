@@ -16,9 +16,20 @@ class Bantuan extends CI_Controller {
 		$usan = $this->session->userdata('nama');
 		$kue = $this->M_login->hak_ak($usan);
 
+		//untuk header wajib*****
+		$sah_header = $this->M_dokumen->count_sah_header() ;
+			$count_sah = $sah_header[0]->count_sah;
+		$menunggu_header = $this->M_dokumen->count_menunggu_header() ;
+			$count_menunggu = $menunggu_header[0]->count_menunggu;
+		$tidaksah_header = $this->M_dokumen->count_tidaksah_header() ;
+			$count_tidaksah = $tidaksah_header[0]->count_tidaksah;
+
 		$dataHalaman = array(   	
-            'title'=>"Transkip",	
-		  'da' => $kue
+          'title'=>"Transkip",	
+		  'da' => $kue,
+		  'count_sah' => $count_sah,
+		  'count_menunggu' => $count_menunggu,
+		  'count_tidaksah' => $count_tidaksah
         );
         $this->load->view('dashboard/v_header',$dataHalaman);
 		$this->load->view('admin/v_verifikasi',$dataHalaman);

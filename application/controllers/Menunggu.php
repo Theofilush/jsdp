@@ -26,6 +26,15 @@ class Menunggu extends CI_Controller {
 
 		$percent_sah = ($tsp / 1000) * 100; // total sah di bagi 1000 poin minimal di ubah ke percent
 
+		//untuk header wajib*****
+		$sah_header = $this->M_dokumen->count_sah_header() ;
+			$count_sah = $sah_header[0]->count_sah;
+		$menunggu_header = $this->M_dokumen->count_menunggu_header() ;
+			$count_menunggu = $menunggu_header[0]->count_menunggu;
+		$tidaksah_header = $this->M_dokumen->count_tidaksah_header() ;
+			$count_tidaksah = $tidaksah_header[0]->count_tidaksah;
+
+
 		$dataHalaman = array(
 		  'title'=>"Menunggu",
 		  'da' => $kue,
@@ -35,7 +44,10 @@ class Menunggu extends CI_Controller {
 		  'prodi' => $prodi,
 		  'status' => $status,
 		  'total_sah_poin' => $tsp,
-		  'percent_sah' => $percent_sah
+		  'percent_sah' => $percent_sah,
+		  'count_sah' => $count_sah,
+		  'count_menunggu' => $count_menunggu,
+		  'count_tidaksah' => $count_tidaksah
 		);
 		
 		$this->load->view('dashboard/v_header',$dataHalaman);
@@ -47,7 +59,7 @@ class Menunggu extends CI_Controller {
 	{ 
 		$usan = $this->session->userdata('nama');
 		$kue = $this->M_login->hak_ak($usan); 
-		$query = $this->M_dokumen->listEditPoint_byidMHS($id);
+		$query = $this->M_dokumen->listEditPoint_byNo($id);
 		$domain = $this->M_dokumen->tampil_domain();
 
 		$Id_user =  $kue[0]->ID_user;

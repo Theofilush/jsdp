@@ -17,10 +17,22 @@ class Tambahpoin extends CI_Controller {
 		$kue = $this->M_login->hak_ak($usan);
 		$domain = $this->M_dokumen->tampil_domain();
 
+		//untuk header wajib*****
+		$sah_header = $this->M_dokumen->count_sah_header() ;
+			$count_sah = $sah_header[0]->count_sah;
+		$menunggu_header = $this->M_dokumen->count_menunggu_header() ;
+			$count_menunggu = $menunggu_header[0]->count_menunggu;
+		$tidaksah_header = $this->M_dokumen->count_tidaksah_header() ;
+			$count_tidaksah = $tidaksah_header[0]->count_tidaksah;
+
+
 		$dataHalaman = array(
 			'title'=>"Dashboard",		
 		  'da' => $kue,
-		  'domain' => $domain
+		  'domain' => $domain,
+		  'count_sah' => $count_sah,
+		  'count_menunggu' => $count_menunggu,
+		  'count_tidaksah' => $count_tidaksah,
         );
 		$this->load->view('dashboard/v_header',$dataHalaman);
 		$this->load->view('tambahdata/v_add_poin');

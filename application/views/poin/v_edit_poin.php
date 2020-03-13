@@ -79,8 +79,8 @@
                                         <div class="form-group row">
                                             <label for="per_subkegiatan" class="col-sm-2 col-form-label">Sub-Kegiatan *</label>
                                             <div class="col-sm-10">
-                                            <select class="form-control custom2 d-block w-100" id="per_subkegiatan" name="subkegiatan" required="required">
-                                            <!-- <option><?php echo $rou->nama_subkegiatan; ?></option> -->
+                                            <select class="form-control custom2 d-block w-100" id="per_subkegiatan" name="subkegiatan" required="required" >
+                                            <!-- <option>?php echo $rou->nama_subkegiatan; ?></option> -->
 
                                                 <?php  foreach($select_subKegiatan as $row){
                                                             echo "<option value=".$row->id_subkegiatan.">".$row->nama_subkegiatan."</option>";

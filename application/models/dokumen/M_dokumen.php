@@ -3,12 +3,7 @@ defined('BASEPATH') OR exit('Anda tidak boleh mengakses file ini secara langsung
 class M_dokumen extends CI_Model{
     var $t_poin= 'poin';
 
-	function listPoint_byidMHSa(){
-        $query = $this->db->get($this->t_poin);
-        return $query->result();
-    }
-
-    function listPoint_byidMHS(){
+    function listPoint_byadmin(){
         $this->db->select('*');
         $this->db->from('poin');
         $this->db->join('domain', 'poin.domain = domain.id_domain','inner');
@@ -20,7 +15,59 @@ class M_dokumen extends CI_Model{
         return $query->result();
     }
 
-    function listEditPoint_byidMHS($id){
+    function listPointSah_byIdMhs($id){
+        $this->db->select('*');
+        $this->db->from('poin');
+        $this->db->join('domain', 'poin.domain = domain.id_domain','inner');
+        $this->db->join('kegiatan', 'domain.id_domain = kegiatan.id_domain','inner');
+        $this->db->join('subkegiatan', 'kegiatan.id_kegiatan = subkegiatan.id_kegiatan','inner');
+        $this->db->join('lingkup', 'subkegiatan.id_subkegiatan = lingkup.id_subkegiatan','inner');
+        $this->db->where('id_mhs',$id); 
+        $this->db->where('status','Sah'); 
+        $this->db->group_by('poin.no'); 
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function listPointMenunggu_byIdMhs($id){
+        $this->db->select('*');
+        $this->db->from('poin');
+        $this->db->join('domain', 'poin.domain = domain.id_domain','inner');
+        $this->db->join('kegiatan', 'domain.id_domain = kegiatan.id_domain','inner');
+        $this->db->join('subkegiatan', 'kegiatan.id_kegiatan = subkegiatan.id_kegiatan','inner');
+        $this->db->join('lingkup', 'subkegiatan.id_subkegiatan = lingkup.id_subkegiatan','inner');
+        $this->db->where('id_mhs',$id); 
+        $this->db->where('status','Menunggu'); 
+        $this->db->group_by('poin.no'); 
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function listPointViewDosen($id){
+        $this->db->select('*');
+        $this->db->from('poin');
+        $this->db->join('domain', 'poin.domain = domain.id_domain','inner');
+        $this->db->join('kegiatan', 'domain.id_domain = kegiatan.id_domain','inner');
+        $this->db->join('subkegiatan', 'kegiatan.id_kegiatan = subkegiatan.id_kegiatan','inner');
+        $this->db->join('lingkup', 'subkegiatan.id_subkegiatan = lingkup.id_subkegiatan','inner');
+        $this->db->group_by('poin.no'); 
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function listPoint_ka(){
+        $this->db->select('*');
+        $this->db->from('poin');
+        $this->db->join('domain', 'poin.domain = domain.id_domain','inner');
+        $this->db->join('kegiatan', 'domain.id_domain = kegiatan.id_domain','inner');
+        $this->db->join('subkegiatan', 'kegiatan.id_kegiatan = subkegiatan.id_kegiatan','inner');
+        $this->db->join('lingkup', 'subkegiatan.id_subkegiatan = lingkup.id_subkegiatan','inner');
+        $this->db->group_by('poin.no'); 
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function listEditPoint_byNo($id){
         $this->db->select('*');
         $this->db->from('poin');
         $this->db->join('domain', 'poin.domain = domain.id_domain','inner');
@@ -108,7 +155,7 @@ class M_dokumen extends CI_Model{
     }
 
     function select_subkegiatan($id){
-        $this->db->select('nama_subkegiatan');
+        $this->db->select('id_subkegiatan,nama_subkegiatan');
         $this->db->from('poin');
         $this->db->join('subkegiatan', 'poin.sub_kegiatan = subkegiatan.id_subkegiatan','inner');
         $this->db->where('no', $id);
@@ -117,7 +164,7 @@ class M_dokumen extends CI_Model{
     }
 
     function select_lingkup($id){
-        $this->db->select('nama_lingkup');
+        $this->db->select('id_lingkup,nama_lingkup');
         $this->db->from('poin');
         $this->db->join('lingkup', 'poin.lingkup = lingkup.id_lingkup','inner');
         $this->db->where('no', $id);
@@ -151,5 +198,42 @@ class M_dokumen extends CI_Model{
         $query = $this->db->get();
         return $query->result();
     }
+
+    function validasi_poin($id){
+        $this->db->set('status', "Sah");
+        $this->db->where('no',$id);
+        return $this->db->update('poin');
+    }
+
+    function toval_poin($id){
+        $this->db->set('status', "Tidak sah");
+        $this->db->where('no',$id);
+        return $this->db->update('poin');
+    }
+
+    function count_sah_header(){
+        $this->db->select('COUNT(*) as count_sah');
+        $this->db->from('poin');
+        $this->db->where('status', "Sah");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function count_menunggu_header(){
+        $this->db->select('COUNT(*) as count_menunggu');
+        $this->db->from('poin');
+        $this->db->where('status', "Menunggu");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function count_tidaksah_header(){
+        $this->db->select('COUNT(*) as count_tidaksah');
+        $this->db->from('poin');
+        $this->db->where('status', "Tidak sah");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
 
 }

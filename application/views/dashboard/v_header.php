@@ -330,6 +330,17 @@
                         </div>
                     </div>
                 </li> -->
+                <?php  if ($buba == 'administrator' || $buba == 'koordinator' ){ ?>
+                <li class="nav-item">
+                    <a href="#" class="nav-link link-icon-top active "><?php echo ($this->db->where('status','Sah')->count_all_results("poin")==NULL) ? "0" : $this->db->where('status','Sah')->count_all_results("poin"); ?> Sah</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link link-icon-top active "><?php echo ($this->db->where('status','Menunggu')->count_all_results('poin') == NULL) ? "0": $this->db->where('status','Menunggu')->count_all_results('poin'); ?> Menunggu</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link link-icon-top active "><?php echo ($this->db->where('status','Tidak sah')->count_all_results('poin') == NULL) ? "0": $this->db->where('status','Tidak sah')->count_all_results('poin'); ?> Tidak Sah</a>
+                </li>
+                <?php } ?>
                 <li class="nav-item dropdown dropdown-authentication">
                     <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media">
