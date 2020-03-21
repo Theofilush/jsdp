@@ -115,7 +115,7 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="table-wrap">
-                                        <table id="datable_3" class="table w-100 display" style="font-size:0.8em;">
+                                        <table id="datable_3" class="table w-100 table-striped" style="font-size:0.8em;">
                                             <thead>
                                                 <tr>
                                                     <th class="text-center text-capitalize"></th>

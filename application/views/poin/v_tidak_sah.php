@@ -23,30 +23,23 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <section class="hk-sec-wrapper">
-                            <h5 class="hk-sec-title">Status Poin</h5>
-                            <div class="row mb-20">
-                            	<div class="col-md-12">
-                            		<ul class="list-group">
-                            			<li class="list-group-item d-flex justify-content-between align-items-center">
-                            				<small><span class="badge badge-primary">1000</span> Poin Sah</small>
-                            				<span class="badge badge-primary badge-pill">o</span>
-                            			</li>
-                            			<li class="list-group-item d-flex justify-content-between align-items-center">
-                            				<small><span class="badge badge-warning">100</span> Poin Menunggu Diverifikasi</small>
-                            				<span class="badge badge-warning badge-pill">o</span>
-                            			</li>
-                            			<li class="list-group-item d-flex justify-content-between align-items-center">
-                            				<small><span class="badge badge-pumpkin">100</span> Poin Tidak Sah</small>
-                            				<span class="badge badge-pumpkin badge-pill">o</span>
-                            			</li>
-                            		</ul>
-                            	</div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="btn-group mb-15" role="group" aria-label="Basic example">
-                                    <a type="button" class="btn btn-warning" href="<?php echo site_url() ?>Menunggu">Menunggu diverifikasi</a>
-                                    <a type="button" class="btn btn-primary" href="<?php echo site_url() ?>Sah">Sah</a>
-                                    <a type="button" class="btn btn-pumpkin" href="#">Tidak Sah</a>
+                            <h5 class="hk-sec-title">Status Total Poin</h5>
+                            <div class="row mb-20 justify-content-center">
+                                <div class="col-md-7 mb-20">
+                                    <div class="list-group">
+                                    	<a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" href="<?php echo site_url() ?>Sah">
+                                            <small><code><?php echo $this->db->where('status', 'Sah')->count_all_results('poin'); ?></code> Poin Sah</small>
+                            				<!-- <span class="badge badge-primary">?php echo $sum_sah;?></span> -->
+                                    	</a>
+                                    	<a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" href="<?php echo site_url() ?>Menunggu">
+                                            <small><code><?php echo $this->db->where('status', 'Menunggu')->count_all_results('poin'); ?></code> Poin Menunggu Diverifikasi</small>
+                            				<span class="badge badge-warning badge-pill"><?php echo $sum_menunggu;?></span>
+                                        </a>    
+                                    	<a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action active" href="#" >
+                                            <small><code><?php echo $this->db->where('status', 'Tidak sah')->count_all_results('poin'); ?></code> Poin Tidak Sah</small>
+                            				<span class="badge badge-pumpkin badge-pill"><?php echo $sum_tidaksah;?></span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </section>
@@ -76,7 +69,7 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="table-wrap">
-                                        <table id="datable_menunggu" class="table table-striped table-bordered dt-responsive w-100 display" style="font-size:0.8em;">
+                                        <table id="datable_menunggu" class="table table-striped dt-responsive w-100" style="font-size:0.8em;">
                                             <thead>
                                                 <tr>
                                                     <th class="text-center text-capitalize"></th>

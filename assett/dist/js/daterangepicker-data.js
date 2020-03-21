@@ -45,7 +45,9 @@ $(function() {
     $("#thn_akademik").datepicker({
         format: "yyyy",
         viewMode: "years",
-        minViewMode: "years"
+        minViewMode: "years",
+        autoclose: true,
+        todayHighlight: true,
     });
 
     /* Limit selectable dates*/

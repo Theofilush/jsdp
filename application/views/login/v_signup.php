@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<!-- 
-Template Name: Deepor - Responsive Bootstrap 4 Admin Dashboard Template
-Author: Hencework
-
-License: You must have a valid license purchased only from templatemonster to legally use the template for your project.
--->
 <html lang="en">
 
 <head>

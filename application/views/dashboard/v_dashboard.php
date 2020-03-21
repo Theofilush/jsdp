@@ -36,7 +36,7 @@
 									</div>
 									<div class="card-header card-header-action">
 										<div>
-											<h6 class="mb-10">Poin Tertinggi JSDP</h6>
+											<h6 class="mb-10">Poin JSDP</h6>
 											<p class="font-14 w-80">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
 										</div>
 										<div class="d-flex align-items-center card-action-wrap">

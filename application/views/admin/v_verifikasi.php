@@ -48,7 +48,7 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="table-wrap">
-                                        <table id="datable_3" class="table table-hover w-100 display">
+                                        <table id="datable_3" class="table w-100">
                                             <thead>
                                                 <tr>
                                                     <th>No</th>

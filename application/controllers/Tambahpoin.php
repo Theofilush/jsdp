@@ -116,10 +116,13 @@ class Tambahpoin extends CI_Controller {
 			$kue = $this->M_login->hak_ak($this->session->userdata('nama'));
 			$Id_user =  $kue[0]->ID_user;
 
+			$date=date_create($tgl_kegiatan);
+			$tgl_kegiatann = date_format($date,"Y-m-d");
+
 			$data = array(
 				'id_mhs' => $Id_user,
 				'tahun' => $thn_akademik,
-				'tanggal_kegiatan' => $tgl_kegiatan,
+				'tanggal_kegiatan' => $tgl_kegiatann,
 				'domain' => $domain,
 				'kegiatan' => $kegiatan,
 				'sub_kegiatan' => $subkegiatan,

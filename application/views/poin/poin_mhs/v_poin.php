@@ -19,9 +19,9 @@
                 </div>
                 <!-- /Title -->
 
-                <?php
-                    if($buba != 'administrator' || $buba == 'koordinator' || $buba == 'dosen' ){
-                ?>
+            <?php
+        if($buba != 'administrator' && $buba != 'koordinator' && $buba != 'dosen' ){
+            ?>
                 <!-- Row -->
                 <div class="row">
                     <div class="col-xl-12">
@@ -75,9 +75,9 @@
                     </div>
                 </div>
                 <!-- /Row -->
-                <?php
-                    }
-                ?>
+        <?php
+            }
+        ?>
 
                 <!-- Row -->
                 <div class="row">
@@ -115,7 +115,7 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="table-wrap">
-                                        <table id="datable_3" class="table w-100 display" style="font-size:0.8em;">
+                                        <table id="datable_3" class="table w-100 table-striped" style="font-size:0.8em;">
                                             <thead>
                                                 <tr>
                                                     <th class="text-center text-capitalize"></th>
@@ -139,17 +139,17 @@
                                                         <tr>
                                                             <td></td>
                                                             <td class="text-center">    
+                                                                <a href="<?php echo site_url().'fileupload/'.$row->file?>" class="btn btn-gradient-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
                                                                 <?php
                                                                 if ($buba == 'administrator' || ($row->status == "Tidak sah" || $row->status == "Menunggu")) {
                                                                     if($buba == 'administrator'){
                                                                     ?>                                
                                                                         <a href="<?php echo site_url(); ?>poin/editpoin/<?php echo $row->no; ?>" class="btn btn-gradient-success btn-xs btnnomargin" ><i class="glyphicon glyphicon-pencil"></i></a> 
-                                                                        <a href="<?php echo site_url(); ?>poin/deletedok/<?php echo $row->no; ?>" class="btn btn-gradient-danger btn-xs btnnomargin" onClick="return doconfirm();"><i class="glyphicon glyphicon-remove"></i></a>
+                                                                        <a href="<?php echo site_url(); ?>poin/deletepoin/<?php echo $row->no; ?>" class="btn btn-gradient-danger btn-xs btnnomargin" onClick="return doconfirm();"><i class="glyphicon glyphicon-remove"></i></a>
                                                                     <?php
                                                                     }
                                                                 }
                                                                     ?> 
-                                                                <a href="<?php echo site_url().'fileupload/'.$row->file?>" class="btn btn-gradient-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
                                                             </td>
                                                         	<td><?php echo $no++ ?></td>
                                                         	<!-- <td>
@@ -259,6 +259,7 @@
                                                         <tr>
                                                             <td></td>
                                                             <td class="text-center">    
+                                                                <a href="<?php echo site_url().'fileupload/'.$row->file?>" class="btn btn-gradient-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
                                                                 <?php
                                                                 if ($row->status == "Tidak sah" || $row->status == "Menunggu") {
                                                                     ?>                                
@@ -266,7 +267,6 @@
                                                                     <?php
                                                                 }
                                                                     ?> 
-                                                                <a href="<?php echo site_url().'fileupload/'.$row->file?>" class="btn btn-gradient-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
                                                             </td>
                                                         	<td><?php echo $no++ ?></td>
                                                         	<!-- <td>
@@ -464,6 +464,7 @@
                                                         <tr>
                                                             <td></td>
                                                             <td class="text-center">    
+                                                                <a href="<?php echo site_url().'fileupload/'.$row->file?>" class="btn btn-gradient-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
                                                                 <?php
                                                                 if ($row->status == "Tidak sah" || $row->status == "Menunggu") {
                                                                     if($buba == 'koordinator'){
@@ -473,17 +474,16 @@
                                                                     }
                                                                 }
                                                                     ?> 
-                                                                <a href="<?php echo site_url().'fileupload/'.$row->file?>" class="btn btn-gradient-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
                                                             </td>
                                                         	<td><?php echo $no++ ?></td>
                                                         	<!-- <td>
-                                                        		<b><?php echo $row->kegiatan; ?></b><br>
-                                                        		<b hidden><?php echo $row->id_mhs; ?></b><br>
+                                                        		<b>?php echo $row->kegiatan; ?></b><br>
+                                                        		<b hidden>?php echo $row->id_mhs; ?></b><br>
                                                         	</td>
                                                         	<td>
                                                         		<ul class="titiknya">
                                                         			<li>
-                                                        				<?php echo $row->id_mhs;  ?>
+                                                        				?php echo $row->id_mhs;  ?>
                                                         			</li>
 
                                                         		</ul>

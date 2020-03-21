@@ -43,6 +43,20 @@ class M_dokumen extends CI_Model{
         return $query->result();
     }
 
+    function listPointTidakSah_byIdMhs($id){
+        $this->db->select('*');
+        $this->db->from('poin');
+        $this->db->join('domain', 'poin.domain = domain.id_domain','inner');
+        $this->db->join('kegiatan', 'domain.id_domain = kegiatan.id_domain','inner');
+        $this->db->join('subkegiatan', 'kegiatan.id_kegiatan = subkegiatan.id_kegiatan','inner');
+        $this->db->join('lingkup', 'subkegiatan.id_subkegiatan = lingkup.id_subkegiatan','inner');
+        $this->db->where('id_mhs',$id); 
+        $this->db->where('status','Tidak sah');
+        $this->db->group_by('poin.no');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function listPointViewDosen($id){
         $this->db->select('*');
         $this->db->from('poin');
@@ -81,14 +95,43 @@ class M_dokumen extends CI_Model{
     }
 
     function listPoint_menunggu(){
-        $this->db->select('*');
+        $this->db->select('*, poin.status AS status_poin, login.status AS status_login');
         $this->db->from('poin');
+        $this->db->join('login', 'poin.id_mhs = login.ID_user','inner');
         $this->db->join('domain', 'poin.domain = domain.id_domain','inner');
         $this->db->join('kegiatan', 'domain.id_domain = kegiatan.id_domain','inner');
         $this->db->join('subkegiatan', 'kegiatan.id_kegiatan = subkegiatan.id_kegiatan','inner');
         $this->db->join('lingkup', 'subkegiatan.id_subkegiatan = lingkup.id_subkegiatan','inner');
         $this->db->group_by('poin.no'); 
-        $this->db->where('status', "Menunggu");
+        $this->db->where('poin.status', "Menunggu");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function listPoint_sah(){
+        $this->db->select('*, poin.status AS status_poin, login.status AS status_login');
+        $this->db->from('poin');
+        $this->db->join('login', 'poin.id_mhs = login.ID_user','inner');
+        $this->db->join('domain', 'poin.domain = domain.id_domain','inner');
+        $this->db->join('kegiatan', 'domain.id_domain = kegiatan.id_domain','inner');
+        $this->db->join('subkegiatan', 'kegiatan.id_kegiatan = subkegiatan.id_kegiatan','inner');
+        $this->db->join('lingkup', 'subkegiatan.id_subkegiatan = lingkup.id_subkegiatan','inner');
+        $this->db->group_by('poin.no'); 
+        $this->db->where('poin.status', "Sah");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function listPoint_tidaksah(){
+        $this->db->select('*, poin.status AS status_poin, login.status AS status_login');
+        $this->db->from('poin');
+        $this->db->join('login', 'poin.id_mhs = login.ID_user','inner');
+        $this->db->join('domain', 'poin.domain = domain.id_domain','inner');
+        $this->db->join('kegiatan', 'domain.id_domain = kegiatan.id_domain','inner');
+        $this->db->join('subkegiatan', 'kegiatan.id_kegiatan = subkegiatan.id_kegiatan','inner');
+        $this->db->join('lingkup', 'subkegiatan.id_subkegiatan = lingkup.id_subkegiatan','inner');
+        $this->db->group_by('poin.no'); 
+        $this->db->where('poin.status', "Tidak sah");
         $query = $this->db->get();
         return $query->result();
     }
@@ -229,6 +272,30 @@ class M_dokumen extends CI_Model{
 
     function count_tidaksah_header(){
         $this->db->select('COUNT(*) as count_tidaksah');
+        $this->db->from('poin');
+        $this->db->where('status', "Tidak sah");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function sum_sah(){
+        $this->db->select('SUM(poin) as sum_sah');
+        $this->db->from('poin');
+        $this->db->where('status', "Sah");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function sum_menunggu(){
+        $this->db->select('SUM(poin) as sum_menunggu');
+        $this->db->from('poin');
+        $this->db->where('status', "Menunggu");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function sum_tidaksah(){
+        $this->db->select('SUM(poin) as sum_tidaksah');
         $this->db->from('poin');
         $this->db->where('status', "Tidak sah");
         $query = $this->db->get();

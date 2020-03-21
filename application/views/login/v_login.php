@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<!-- 
-Template Name: Deepor - Responsive Bootstrap 4 Admin Dashboard Template
-Author: Hencework
-
-License: You must have a valid license purchased only from templatemonster to legally use the template for your project.
--->
 <html lang="en">
 
 <head>
@@ -77,6 +71,7 @@ License: You must have a valid license purchased only from templatemonster to le
                                     <form action="<?php echo site_url('login/aksi_login'); ?>" method="post">
                                         <h1 class="display-4 mb-20 text-center">Login Form</h1>
                                         <img src="<?php echo base_url() ?>assett/dist/img/logo6.png" class="text-center mb-20">
+                                        <p style="color:red;text-align:center;padding: 10px;"><?php echo $this->session->flashdata('notification')?></p>
                                         <div class="form-group">
                                             <input class="form-control" name="username" placeholder="Email / NIM / NIP" type="text" >
                                         </div>

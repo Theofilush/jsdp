@@ -95,6 +95,16 @@
             placeholder: 'Pilih....',
             allowClear: true  
         });
+
+        function doconfirm()
+        {
+            job=confirm("Are you sure to delete permanently?");
+            if(job!=true)
+            {
+                return false;
+            }
+        }
+        
     	$(document).ready(function () { // Ketika halaman sudah siap (sudah selesai di load)
     			$("#domain").change(function () {
     				$.ajax({

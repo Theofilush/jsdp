@@ -21,11 +21,6 @@ class Menunggu extends CI_Controller {
 		$prodi =  $kue[0]->prodi;
 		$status =  $kue[0]->status;
 
-		$total_sah_poin = $this->M_dokumen->total_sah_poin($Id_user);
-		$tsp = $total_sah_poin[0]->jumlah_sah;
-
-		$percent_sah = ($tsp / 1000) * 100; // total sah di bagi 1000 poin minimal di ubah ke percent
-
 		//untuk header wajib*****
 		$sah_header = $this->M_dokumen->count_sah_header() ;
 			$count_sah = $sah_header[0]->count_sah;
@@ -33,18 +28,26 @@ class Menunggu extends CI_Controller {
 			$count_menunggu = $menunggu_header[0]->count_menunggu;
 		$tidaksah_header = $this->M_dokumen->count_tidaksah_header() ;
 			$count_tidaksah = $tidaksah_header[0]->count_tidaksah;
+		
+		$daftar_sah = $this->M_dokumen->sum_sah() ;
+			$sum_sah = $daftar_sah[0]->sum_sah;
+		$daftar_menunggu = $this->M_dokumen->sum_menunggu() ;
+			$sum_menunggu = $daftar_menunggu[0]->sum_menunggu;
+		$daftar_tidaksah = $this->M_dokumen->sum_tidaksah() ;
+			$sum_tidaksah = $daftar_tidaksah[0]->sum_tidaksah;
 
 
 		$dataHalaman = array(
-		  'title'=>"Menunggu",
+		  'title'=>"Approval",
 		  'da' => $kue,
 		  'query' => $query,
 		  'id_user' => $Id_user,
 		  'nama_lengkap' => $nama_lengkap,
 		  'prodi' => $prodi,
 		  'status' => $status,
-		  'total_sah_poin' => $tsp,
-		  'percent_sah' => $percent_sah,
+		  'sum_sah' => $sum_sah,
+		  'sum_menunggu' => $sum_menunggu,
+		  'sum_tidaksah' => $sum_tidaksah,
 		  'count_sah' => $count_sah,
 		  'count_menunggu' => $count_menunggu,
 		  'count_tidaksah' => $count_tidaksah

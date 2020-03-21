@@ -61,7 +61,7 @@ $(document).ready(function() {
             searchPlaceholder: "Search",
             sLengthMenu: "_MENU_items"
         },
-        "pageLength": 50,
+        "pageLength": 100,
         // "bPaginate": false,
         // "info": false,
         // "bFilter": false,
@@ -74,7 +74,7 @@ $(document).ready(function() {
         }
     });
 
-     $('#datable_menunggu').DataTable({
+    $('#datable_menunggu').DataTable({
         dom: 'Bfrtip',
         //responsive: true,
         responsive: {
@@ -101,10 +101,10 @@ $(document).ready(function() {
         language: {
             search: "",
             searchPlaceholder: "Search",
-            sLengthMenu: "_MENU_items",
-            fnFilter : "menunggu"
+            sLengthMenu: "_MENU_items"
+                //fnFilter: "menunggu"
         },
-        "pageLength": 50,
+        "pageLength": 100,
         // "bPaginate": false,
         // "info": false,
         // "bFilter": false,
@@ -117,18 +117,18 @@ $(document).ready(function() {
         }
     });
 
-    $('#dragId1').on('click', function () {
-      datable_menunggu.search("Menunggu").draw();
-      //$('#datable_menunggu').dataTable().fnFilter("Menunggu");
+    $('#dragId1').on('click', function() {
+        datable_menunggu.search("Menunggu").draw();
+        //$('#datable_menunggu').dataTable().fnFilter("Menunggu");
     });
-     $('#dragId2').on('click', function () {
-      datable_menunggu.search("Sah").draw();
+    $('#dragId2').on('click', function() {
+        datable_menunggu.search("Sah").draw();
     });
-     $('#dragId3').on('click', function () {
-      datable_menunggu.search("Tidak sah").draw();
+    $('#dragId3').on('click', function() {
+        datable_menunggu.search("Tidak sah").draw();
     });
-    $('#reset').on('click', function () {
-      datable_menunggu.search("").draw();
+    $('#reset').on('click', function() {
+        datable_menunggu.search("").draw();
     });
 
     var table = $('#datable_5').DataTable({

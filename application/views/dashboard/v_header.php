@@ -214,15 +214,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url() ?>Transkip">Transkip Poin JSDP</a>
                     </li>
-                    <?php
-                    if ($buba == 'administrator') {
-                    ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url() ?>Menunggu">Menunggu Verifikasi</a>
-                        </li>
-                    <?php
-                    }
-                    ?>
                 </ul>
                 <!-- <form class="navbar-search-alt">
                     <div class="input-group">
@@ -262,7 +253,7 @@
                                 <div class="media">
                                     <div class="media-img-wrap">
                                         <div class="avatar avatar-sm">
-                                            <img src="<?php echo base_url() ?>assett/dist/img/avatar2.jpg" alt="user" class="avatar-img rounded-circle">
+                                            <img src="?php echo base_url() ?>assett/dist/img/avatar2.jpg" alt="user" class="avatar-img rounded-circle">
                                         </div>
                                     </div>
                                     <div class="media-body">
@@ -332,13 +323,13 @@
                 </li> -->
                 <?php  if ($buba == 'administrator' || $buba == 'koordinator' ){ ?>
                 <li class="nav-item">
-                    <a href="#" class="nav-link link-icon-top active "><?php echo ($this->db->where('status','Sah')->count_all_results("poin")==NULL) ? "0" : $this->db->where('status','Sah')->count_all_results("poin"); ?> Sah</a>
+                    <a href="<?php echo site_url() ?>Sah" class="nav-link link-icon-top active "><?php echo ($this->db->where('status','Sah')->count_all_results("poin")==NULL) ? "0" : $this->db->where('status','Sah')->count_all_results("poin"); ?> Sah</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link link-icon-top active "><?php echo ($this->db->where('status','Menunggu')->count_all_results('poin') == NULL) ? "0": $this->db->where('status','Menunggu')->count_all_results('poin'); ?> Menunggu</a>
+                    <a href="<?php echo site_url() ?>Menunggu" class="nav-link link-icon-top active "><?php echo ($this->db->where('status','Menunggu')->count_all_results('poin') == NULL) ? "0": $this->db->where('status','Menunggu')->count_all_results('poin'); ?> Menunggu</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link link-icon-top active "><?php echo ($this->db->where('status','Tidak sah')->count_all_results('poin') == NULL) ? "0": $this->db->where('status','Tidak sah')->count_all_results('poin'); ?> Tidak Sah</a>
+                    <a href="<?php echo site_url() ?>TidakSah" class="nav-link link-icon-top active "><?php echo ($this->db->where('status','Tidak sah')->count_all_results('poin') == NULL) ? "0": $this->db->where('status','Tidak sah')->count_all_results('poin'); ?> Tidak Sah</a>
                 </li>
                 <?php } ?>
                 <li class="nav-item dropdown dropdown-authentication">

@@ -20,7 +20,9 @@ class Transkip extends CI_Controller {
 		$prodi =  $kue[0]->prodi;
 		$status =  $kue[0]->status;
 		$queryAdmin = $this->M_dokumen->listPoint_byadmin();
-		$queryMhs = $this->M_dokumen->listPoint_byIdMhs($Id_user);
+		$queryMhsSah = $this->M_dokumen->listPointSah_byIdMhs($Id_user);
+		$queryDosen = $this->M_dokumen->listPointViewDosen($Id_user);
+		$queryKa = $this->M_dokumen->listPoint_ka($Id_user);
 
 		$total_sah_poin = $this->M_dokumen->total_sah_poin($Id_user);
 		$tsp = $total_sah_poin[0]->jumlah_sah;
@@ -49,7 +51,9 @@ class Transkip extends CI_Controller {
 		  'title'=>"Poin",
 		  'da' => $kue,
 		  'queryAdmin' => $queryAdmin,
-		  'queryMhs' => $queryMhs,
+		  'queryMhs' => $queryMhsSah,
+		  'queryDosen' => $queryDosen,
+		  'queryKa'=> $queryKa,
 		  'id_user' => $Id_user,
 		  'nama_lengkap' => $nama_lengkap,
 		  'prodi' => $prodi,
@@ -67,7 +71,7 @@ class Transkip extends CI_Controller {
 		  'count_tidaksah' => $count_tidaksah
         );
 		$this->load->view('dashboard/v_header',$dataHalaman);
-		$this->load->view('poin/v_poin',$dataHalaman);
+		$this->load->view('poin/poin_mhs/v_poin',$dataHalaman);
 		$this->load->view('dashboard/v_footer');
 	}
 }
