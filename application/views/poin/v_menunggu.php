@@ -49,6 +49,13 @@
                                     <a type="button" class="btn btn-pumpkin" href="<?php echo site_url() ?>TidakSah">Tidak Sah</a>
                                 </div>
                             </div> -->
+                            <div class="col-md-12 text-center">
+                            	<div class="btn-group mb-15" role="group" aria-label="Basic example">
+                            		<a type="button" class="btn btn-light" href="<?php echo site_url() ?>Sah">Sah</a>
+                            		<a type="button" class="btn btn-light active" href="#">Menunggu diverifikasi</a>
+                            		<a type="button" class="btn btn-light" href="<?php echo site_url() ?>TidakSah">Tidak Sah</a>
+                            	</div>
+                            </div>
                         </section>
                     </div>
                 </div>
@@ -76,7 +83,7 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="table-wrap">
-                                        <table id="datable_menunggu" class="table table-striped w-100" style="font-size:0.8em;">
+                                        <table id="datable_menunggu" class="table table-striped table-bordered w-100" style="font-size:0.75em;">
                                             <thead>
                                                 <tr>
                                                     <th class="text-center text-capitalize"></th>
@@ -129,6 +136,7 @@
 
                                                         		</ul>
                                                         	</td> -->
+                                                            <td class="text-uppercase"><?php echo $row->ID_user.' - '.$row->nama_lengkap; ?></td>
                                                         	<td>
                                                         		<b class="text-capitalize"><?php echo $row->nama_domain; ?></b><br>
                                                             </td>
@@ -215,6 +223,9 @@
                                                             -
                                                             <?php } ?>
                                                         </td>
+                                                            <td><?php echo $row->created_at; ?></td>
+                                                            <td><?php echo $row->tanggal_periksa; ?></td>
+                                                            <td><?php echo $row->diperiksa_oleh; ?></td>
                                                         </tr>
                                                         <?php
                                                     }

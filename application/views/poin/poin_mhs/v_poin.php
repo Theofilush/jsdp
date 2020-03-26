@@ -65,6 +65,13 @@
                                         </a>
                                     </div>
                             	</div>
+                                <div class="col-md-12 text-center">
+                                    <div class="btn-group mb-15" role="group" aria-label="Basic example">
+                                        <a type="button" class="btn btn-light active" href="#">Sah</a>
+                                        <a type="button" class="btn btn-light" href="<?php echo site_url() ?>Poin/Menunggu">Menunggu diverifikasi</a>
+                                        <a type="button" class="btn btn-light" href="<?php echo site_url() ?>Poin/TidakSah">Tidak Sah</a>
+                                    </div>
+                                </div>
                                 <div class="col-md-12 mb-20 text-center">
                             	    <a href="<?php echo site_url() ?>Tambahpoin" class="btn btn-light btn-wth-icon icon-wthot-bg btn-rounded icon-right" role="button">
                                     <span class="btn-text">Tambah Poin JSDP</span><span class="icon-label"><i class="fa fa-plus"></i> </span>
@@ -96,7 +103,7 @@
                                     </tr>
                                 </tbody>
                                 <?php
-                                    if ($buba == 'administrator' || $buba == 'koordinator') {
+                                    if ($buba == 'administrator' && $buba == 'koordinator') {
                                 ?>
                                 <tbody>
                                     <tr>

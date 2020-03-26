@@ -40,22 +40,13 @@ $(document).ready(function() {
                 type: 'column'
             }
         },
-        columnDefs: [{
-            className: 'control',
-            orderable: false,
-            targets: 0
-        }, {
-            "width": "8%",
-            "targets": 0,
-            "width": "8%",
-            "targets": 2,
-            "width": "48%",
-            "targets": 4,
-            "width": "8%",
-            "targets": 7,
-            "width": "8%",
-            "targets": 8,
-        }],
+        columnDefs: [{ className: 'control', orderable: false, targets: 0 },
+            { "width": "8%", "targets": 0 },
+            { "width": "8%", "targets": 2 },
+            { "width": "48%", "targets": 4 },
+            { "width": "8%", "targets": 7 },
+            { "width": "8%", "targets": 8 },
+        ],
         language: {
             search: "",
             searchPlaceholder: "Search",
@@ -82,22 +73,18 @@ $(document).ready(function() {
                 type: 'column'
             }
         },
-        columnDefs: [{
-            className: 'control',
-            orderable: false,
-            targets: 0
-        }, {
-            "width": "8%",
-            "targets": 0,
-            "width": "8%",
-            "targets": 2,
-            "width": "48%",
-            "targets": 4,
-            "width": "8%",
-            "targets": 7,
-            "width": "8%",
-            "targets": 8,
-        }],
+        columnDefs: [{ className: 'control', orderable: false, targets: 0 },
+            { "width": "5%", "targets": 0 },
+            { "width": "5%", "targets": 1 },
+            { "width": "5%", "targets": 2 },
+            // { "width": "5%", "targets": 3 },
+            { "width": "30%", "targets": 4 },
+            { "width": "30%", "targets": 5 },
+
+            { "width": "15%", "targets": 6 }
+            // { "width": "8%", "targets": 7 },
+            // { "width": "8%", "targets": 8 }
+        ],
         language: {
             search: "",
             searchPlaceholder: "Search",
@@ -116,19 +103,59 @@ $(document).ready(function() {
             $('.dt-buttons > .btn').addClass('btn-outline-light btn-sm');
         }
     });
+    var table7 = $('#datatableku-dana-non').DataTable({
+        'columnDefs': [
+            { width: '23%', targets: 1 },
+            { width: '22%', targets: 2 },
+            { width: '18%', targets: 3 },
+            { width: '19%', targets: 4 },
+            { width: '5%', targets: 5 },
+            { width: '5%', targets: 6 },
+            { width: '8%', targets: 7 },
+        ]
+    });
 
-    $('#dragId1').on('click', function() {
-        datable_menunggu.search("Menunggu").draw();
-        //$('#datable_menunggu').dataTable().fnFilter("Menunggu");
-    });
-    $('#dragId2').on('click', function() {
-        datable_menunggu.search("Sah").draw();
-    });
-    $('#dragId3').on('click', function() {
-        datable_menunggu.search("Tidak sah").draw();
-    });
-    $('#reset').on('click', function() {
-        datable_menunggu.search("").draw();
+
+    // $('#dragId1').on('click', function() {
+    //     datable_menunggu.search("Menunggu").draw();
+    //     //$('#datable_menunggu').dataTable().fnFilter("Menunggu");
+    // });
+    // $('#dragId2').on('click', function() {
+    //     datable_menunggu.search("Sah").draw();
+    // });
+    // $('#dragId3').on('click', function() {
+    //     datable_menunggu.search("Tidak sah").draw();
+    // });
+    // $('#reset').on('click', function() {
+    //     datable_menunggu.search("").draw();
+    // });
+
+    $('#datable_users').DataTable({
+        dom: 'Bfrtip',
+        responsive: {
+            details: {
+                type: 'column'
+            }
+        },
+        columnDefs: [{ className: 'control', orderable: false, targets: 0 },
+            // { "width": "8%", "targets": 0 },
+            // { "width": "8%", "targets": 2 },
+            // { "width": "48%", "targets": 4 },
+            // { "width": "8%", "targets": 7 },
+            // { "width": "8%", "targets": 8 },
+        ],
+        language: {
+            search: "",
+            searchPlaceholder: "Search",
+            sLengthMenu: "_MENU_items"
+        },
+        "pageLength": 100,
+        buttons: [
+            'pageLength', 'excel', 'pdf', 'print'
+        ],
+        "drawCallback": function() {
+            $('.dt-buttons > .btn').addClass('btn-outline-light btn-sm');
+        }
     });
 
     var table = $('#datable_5').DataTable({

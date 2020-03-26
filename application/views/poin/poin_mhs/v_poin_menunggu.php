@@ -65,6 +65,13 @@
                                         </a>
                                     </div>
                             	</div>
+                                <div class="col-md-12 text-center">
+                                    <div class="btn-group mb-15" role="group" aria-label="Basic example">
+                                        <a type="button" class="btn btn-light" href="<?php echo site_url() ?>Poin">Sah</a>
+                                        <a type="button" class="btn btn-light active" href="#">Menunggu diverifikasi</a>
+                                        <a type="button" class="btn btn-light" href="<?php echo site_url() ?>Poin/TidakSah">Tidak Sah</a>
+                                    </div>
+                                </div>
                                 <div class="col-md-12 mb-20 text-center">
                             	    <a href="<?php echo site_url() ?>Tambahpoin" class="btn btn-light btn-wth-icon icon-wthot-bg btn-rounded icon-right" role="button">
                                     <span class="btn-text">Tambah Poin JSDP</span><span class="icon-label"><i class="fa fa-plus"></i> </span>
@@ -96,7 +103,7 @@
                                     </tr>
                                 </tbody>
                                 <?php
-                                    if ($buba == 'administrator' || $buba == 'koordinator') {
+                                    if ($buba == 'administrator' && $buba == 'koordinator') {
                                 ?>
                                 <tbody>
                                     <tr>
@@ -133,127 +140,7 @@
                                             <tbody>
                                                 <?php
                                                 $no = 1; 
-                                                if($buba == 'administrator'){
-                                                    foreach($queryAdmin as $row){
-                                                        ?> 
-                                                        <tr>
-                                                            <td></td>
-                                                            <td class="text-center">    
-                                                                <?php
-                                                                if ($buba == 'administrator' || ($row->status == "Tidak sah" || $row->status == "Menunggu")) {
-                                                                    if($buba == 'administrator'){
-                                                                    ?>                                
-                                                                        <a href="<?php echo site_url(); ?>poin/editpoin/<?php echo $row->no; ?>" class="btn btn-gradient-success btn-xs btnnomargin" ><i class="glyphicon glyphicon-pencil"></i></a> 
-                                                                        <a href="<?php echo site_url(); ?>poin/deletedok/<?php echo $row->no; ?>" class="btn btn-gradient-danger btn-xs btnnomargin" onClick="return doconfirm();"><i class="glyphicon glyphicon-remove"></i></a>
-                                                                    <?php
-                                                                    }
-                                                                }
-                                                                    ?> 
-                                                                <a href="<?php echo site_url().'fileupload/'.$row->file?>" class="btn btn-gradient-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
-                                                            </td>
-                                                        	<td><?php echo $no++ ?></td>
-                                                        	<!-- <td>
-                                                        		<b><?php echo $row->kegiatan; ?></b><br>
-                                                        		<b hidden><?php echo $row->id_mhs; ?></b><br>
-                                                        	</td>
-                                                        	<td>
-                                                        		<ul class="titiknya">
-                                                        			<li>
-                                                        				<?php echo $row->id_mhs;  ?>
-                                                        			</li>
-
-                                                        		</ul>
-                                                        	</td> -->
-                                                        	<td>
-                                                        		<b class="text-capitalize"><?php echo $row->nama_domain; ?></b><br>
-                                                            </td>
-                                                        <td class="text-center text-capitalize">
-                                                            <b><?php echo $row->nama_kegiatan; ?></b> <small>sebagai</small> <b><?php echo $row->nama_subkegiatan; ?></b><br>
-                                                        </td>
-                                                        <td>
-                                                            <?php if($row->detail_kegiatan != NULL) { ?>
-                                                                <b class="text-capitalize"><?php echo $row->detail_kegiatan; ?></b><br>
-                                                            <?php } else if($row->detail_kegiatan == NULL) { ?>
-                                                            -
-                                                            <?php } ?>
-                                                        </td>
-                                                        <td>
-                                                            <ul  class="list-ul">
-                                                                <li><b class="text-capitalize"><?php echo $row->nama_lingkup; ?></b><br></li>
-                                                                <?php if($row->tempat != NULL) { ?>
-                                                                    <li><b class="text-capitalize"><?php echo $row->tempat; ?></b><br></li>
-                                                                <?php } else if($row->tempat == NULL) { ?>
-                                                                    <li><b class="text-capitalize">-</b><br></li>
-                                                                <?php } ?>
-                                                            </ul> 
-                                                        </td>
-                                                        <!-- <td class="text-center"> -->
-                                                            <!-- ?php
-                                                            if ($buba == 'administrator' || ($row->status == "Tidak sah" || $row->status == "Menunggu")) {
-                                                                if($buba == 'administrator'){
-                                                                    ?>
-                                                                    ?php
-                                                                        if(($row->file == NULL) || ($row->file == "")){
-                                                                        ?>
-                                                                            <button class="btn btn-primary btn-xs btnnomargin source" onclick="
-                                                                                new PNotify({
-                                                                                    title: 'Terjadi Kesalahan !',
-                                                                                    text: 'Berkas Pendukung belum diunggah !',
-                                                                                    type: 'error',
-                                                                                    delay: 5000,
-                                                                                    styling: 'bootstrap3'
-                                                                                    });  
-                                                                                "><i class="fa fa-fw fa-file-text"></i></button>
-                                                                    ?php
-                                                                        }else if(($row->file != NULL) || ($row->file != "") ){
-                                                                        ?>
-                                                                            <a href="?php echo site_url().'fileupload/'.$row->file  ?>"
-                                                                            class="btn btn-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
-                                                                        ?php
-                                                                        }
-                                                                }
-                                                            }
-                                                            ?> -->
-
-                                                            <!-- <a href="?php echo site_url().'fileupload/'.$row->file  ?>"
-                                                               class="btn btn-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a> -->
-                                                        <!-- </td> -->
-                                                        <td class="text-center">
-                                                            <b class="text-capitalize"><?php echo $row->poin; ?></b><br>
-                                                        </td>
-                                                        <td class="text-center">
-                                                        <?php
-                                                            if($row->status == "Tidak sah") {
-                                                              echo '<span class="font_color_red">'.$row->status.'</span><br>';                            
-                                                            } elseif ($row->status == "Sah" ) {
-                                                             echo '<span class="font_color_green">'.$row->status.'</span><br>';                          
-                                                            } elseif ($row->status == "Menunggu") {
-                                                                echo '<span class="">'.$row->status.'</span><br>';  
-                                                            }
-                                                                                    
-                                                            if($buba == 'administrator' && ($row->status == "Menunggu")) {
-                                                            ?>                            
-                                                                <a href="<?php echo site_url(); ?>Poin/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
-                                                                <a href="<?php echo site_url(); ?>Poin/tolakvalidasi/<?php echo $row->no; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
-                                                            <?php
-                                                            } elseif ($buba == 'administrator' && ($row->status ==  "Tidak sah") ) {
-                                                            ?>
-                                                                <a href="<?php echo site_url(); ?>Poin/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </td>  
-                                                        <td>
-                                                            <?php if($row->keterangan != NULL) { ?>
-                                                                <b class="text-capitalize"><?php echo $row->keterangan; ?></b><br>
-                                                            <?php } else if($row->keterangan == NULL) { ?>
-                                                            -
-                                                            <?php } ?>
-                                                        </td>
-                                                        </tr>
-                                                        <?php
-                                                    }
-                                                } else if($buba == 'mahasiswa'){
+                                                if($buba == 'mahasiswa'){
                                                     foreach($queryMhs as $row){
                                                         ?> 
                                                         <tr>
@@ -447,125 +334,6 @@
                                                                 echo '<span class="">'.$row->status.'</span><br>';  
                                                             }
                                                         ?>
-                                                        </td>  
-                                                        <td>
-                                                            <?php if($row->keterangan != NULL) { ?>
-                                                                <b class="text-capitalize"><?php echo $row->keterangan; ?></b><br>
-                                                            <?php } else if($row->keterangan == NULL) { ?>
-                                                            -
-                                                            <?php } ?>
-                                                        </td>
-                                                        </tr>
-                                                        <?php
-                                                    }
-                                                } else if($buba == 'koordinator'){
-                                                    foreach($queryKa as $row){
-                                                        ?> 
-                                                        <tr>
-                                                            <td></td>
-                                                            <td class="text-center">    
-                                                                <?php
-                                                                if ($row->status == "Tidak sah" || $row->status == "Menunggu") {
-                                                                    if($buba == 'koordinator'){
-                                                                    ?>                                
-                                                                        <a href="<?php echo site_url(); ?>poin/editpoin/<?php echo $row->no; ?>" class="btn btn-gradient-success btn-xs btnnomargin" ><i class="glyphicon glyphicon-pencil"></i></a> 
-                                                                    <?php
-                                                                    }
-                                                                }
-                                                                    ?> 
-                                                                <a href="<?php echo site_url().'fileupload/'.$row->file?>" class="btn btn-gradient-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
-                                                            </td>
-                                                        	<td><?php echo $no++ ?></td>
-                                                        	<!-- <td>
-                                                        		<b><?php echo $row->kegiatan; ?></b><br>
-                                                        		<b hidden><?php echo $row->id_mhs; ?></b><br>
-                                                        	</td>
-                                                        	<td>
-                                                        		<ul class="titiknya">
-                                                        			<li>
-                                                        				<?php echo $row->id_mhs;  ?>
-                                                        			</li>
-
-                                                        		</ul>
-                                                        	</td> -->
-                                                        	<td>
-                                                        		<b class="text-capitalize"><?php echo $row->nama_domain; ?></b><br>
-                                                            </td>
-                                                        <td class="text-center text-capitalize">
-                                                            <b><?php echo $row->nama_kegiatan; ?></b> <small>sebagai</small> <b><?php echo $row->nama_subkegiatan; ?></b><br>
-                                                        </td>
-                                                        <td>
-                                                            <?php if($row->detail_kegiatan != NULL) { ?>
-                                                                <b class="text-capitalize"><?php echo $row->detail_kegiatan; ?></b><br>
-                                                            <?php } else if($row->detail_kegiatan == NULL) { ?>
-                                                            -
-                                                            <?php } ?>
-                                                        </td>
-                                                        <td>
-                                                            <ul  class="list-ul">
-                                                                <li><b class="text-capitalize"><?php echo $row->nama_lingkup; ?></b><br></li>
-                                                                <?php if($row->tempat != NULL) { ?>
-                                                                    <li><b class="text-capitalize"><?php echo $row->tempat; ?></b><br></li>
-                                                                <?php } else if($row->tempat == NULL) { ?>
-                                                                    <li><b class="text-capitalize">-</b><br></li>
-                                                                <?php } ?>
-                                                            </ul> 
-                                                        </td>
-                                                        <!-- <td class="text-center"> -->
-                                                            <!-- ?php
-                                                            if ($buba == 'administrator' || ($row->status == "Tidak sah" || $row->status == "Menunggu")) {
-                                                                if($buba == 'administrator'){
-                                                                    ?>
-                                                                    ?php
-                                                                        if(($row->file == NULL) || ($row->file == "")){
-                                                                        ?>
-                                                                            <button class="btn btn-primary btn-xs btnnomargin source" onclick="
-                                                                                new PNotify({
-                                                                                    title: 'Terjadi Kesalahan !',
-                                                                                    text: 'Berkas Pendukung belum diunggah !',
-                                                                                    type: 'error',
-                                                                                    delay: 5000,
-                                                                                    styling: 'bootstrap3'
-                                                                                    });  
-                                                                                "><i class="fa fa-fw fa-file-text"></i></button>
-                                                                    ?php
-                                                                        }else if(($row->file != NULL) || ($row->file != "") ){
-                                                                        ?>
-                                                                            <a href="?php echo site_url().'fileupload/'.$row->file  ?>"
-                                                                            class="btn btn-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
-                                                                        ?php
-                                                                        }
-                                                                }
-                                                            }
-                                                            ?> -->
-
-                                                            <!-- <a href="?php echo site_url().'fileupload/'.$row->file  ?>"
-                                                               class="btn btn-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a> -->
-                                                        <!-- </td> -->
-                                                        <td class="text-center">
-                                                            <b class="text-capitalize"><?php echo $row->poin; ?></b><br>
-                                                        </td>
-                                                        <td class="text-center">
-                                                        <?php
-                                                            if($row->status == "Tidak sah") {
-                                                              echo '<span class="font_color_red">'.$row->status.'</span><br>';                            
-                                                            } elseif ($row->status == "Sah" ) {
-                                                              echo '<span class="font_color_green">'.$row->status.'</span><br>';                          
-                                                            } elseif ($row->status == "Menunggu") {
-                                                              echo '<span class="">'.$row->status.'</span><br>';  
-                                                            }
-                                                                                    
-                                                            if($buba == 'koordinator' && ($row->status == "Menunggu")) {
-                                                            ?>                            
-                                                                <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
-                                                                <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/tolakvalidasi/<?php echo $row->no; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
-                                                            <?php
-                                                            } elseif ($buba == 'koordinator' && ($row->status ==  "Tidak sah") ) {
-                                                            ?>
-                                                                <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
-                                                            <?php
-                                                            }
-                                                            ?>
                                                         </td>  
                                                         <td>
                                                             <?php if($row->keterangan != NULL) { ?>

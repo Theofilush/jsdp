@@ -214,6 +214,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url() ?>Transkip">Transkip Poin JSDP</a>
                     </li>
+                    <?php if ($buba == 'administrator' ){ ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo site_url() ?>Users">Manajemen Users</a>
+                    </li>
+                    <?php } ?>
                 </ul>
                 <!-- <form class="navbar-search-alt">
                     <div class="input-group">
@@ -362,6 +367,7 @@
                         </div>
                         <div class="dropdown-divider"></div> -->
                         <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-check text-success"></i><span>Online</span></a>
+                        <a class="dropdown-item" href="<?php echo site_url(); ?>UbahPassword"><i class="dropdown-icon icon-key"></i>Ubah Password</span></a>
                         <a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>"><i class="dropdown-icon zmdi zmdi-power"></i><span>Log out</span></a>
                     </div>
                 </li>
@@ -382,15 +388,15 @@
                     <div class="layout-img-wrap">
                         <div class="row">
                             <a href="dashboard1.html" class="col-6 mb-30">
-                                <img class="rounded opacity-70" src="<?php echo base_url() ?>assett/dist/img/layout1.png" alt="layout">
+                                <img class="rounded opacity-70" src="?php echo base_url() ?>assett/dist/img/layout1.png" alt="layout">
                                 <i class="zmdi zmdi-check"></i>
                             </a>
                             <a href="dashboard2.html" class="col-6 mb-30">
-                                <img class="rounded opacity-70" src="<?php echo base_url() ?>assett/dist/img/layout2.png" alt="layout">
+                                <img class="rounded opacity-70" src="?php echo base_url() ?>assett/dist/img/layout2.png" alt="layout">
                                 <i class="zmdi zmdi-check"></i>
                             </a>
                             <a href="javascript:void(0);" class="col-6 active">
-                                <img class="rounded opacity-70" src="<?php echo base_url() ?>assett/dist/img/layout3.png" alt="layout">
+                                <img class="rounded opacity-70" src="?php echo base_url() ?>assett/dist/img/layout3.png" alt="layout">
                                 <i class="zmdi zmdi-check"></i>
                             </a>
                         </div>
@@ -411,7 +417,7 @@
                     <button id="reset_settings" class="btn btn-primary btn-block btn-reset mt-30">Reset</button>
                 </div>
             </div>
-            <img class="d-none" src="<?php echo base_url() ?>assett/dist/img/logo-light.png" alt="brand" />
-            <img class="d-none" src="<?php echo base_url() ?>assett/dist/img/logo-dark.png" alt="brand" />
+            <img class="d-none" src="?php echo base_url() ?>assett/dist/img/logo-light.png" alt="brand" />
+            <img class="d-none" src="?php echo base_url() ?>assett/dist/img/logo-dark.png" alt="brand" />
         </div> -->
         <!-- /Setting Panel -->
