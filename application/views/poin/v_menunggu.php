@@ -206,23 +206,23 @@
                                                                                     
                                                             if($buba == 'administrator' && ($row->status_poin == "Menunggu")) {
                                                             ?>                            
-                                                                <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
-                                                                <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/tolakvalidasi/<?php echo $row->no; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
+                                                                <a href="<?php echo site_url(); ?>Menunggu/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                                <a href="<?php echo site_url(); ?>Menunggu/tolakvalidasi/<?php echo $row->no; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
                                                             <?php
                                                             } elseif ($buba == 'administrator' && ($row->status_poin ==  "Tidak sah") ) {
                                                             ?>
-                                                                <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                                <a href="<?php echo site_url(); ?>Menunggu/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
                                                             <?php
                                                             }
                                                             ?>
                                                         </td>  
-                                                        <td>
-                                                            <?php if($row->keterangan != NULL) { ?>
-                                                                <b class="text-capitalize"><?php echo $row->keterangan; ?></b><br>
-                                                            <?php } else if($row->keterangan == NULL) { ?>
-                                                            -
-                                                            <?php } ?>
-                                                        </td>
+                                                            <td>
+                                                                <?php if($row->keterangan != NULL) { ?>
+                                                                    <b class="text-capitalize"><?php echo $row->keterangan; ?></b><br>
+                                                                <?php } else if($row->keterangan == NULL) { ?>
+                                                                -
+                                                                <?php } ?>
+                                                            </td>
                                                             <td><?php echo $row->created_at; ?></td>
                                                             <td><?php echo $row->tanggal_periksa; ?></td>
                                                             <td><?php echo $row->diperiksa_oleh; ?></td>
@@ -329,12 +329,12 @@
                                                                                     
                                                             if($buba == 'koordinator' && ($row->status_poin == "Menunggu")) {
                                                             ?>                            
-                                                                <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
-                                                                <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/tolakvalidasi/<?php echo $row->no; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
+                                                                <a href="<?php echo site_url(); ?>Menunggu/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                                <a href="<?php echo site_url(); ?>Menunggu/tolakvalidasi/<?php echo $row->no; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
                                                             <?php
                                                             } elseif ($buba == 'koordinator' && ($row->status_poin ==  "Tidak sah") ) {
                                                             ?>
-                                                                <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                                <a href="<?php echo site_url(); ?>Menunggu/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
                                                             <?php
                                                             }
                                                             ?>

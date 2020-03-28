@@ -125,6 +125,7 @@ class Menunggu extends CI_Controller {
           }
         }
 	} 
+
 	public function deletepoin($id){		
 		$this->db->where('id_publikasi', $id);
         $query = $this->db->get('t_publikasi_jurnal');
@@ -133,4 +134,26 @@ class Menunggu extends CI_Controller {
 		$this->M_dokumen->deleteDok_publikasi($id);
 		redirect('publikasi/PublikasiJurnal');
 	}
+
+	public function validasi($id){            
+		$query= $this->M_dokumen->validasi_poin($id);        
+		if ($query) {
+		  redirect("Menunggu");
+		}
+		else{
+		  $this->session->set_flashdata('notification', 'Gagal Melakukan Validasi');		  
+		  redirect("Menunggu");
+		}
+	} 
+
+	public function tolakvalidasi($id){            
+		$query= $this->M_dokumen->toval_poin($id);        
+		if ($query) {
+			redirect("Menunggu");
+		}
+		else{
+			$this->session->set_flashdata('notification', 'Gagal Melakukan Penolakan Validasi');		  
+			redirect("Menunggu");
+		}
+	} 
 }
