@@ -216,7 +216,7 @@
                     </li>
                     <?php if ($buba == 'administrator' ){ ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url() ?>Users">Manajemen Users</a>
+                        <a class="nav-link" href="<?php echo site_url() ?>pengguna/Users">Manajemen Users</a>
                     </li>
                     <?php } ?>
                 </ul>
@@ -367,7 +367,7 @@
                         </div>
                         <div class="dropdown-divider"></div> -->
                         <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-check text-success"></i><span>Online</span></a>
-                        <a class="dropdown-item" href="<?php echo site_url(); ?>UbahPassword"><i class="dropdown-icon icon-key"></i>Ubah Password</span></a>
+                        <a class="dropdown-item" href="<?php echo site_url(); ?>pengguna/UbahPassword"><i class="dropdown-icon icon-key"></i>Ubah Password</span></a>
                         <a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>"><i class="dropdown-icon zmdi zmdi-power"></i><span>Log out</span></a>
                     </div>
                 </li>

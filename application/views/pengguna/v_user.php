@@ -1,4 +1,4 @@
-<?php foreach($da as $row){$buba= $row->author;$bubi= $row->username; }   if ($buba == 'administrator' || $buba == 'koordinator' ){ ?>
+<?php foreach($da as $row){$buba= $row->author;$bubi= $row->username; }   if ($buba == 'administrator' ){ ?>
 <!-- Main Content -->
 <div class="hk-pg-wrapper">
             <!-- Breadcrumb -->
@@ -30,8 +30,9 @@
                                     <button type="button" class="btn btn-primary btn-xs btnnomargin"  data-toggle="modal" data-target="#modal-tambah"><span class="glyphicon glyphicon-plus"></span>  User Baru</button> 
                                 </div>
                                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 mb-10">                        
-                                    <a type="button" class="btn btn-light btn-xs btnnomargin" href="<?php echo site_url() ?>Users">Mahasiswa</a>
-                                    <a type="button" class="btn btn-light btn-xs btnnomargin" href="<?php echo site_url() ?>Users/dosen">Dosen</a>
+                                    <a type="button" class="btn btn-light btn-xs btnnomargin" href="<?php echo site_url() ?>pengguna/Users">Mahasiswa</a>
+                                    <a type="button" class="btn btn-light btn-xs btnnomargin" href="<?php echo site_url() ?>pengguna/Users/index/dosen">Dosen</a>
+                                    <a type="button" class="btn btn-light btn-xs btnnomargin" href="<?php echo site_url() ?>pengguna/Users/index/koordinator">Koordinator</a>
                                 </div>
                             </div>
                             <div class="row">
@@ -59,24 +60,16 @@
                                             <tr>
                                             <td></td>
                                             <td><?php echo $no++ ?></td>
-                                            <td><b><?php echo $row->ID_user; ?></b><br>                            
-                                            </td>
+                                            <td><b><?php echo $row->ID_user; ?></b><br></td>
                                             <td><b><?php echo $row->username; ?></b></td>
                                             <td><b><?php echo $row->nama_lengkap; ?></b></td>
-                                            <td>                           
-                                            <b><?php echo $row->prodi; ?></b>
-                                            </td> 
-                                            <td>
-                                                <b><?php echo $row->email; ?></b>
+                                            <td><b><?php echo $row->prodi; ?></b></td> 
+                                            <td><b><?php echo $row->email; ?></b></td>
+                                            <td><b><?php echo $row->author; ?></b></td>
+                                            <td class="ketengah">
+                                                <a href="<?php echo site_url(); ?>pengguna/users/editUser/<?php echo $row->id; ?>" class="btn btn-primary btn-xs btnnomargin"><i class="glyphicon glyphicon-pencil"></i></a>
+                                                <a href="<?php echo site_url(); ?>pengguna/users/deleteUser/<?php echo $row->id; ?>" class="btn btn-danger btn-xs btnnomargin" onClick="return doconfirm();"><i class="glyphicon glyphicon-remove"></i></a>
                                             </td>
-                                            <td>
-                                                <b><?php echo $row->author; ?></b>
-                                            </td>
-                                            <td class="ketengah">                              
-                                                <button type="button" class="btn btn-primary btn-xs btnnomargin"  data-toggle="modal" data-target="#modal-edit<?php echo $row->id;?>"><span class="glyphicon glyphicon-pencil"></span></button> 
-                                                <a href="<?php echo site_url(); ?>pengguna/users/deleteUser/<?php echo $row->id; ?>" class="btn btn-danger btn-xs btnnomargin" onClick="return doconfirm();"><i class="glyphicon glyphicon-remove  "></i></a> 
-                                                
-                                            </td>                                                
                                             </tr>
                                             <?php
                                             }
@@ -87,11 +80,9 @@
                                 </div>
                             </div>
                         </section>
-                       
                     </div>
                 </div>
                 <!-- /Row -->
-
             </div>
             <!-- /Container -->
 
@@ -106,34 +97,106 @@
 }?>
 
 
-<div class="modal fade" id="modal-tambah" tabindex="-1" role="dialog" aria-labelledby="modal-tambah"
-	aria-hidden="true">
-	<div class="modal-dialog" role="document">
+<div class="modal fade" id="modal-tambah" tabindex="-1" role="dialog" aria-labelledby="modal-tambah" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Modal title</h5>
+				<h5 class="modal-title">Tambah Pengguna Baru</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">×</span>
 				</button>
 			</div>
 			<div class="modal-body">
-				<form>
-					<div class="form-group">
-						<label for="exampleDropdownFormEmail1">Email address</label>
-						<input type="email" class="form-control" id="exampleDropdownFormEmail1"
-							placeholder="email@example.com">
-					</div>
-					<div class="form-group">
-						<label for="exampleDropdownFormPassword1">Password</label>
-						<input type="password" class="form-control" id="exampleDropdownFormPassword1"
-							placeholder="Password">
-					</div>
-					<div class="custom-control custom-checkbox mb-10">
-						<input type="checkbox" class="custom-control-input" id="customChk">
-						<label class="custom-control-label" for="customChk">Remember me</label>
-					</div>
-					<button type="submit" class="btn btn-primary">Sign in</button>
-				</form>
+                    <?php
+                        $atribut = array(
+                            'class' => 'form-horizontal form-label-left',
+                            'data-parsley-validate' => '',
+                            'id'=>'demo-form2'
+                        );
+                        echo form_open('pengguna/Users/tambahUser',$atribut);
+                        echo form_hidden('id',$row->ID_user);
+                    ?>
+                    <div class="form-group row">
+                    	<label for="id_user" class="col-sm-3 col-form-label">NIM / NIP</label>
+                    	<div class="col-sm-9">
+                    		<input type="text" class="form-control" id="id_user" placeholder="NIM / NIP" name="id_user">
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="username" class="col-sm-3 col-form-label">Username</label>
+                    	<div class="col-sm-9">
+                    		<input type="text" class="form-control" id="username" placeholder="Username" name="username">
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="namaLengkap" class="col-sm-3 col-form-label">Nama Lengkap</label>
+                    	<div class="col-sm-9">
+                    		<input type="text" class="form-control" id="namaLengkap" placeholder="Nama Lengkap" name="namaLengkap">
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="prodi" class="col-sm-3 col-form-label">Prodi</label>
+                    	<div class="col-sm-9">
+                    		<select class="form-control select2_ok" style="width: 100%;" data-placeholder="Pilih Prodi" name="prodi">
+                    			<option></option>
+                    			<?php 
+                                   foreach($tampil_prodi as $row){                                               
+                                ?>
+                    			<option><?php echo $row->program_studi; ?></option>
+                    			<?php
+                                    }
+                                ?>
+                    		</select>
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="email" class="col-sm-3 col-form-label">Email</label>
+                    	<div class="col-sm-9">
+                    		<input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="password" class="col-sm-3 col-form-label">Password</label>
+                    	<div class="col-sm-9">
+                    		<input type="text" class="form-control" id="password" placeholder="Password" name="password">
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="cpassword" class="col-sm-3 col-form-label">Ulangi Password</label>
+                    	<div class="col-sm-9">
+                    		<input type="text" class="form-control" id="cpassword" placeholder="Ulangi Password" name="cpassword">
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="status" class="col-sm-3 col-form-label">Status</label>
+                    	<div class="col-sm-9">
+                    		<select class="form-control select2_ok" style="width: 100%;" data-placeholder="Pilih Status" name="status">
+                    			<option value="Aktif">Aktif</option>
+                                <option value="Tidak Aktif">Tidak Aktif</option>
+                    		</select>
+                    	</div>
+                    </div>
+                    <div class="form-group row mb-40">
+                    	<label for="author" class="col-sm-3 col-form-label">Author</label>
+                    	<div class="col-sm-9">
+                    		<select class="form-control select2_ok" style="width: 100%;" data-placeholder="Pilih Author" name="author">
+                    			<option></option>
+                    			<?php 
+                                   foreach($tampil_author as $row){ 
+                                ?>
+                    			<option><?php echo $row->author; ?></option>
+                    			<?php
+                                    }
+                                ?>
+                    		</select>
+                    	</div>
+                    </div>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="reset" class="btn btn-primary">Reset</button>
+                    <button type="submit" class="btn btn-success" name="btnSimpan" value="Simpan">Submit</button>
+                <?php
+                echo form_close();
+                ?>
 			</div>
 		</div>
 	</div>
