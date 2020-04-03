@@ -356,11 +356,8 @@
                     </div>
                 </div>
                 <!-- /Row -->
-
             </div>
             <!-- /Container -->
-
-
  <?php
 } else{
   echo '<div class="hk-pg-wrapper">

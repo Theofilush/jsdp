@@ -5,7 +5,7 @@ class Poin extends CI_Controller {
 	
 	function __construct(){
 		parent::__construct();
-	
+
 		if($this->session->userdata('status') != "login"){
 			redirect(site_url("login"));
 		} 	
@@ -245,12 +245,12 @@ class Poin extends CI_Controller {
 			$config['allowed_types'] = 'pdf';
 			$config['max_size'] = 1124;
 			$this->load->library('upload', $config); 
-			               
+
 			if ( ! $this->upload->do_upload('filepdf')){
-			  	$error = array('error' => $this->upload->display_errors());			
+			  	$error = array('error' => $this->upload->display_errors());
 			}
 			else{
-				 $data = array('upload_data' => $this->upload->data());                              
+				 $data = array('upload_data' => $this->upload->data());
 			}
 
 			$thn_akademik = $this->input->post('thn_akademik', TRUE);
@@ -265,60 +265,191 @@ class Poin extends CI_Controller {
 			$lingkup = $this->input->post('lingkup', TRUE);
 			$_upload = $this->upload->data('file_name');
 
+			$edit_poin = $this->input->post('edit_poin', TRUE);
+			$status_change = $this->input->post('status_change', TRUE);
+			$keterangan_poin = $this->input->post('keterangan_poin', TRUE);
+			// if($keterangan_poin==""){$keterangan_poin == NULL;}
+			// var_dump($keterangan_poin);exit();
+
+			// if edit value poin 0 then run this
+			// if edit value poin not 0 then run insert array poin to database
+
+			// if status_changed is blank, no input to db
+			//if status_Changed is fill content , input db
+
 			$kue = $this->M_login->hak_ak($this->session->userdata('nama'));
 			$Id_user =  $kue[0]->ID_user;
+			$no = $this->input->post('no', TRUE);
+			$id_mhs = $this->input->post('id_mhs', TRUE);
 
-			$id = $this->input->post('id', TRUE);
-		  
-			if ($_upload == "" || $_upload == NULL ) {
-				$data = array(
-					'id_mhs' => $Id_user,
-					'tahun' => $thn_akademik,
-					'tanggal_kegiatan' => $tgl_kegiatan,
-					'domain' => $domain,
-					'kegiatan' => $kegiatan,
-					'sub_kegiatan' => $subkegiatan,
-					'detail_kegiatan' => $detail_kegiatan,
-					'tempat' => $tempat,
-					'lingkup' => $lingkup,
-					'poin' => $per_poin2,
-					'status'=> "Menunggu",
-				);
-			} elseif($_upload != "" || $_upload != NULL){
+			$tgl_kegiatann = date_format(new DateTime($tgl_kegiatan),"Y-m-d");
 
-				$this->db->where('no', $id);
-				$query = $this->db->get('poin');
-				$row = $query->row();
-				unlink("./fileupload/$row->file");
-		
-				$data = array(
-					'id_mhs' => $Id_user,
-					'tahun' => $thn_akademik,
-					'tanggal_kegiatan' => $tgl_kegiatan,
-					'domain' => $domain,
-					'kegiatan' => $kegiatan,
-					'sub_kegiatan' => $subkegiatan,
-					'detail_kegiatan' => $detail_kegiatan,
-					'tempat' => $tempat,
-					'lingkup' => $lingkup,
-					'poin' => $per_poin2,
-					'file' => $_upload,
-					'status'=> "Menunggu",
-				);
+			if ($status_change == "" || $status_change == NULL) {
+				$status_change = "Menunggu";
+				
+				if ($edit_poin == 0 ) {
+					if ($_upload == "" || $_upload == NULL ) {
+						$data = array(
+							'tahun' => $thn_akademik,
+							'tanggal_kegiatan' => $tgl_kegiatann,
+							'domain' => $domain,
+							'kegiatan' => $kegiatan,
+							'sub_kegiatan' => $subkegiatan,
+							'detail_kegiatan' => $detail_kegiatan,
+							'tempat' => $tempat,
+							'lingkup' => $lingkup,
+							'poin' => $per_poin2,
+							'status'=> $status_change,
+						);
+					} else {
+						$this->db->where('no', $no);
+						$queryy = $this->db->get('poin');
+						$row = $queryy->row();
+						unlink("./fileupload/$row->file");
+				
+						$data = array(
+							'tahun' => $thn_akademik,
+							'tanggal_kegiatan' => $tgl_kegiatann,
+							'domain' => $domain,
+							'kegiatan' => $kegiatan,
+							'sub_kegiatan' => $subkegiatan,
+							'detail_kegiatan' => $detail_kegiatan,
+							'tempat' => $tempat,
+							'lingkup' => $lingkup,
+							'poin' => $per_poin2,
+							'file' => $_upload,
+							'status'=> $status_change,
+						);
+					}	
+				} else {
+					if ($_upload == "" || $_upload == NULL ) {
+						$data = array(
+							'tahun' => $thn_akademik,
+							'tanggal_kegiatan' => $tgl_kegiatann,
+							'domain' => $domain,
+							'kegiatan' => $kegiatan,
+							'sub_kegiatan' => $subkegiatan,
+							'detail_kegiatan' => $detail_kegiatan,
+							'tempat' => $tempat,
+							'lingkup' => $lingkup,
+							'poin' => $edit_poin,
+							'status'=> $status_change,
+						);
+					} else {
+						$this->db->where('no', $no);
+						$queryy = $this->db->get('poin');
+						$row = $queryy->row();
+						unlink("./fileupload/$row->file");
+	
+						$data = array(
+							'tahun' => $thn_akademik,
+							'tanggal_kegiatan' => $tgl_kegiatann,
+							'domain' => $domain,
+							'kegiatan' => $kegiatan,
+							'sub_kegiatan' => $subkegiatan,
+							'detail_kegiatan' => $detail_kegiatan,
+							'tempat' => $tempat,
+							'lingkup' => $lingkup,
+							'poin' => $edit_poin,
+							'file' => $_upload,
+							'status'=> $status_change,
+						);
+					}	
+				}
+			}else {
+				if ($edit_poin == 0 ) {
+					if ($_upload == "" || $_upload == NULL ) {
+						$data = array(
+							'tahun' => $thn_akademik,
+							'tanggal_kegiatan' => $tgl_kegiatann,
+							'domain' => $domain,
+							'kegiatan' => $kegiatan,
+							'sub_kegiatan' => $subkegiatan,
+							'detail_kegiatan' => $detail_kegiatan,
+							'tempat' => $tempat,
+							'lingkup' => $lingkup,
+							'poin' => $per_poin2,
+							'status'=> $status_change,
+							'keterangan'=> $keterangan_poin,
+							'tanggal_periksa'=>date("Y-m-d H:i:s"),
+							'diperiksa_oleh'=> $id_mhs,
+						);
+					} else {
+						$this->db->where('no', $no);
+						$queryy = $this->db->get('poin');
+						$row = $queryy->row();
+						unlink("./fileupload/$row->file");
+				
+						$data = array(
+							'tahun' => $thn_akademik,
+							'tanggal_kegiatan' => $tgl_kegiatann,
+							'domain' => $domain,
+							'kegiatan' => $kegiatan,
+							'sub_kegiatan' => $subkegiatan,
+							'detail_kegiatan' => $detail_kegiatan,
+							'tempat' => $tempat,
+							'lingkup' => $lingkup,
+							'poin' => $per_poin2,
+							'file' => $_upload,
+							'status'=> $status_change,
+							'status'=> $keterangan_poin,
+							'tanggal_periksa'=>date("Y-m-d H:i:s"),
+							'diperiksa_oleh'=> $id_mhs,
+						);
+					}	
+				}else {
+					if ($_upload == "" || $_upload == NULL ) {
+						$data = array(
+							'tahun' => $thn_akademik,
+							'tanggal_kegiatan' => $tgl_kegiatann,
+							'domain' => $domain,
+							'kegiatan' => $kegiatan,
+							'sub_kegiatan' => $subkegiatan,
+							'detail_kegiatan' => $detail_kegiatan,
+							'tempat' => $tempat,
+							'lingkup' => $lingkup,
+							'poin' => $edit_poin,
+							'status'=> $status_change,
+							'tanggal_periksa'=>date("Y-m-d H:i:s"),
+							'diperiksa_oleh'=> $id_mhs,
+						);
+					} else {
+						$this->db->where('no', $no);
+						$queryy = $this->db->get('poin');
+						$row = $queryy->row();
+						unlink("./fileupload/$row->file");
+	
+						$data = array(
+							'tahun' => $thn_akademik,
+							'tanggal_kegiatan' => $tgl_kegiatann,
+							'domain' => $domain,
+							'kegiatan' => $kegiatan,
+							'sub_kegiatan' => $subkegiatan,
+							'detail_kegiatan' => $detail_kegiatan,
+							'tempat' => $tempat,
+							'lingkup' => $lingkup,
+							'poin' => $edit_poin,
+							'file' => $_upload,
+							'status'=> $status_change,
+							'tanggal_periksa'=>date("Y-m-d H:i:s"),
+							'diperiksa_oleh'=> $id_mhs,
+						);
+					}	
+				}
 			}
-            
-          $query= $this->M_dokumen->updateDok_poin($data,$id);
-          if ($query) {
-            redirect("Poin");
-          }
-          else{
-			$this->session->set_flashdata('notification', 'Gagal Melakukan Update');	
-            redirect("Poin");
-          }
+
+        	$query= $this->M_dokumen->updateDok_poin($data,$no);
+        	if ($query) {
+            	redirect("Poin");
+          	}
+          	else{
+				$this->session->set_flashdata('notification', 'Gagal Melakukan Update');	
+    	        redirect("Poin");
+        	}
         }
 	} 
 
-	public function deletepoin($id){		
+	public function deletepoin($id){
 		$this->db->where('no', $id);
         $query = $this->db->get('poin');
         $row = $query->row();
@@ -327,24 +458,24 @@ class Poin extends CI_Controller {
 		redirect('poin');
 	}
 
-	public function validasi($id){            
-		$query= $this->M_dokumen->validasi_poin($id);        
+	public function validasi($id){
+		$query= $this->M_dokumen->validasi_poin($id);
 		if ($query) {
 		  redirect("Poin");
 		}
 		else{
-		  $this->session->set_flashdata('notification', 'Gagal Melakukan Validasi');		  
+		  $this->session->set_flashdata('notification', 'Gagal Melakukan Validasi');
 		  redirect("Poin");
 		}
 	} 
 
-	public function tolakvalidasi($id){            
-		$query= $this->M_dokumen->toval_poin($id);        
+	public function tolakvalidasi($id){
+		$query= $this->M_dokumen->toval_poin($id);
 		if ($query) {
 			redirect("Poin");
 		}
 		else{
-			$this->session->set_flashdata('notification', 'Gagal Melakukan Penolakan Validasi');		  
+			$this->session->set_flashdata('notification', 'Gagal Melakukan Penolakan Validasi');
 			redirect("Poin");
 		}
 	} 

@@ -99,7 +99,7 @@
                                         <div class="form-group row">
                                             <label for="inputPassword3" class="col-sm-2 col-form-label">Poin</label>
                                             <div class="col-sm-10">
-                                                 <p class="form-control" id="per_poin">0</p> 
+                                                <p style="padding-top:7px; padding-left:7px;" id="per_poin">0</p> 
                                                 <input type="hidden" id="per_poin2" name="per_poin2" value="0">
                                             </div>
                                         </div>

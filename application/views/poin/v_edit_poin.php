@@ -1,10 +1,11 @@
+<?php foreach($da as $row){$buba= $row->author;$bubi= $row->username; } ?>        
         <!-- Main Content -->
         <div class="hk-pg-wrapper">
             <!-- Breadcrumb -->
             <nav class="hk-breadcrumb" aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-light bg-transparent">
                     <li class="breadcrumb-item"><a href="<?php echo site_url(); ?>">JSDP</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tambah Poin</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Poin</li>
                 </ol>
             </nav>
             <!-- /Breadcrumb -->
@@ -33,7 +34,8 @@
                                     );                                        
                                         echo form_open_multipart('Poin/updatepoin',$atribut);
                                             foreach ($query as $rou) {    
-                                            echo form_hidden('id',$rou->no);
+                                            echo form_hidden('no',$rou->no);
+                                            echo form_hidden('id_mhs',$rou->id_mhs);
                                     ?>
                                         <div class="form-group row">
                                             <label for="thn_akademik" class="col-sm-2 col-form-label">Tahun Akademik *</label>
@@ -117,10 +119,22 @@
                                         <div class="form-group row">
                                             <label for="inputPassword3" class="col-sm-2 col-form-label">Poin</label>
                                             <div class="col-sm-10">
-                                                 <p class="form-control" id="per_poin"><?php echo $rou->poin; ?></p> 
+                                                <p style="padding-top:7px; padding-left:7px;" id="per_poin"><?php echo $rou->poin; ?></p> 
                                                 <input type="hidden" id="per_poin2" name="per_poin2" value="<?php echo $rou->poin; ?>">
                                             </div>
                                         </div>
+                                        <?php
+                                        if ($buba == "administrator" || $buba == "koordinator") {
+                                        ?>
+                                        <div class="form-group row">
+                                            <label for="detail_kegiatan" class="col-sm-2 col-form-label">Edit Poin</label>
+                                            <div class="col-sm-10">
+                                                <input type="number" class="form-control" id="edit_poin" name="edit_poin" value="0">
+                                            </div>
+                                        </div>
+                                        <?php
+                                        }
+                                        ?>
                                         <div class="form-group row">
                                             <label for="inputPassword3" class="col-sm-2 col-form-label">Upload</label>
                                             <div class="col-sm-10">
@@ -130,6 +144,34 @@
                                                 *<small>Ukuran file maximal: 1MB</small>
                                             </div>
                                         </div>
+                                        <?php
+                                        if ($buba == "administrator" || $buba == "koordinator") {
+                                        ?>
+                                        <fieldset class="form-group mb-15">
+                                            <div class="row">
+                                                <label class="col-form-label col-sm-2 pt-0">Sah ?</label>
+                                                <div class="col-sm-10">
+                                                    <div class="form-control custom-radio mb-5">
+                                                        <input id="option_1" name="status_change" class="custom-control-input" type="radio" value="Sah" <?php echo ($rou->status== 'Sah')? 'checked="checked"' : '' ; ?>>
+                                                        <label class="custom-control-label" for="option_1">Sah</label>
+                                                    </div>
+                                                    <div class="form-control custom-radio mb-5">
+                                                        <input id="option_2" name="status_change" class="custom-control-input" type="radio" value="Tidak sah" <?php echo ($rou->status== 'Tidak sah')? 'checked="checked"' : '' ; ?>>
+                                                        <label class="custom-control-label" for="option_2">Tidak Sah</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <div class="form-group row">
+                                            <label for="keterangan_poin" class="col-sm-2 col-form-label">Keterangan Tidak Sah</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="keterangan_poin" name="keterangan_poin" value="<?php echo $rou->keterangan; ?>" placeholder="Bukti file tiak diupload">
+                                                *<small>Kosongkan jika data telah benar. </small><br>
+                                            </div>
+                                        </div>                                        
+                                        <?php
+                                        }
+                                        ?>
                                         <div class="form-group row mb-0 mt-50">
                                             <div class="col-sm-10">
                                                 <button type="button" onclick="window.history.back()" class="btn btn-indigo"><i class="fa fa-arrow-left"></i> Batal</button>

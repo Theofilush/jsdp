@@ -10,6 +10,7 @@ class M_dokumen extends CI_Model{
         $this->db->join('kegiatan', 'domain.id_domain = kegiatan.id_domain','inner');
         $this->db->join('subkegiatan', 'kegiatan.id_kegiatan = subkegiatan.id_kegiatan','inner');
         $this->db->join('lingkup', 'subkegiatan.id_subkegiatan = lingkup.id_subkegiatan','inner');
+        $this->db->where('status !=',"Sah"); 
         $this->db->group_by('poin.no'); 
         $query = $this->db->get();
         return $query->result();
@@ -76,6 +77,7 @@ class M_dokumen extends CI_Model{
         $this->db->join('kegiatan', 'domain.id_domain = kegiatan.id_domain','inner');
         $this->db->join('subkegiatan', 'kegiatan.id_kegiatan = subkegiatan.id_kegiatan','inner');
         $this->db->join('lingkup', 'subkegiatan.id_subkegiatan = lingkup.id_subkegiatan','inner');
+        $this->db->where('status !=',"Sah"); 
         $this->db->group_by('poin.no'); 
         $query = $this->db->get();
         return $query->result();

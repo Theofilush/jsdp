@@ -69,22 +69,22 @@ class TidakSah extends CI_Controller {
 	public function validasi($id){
 		$query= $this->M_dokumen->validasi_poin($id);
 		if ($query) {
-		  redirect("Menunggu");
+		  redirect("TidakSah");
 		}
 		else{
 		  $this->session->set_flashdata('notification', 'Gagal Melakukan Validasi');
-		  redirect("Menunggu");
+		  redirect("TidakSah");
 		}
 	} 
 
 	public function tolakvalidasi($id){
 		$query= $this->M_dokumen->toval_poin($id);
 		if ($query) {
-			redirect("Menunggu");
+			redirect("TidakSah");
 		}
 		else{
 			$this->session->set_flashdata('notification', 'Gagal Melakukan Penolakan Validasi');
-			redirect("Menunggu");
+			redirect("TidakSah");
 		}
 	} 
 }
