@@ -135,8 +135,8 @@ class Menunggu extends CI_Controller {
 		redirect('publikasi/PublikasiJurnal');
 	}
 
-	public function validasi($id){            
-		$query= $this->M_dokumen->validasi_poin($id);        
+	public function validasi($id,$diperiksa_oleh){            
+		$query= $this->M_dokumen->validasi_poin($id,$diperiksa_oleh);        
 		if ($query) {
 		  redirect("Menunggu");
 		}
@@ -146,8 +146,8 @@ class Menunggu extends CI_Controller {
 		}
 	} 
 
-	public function tolakvalidasi($id){            
-		$query= $this->M_dokumen->toval_poin($id);        
+	public function tolakvalidasi($id,$diperiksa_oleh){            
+		$query= $this->M_dokumen->toval_poin($id,$diperiksa_oleh);        
 		if ($query) {
 			redirect("Menunggu");
 		}

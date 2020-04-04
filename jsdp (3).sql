@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Mar 2020 pada 15.10
+-- Waktu pembuatan: 04 Apr 2020 pada 14.22
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.9
 
@@ -338,9 +338,10 @@ INSERT INTO `login` (`id`, `ID_user`, `username`, `nama_lengkap`, `prodi`, `emai
 (1, '9999999998', 'admin', 'admin', 'Teknik Sipil', 'admin@upj.ac.id', '$2y$12$qzCd/DZweNWvYwzu26uVl.t06q0UrSTQ/MhQgaJrszJ24vDzpEmnO', 'Aktif', 'administrator'),
 (2, '9999999997', 'admin1', 'admin1', 'Teknik Sipil', 'admin1@upj.ac.id', '$2y$12$hnVN4pXpsR58wdWsbRx94.2pv/R8aseFIdBTgHGeCFNeMGPRmtn0G', 'Aktif', 'administrator'),
 (3, '9999999999', 'dosen', 'dosen', 'Akuntansi', 'dosen@upj.ac.id', '$2y$12$.J2zWQHTzhrAJ1093nTfYOBjR.bZHM3nzOgp8TYKasWJ1a3738mm6', 'Aktif', 'dosen'),
-(4, '2016071013', 'mhs ku', 'mahasiswa bisa lebih', 'Akuntansi', 'mhs@upj.ac.id', '$2y$12$czoGtR7qYymPT0/G.mOFcuK7cB.qln5HcKXCuONbZRN0.979/vj6q', 'Aktif', 'mahasiswa'),
+(4, '2016071013', 'mhs a', 'mahasiswa bisa lebih a', 'Informatika', 'mhs@upj.ac.id', '$2y$12$czoGtR7qYymPT0/G.mOFcuK7cB.qln5HcKXCuONbZRN0.979/vj6q', 'Aktif', 'mahasiswa'),
 (5, '2016071014', 'mhs ku 2', 'mahasiswa bisa lebih bisa', 'Informatika', 'mhs2@upj.ac.id', '$2y$12$czoGtR7qYymPT0/G.mOFcuK7cB.qln5HcKXCuONbZRN0.979/vj6q', 'Aktif', 'mahasiswa'),
-(6, '9999999996', 'koordinator', 'admin1', 'Teknik Sipil', 'koordinator@upj.ac.id', '$2y$12$pmPZhILHN4s72Jw4J1qsueSlqnzinhOdnxCz1cX89mFORIdBiQvYy', 'Aktif', 'administrator');
+(6, '9999999996', 'koordinator', 'koordinator a', 'Teknik Sipil', 'koordinator@upj.ac.id', '$2y$12$pmPZhILHN4s72Jw4J1qsueSlqnzinhOdnxCz1cX89mFORIdBiQvYy', 'Aktif', 'koordinator'),
+(8, '201671016', 'mhs4', 'mhs keempat', 'Arsitektur', 'mhs4@upj.ac.id', '$2y$05$ftI6QKaMM18BTh8JCjPwK.vFBdXzv4zkNvnnmZzfxO8K6NcdjHDW.', 'Aktif', 'mahasiswa');
 
 -- --------------------------------------------------------
 
@@ -352,7 +353,7 @@ CREATE TABLE `poin` (
   `no` int(10) NOT NULL,
   `id_mhs` varchar(50) NOT NULL,
   `tahun` varchar(50) NOT NULL,
-  `tanggal_kegiatan` date NOT NULL DEFAULT current_timestamp(),
+  `tanggal_kegiatan` date NOT NULL,
   `domain` varchar(50) NOT NULL,
   `kegiatan` varchar(50) NOT NULL,
   `sub_kegiatan` varchar(50) NOT NULL,
@@ -365,27 +366,37 @@ CREATE TABLE `poin` (
   `status` varchar(20) DEFAULT NULL,
   `keterangan` varchar(250) DEFAULT NULL,
   `id_verfikator` varchar(50) DEFAULT NULL,
-  `created_at` date NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `tanggal_periksa` timestamp NULL DEFAULT NULL,
+  `diperiksa_oleh` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `poin`
 --
 
-INSERT INTO `poin` (`no`, `id_mhs`, `tahun`, `tanggal_kegiatan`, `domain`, `kegiatan`, `sub_kegiatan`, `detail_kegiatan`, `peran`, `tempat`, `lingkup`, `file`, `poin`, `status`, `keterangan`, `id_verfikator`, `created_at`) VALUES
-(1, '9999999998', '2019', '0000-00-00', '4', '12', '12', 'mahasiswa preunershipp', 'peserta', 'upj', '3', 'BC.pdf', 10, 'Menunggu', '', '9999999997', '2020-02-29'),
-(2, '2016071013', '2019', '2020-02-05', '4', '15', '12', 'konser akbar oleh X', 'panitia', 'jakarta', '3', 'BC.pdf', 20, 'Tidak sah', 'kurang naik', '9999999997', '2020-02-29'),
-(3, '2016071013', '2019', '2020-02-05', '4', '12', '30', 'konser akbar oleh X', 'panitia', 'jakarta', '3', NULL, 30, 'Sah', '', '9999999997', '2020-02-29'),
-(4, '9999999998', '2015', '0000-00-00', '4', '17', '46', 'test', '', 'test', '160', '', 150, 'Menunggu', NULL, NULL, '2020-03-04'),
-(5, '9999999998', '2021', '0000-00-00', '1', '12', '32', '', NULL, '', '3', '', 150, 'Sah', NULL, NULL, '2020-03-04'),
-(6, '9999999998', '2020', '0000-00-00', '1', '12', '32', '', NULL, '', '2', '', 250, 'Menunggu', NULL, NULL, '2020-03-04'),
-(7, '9999999998', '2020', '0000-00-00', '1', '12', '32', 'test', NULL, 'test', '3', '', 350, 'Menunggu', NULL, NULL, '2020-03-04'),
-(8, '9999999998', '2020', '2020-03-12', 'Asisten Dosen', 'Asisten Dosen', 'Asisten Dosen (2SKS)', 'PBOoooooooooooooo', NULL, 'upj', 'Lokal', '', 50, 'Menunggu', NULL, NULL, '2020-03-05'),
-(9, '9999999998', '2020', '0000-00-00', '3', '16', '42', '', NULL, '', '4', 'JSDP_Poin_(1).pdf', 60, 'Menunggu', NULL, NULL, '2020-03-05'),
-(10, '9999999998', '2021', '2020-03-12', '4', '17', '44', '', NULL, '', '158', 'JSDP_Poin_(1)1.pdf', 10, 'Menunggu', NULL, NULL, '2020-03-05'),
-(11, '9999999998', '2020', '0000-00-00', '1', '12', '32', '', NULL, 'dataon', '2', 'JSDP_Poin_(1).pdf', 250, 'Menunggu', NULL, NULL, '2020-03-05'),
-(12, '9999999998', '2020', '0000-00-00', '10', '24', '71', 'matematika dasar', NULL, 'upj', '165', 'JSDP_Poin_(1)1.pdf', 100, 'Menunggu', NULL, NULL, '2020-03-10'),
-(13, '9999999998', '2020', '0000-00-00', '9', '23', '', 'karya publikasi kontrol ruang hijau', NULL, 'hijau', '', 'JSDP_Transkip.pdf', 20, 'Menunggu', NULL, NULL, '2020-03-11');
+INSERT INTO `poin` (`no`, `id_mhs`, `tahun`, `tanggal_kegiatan`, `domain`, `kegiatan`, `sub_kegiatan`, `detail_kegiatan`, `peran`, `tempat`, `lingkup`, `file`, `poin`, `status`, `keterangan`, `id_verfikator`, `created_at`, `tanggal_periksa`, `diperiksa_oleh`) VALUES
+(2, '9999999998', '2019', '2020-04-04', '4', '15', '12', 'konser akbar oleh XA', 'panitia', 'jakarta', '3', 'BC.pdf', 220, 'Menunggu', 'kurang naik', '9999999997', '2020-02-28 17:00:00', NULL, NULL),
+(3, '2016071013', '2019', '2020-02-05', '4', '12', '30', 'konser akbar oleh X', 'panitia', 'jakarta', '3', NULL, 30, 'Sah', '', '9999999997', '2020-02-28 17:00:00', NULL, NULL),
+(4, '9999999998', '2015', '2020-04-03', '4', '17', '46', 'test', '', 'test', '160', '', 150, 'Sah', NULL, NULL, '2020-03-03 17:00:00', '2020-04-04 04:28:16', 'koordinator'),
+(5, '9999999998', '2021', '2019-11-12', '1', '12', '32', '', NULL, '', '3', '', 150, 'Sah', NULL, NULL, '2020-03-03 17:00:00', '2020-03-01 17:00:00', 'koordinator'),
+(6, '9999999998', '2020', '0000-00-00', '1', '12', '32', '', NULL, '', '2', '', 250, 'Menunggu', NULL, NULL, '2020-03-03 17:00:00', NULL, NULL),
+(7, '9999999998', '2020', '0000-00-00', '1', '12', '32', 'test', NULL, 'test', '3', '', 350, 'Menunggu', NULL, NULL, '2020-03-03 17:00:00', NULL, NULL),
+(8, '9999999998', '2020', '2020-03-20', '1', '12', '32', 'PBOoooooooooooooo', NULL, 'upj', '2', '', 50, 'Menunggu', NULL, NULL, '2020-03-04 17:00:00', NULL, NULL),
+(9, '9999999998', '2020', '0000-00-00', '3', '16', '42', '', NULL, '', '4', 'JSDP_Poin_(1).pdf', 60, 'Menunggu', NULL, NULL, '2020-03-04 17:00:00', NULL, NULL),
+(10, '9999999998', '2021', '2020-03-12', '4', '17', '44', '', NULL, '', '158', 'JSDP_Poin_(1)1.pdf', 10, 'Menunggu', NULL, NULL, '2020-03-04 17:00:00', NULL, NULL),
+(11, '9999999998', '2020', '0000-00-00', '1', '12', '32', '', NULL, 'dataon', '2', 'JSDP_Poin_(1).pdf', 250, 'Menunggu', NULL, NULL, '2020-03-04 17:00:00', NULL, NULL),
+(12, '9999999998', '2020', '0000-00-00', '10', '24', '71', 'matematika dasar', NULL, 'upj', '165', 'JSDP_Poin_(1)1.pdf', 100, 'Menunggu', NULL, NULL, '2020-03-09 17:00:00', NULL, NULL),
+(13, '9999999998', '2020', '0000-00-00', '9', '23', '', 'karya publikasi kontrol ruang hijau', NULL, 'hijau', '', 'JSDP_Transkip.pdf', 20, 'Menunggu', NULL, NULL, '2020-03-10 17:00:00', NULL, NULL),
+(14, '2016071014', '2015', '2020-04-03', '4', '17', '46', 'test3', '', 'test', '160', '', 20, 'Menunggu', NULL, NULL, '2020-03-03 17:00:00', NULL, NULL),
+(15, '2016071014', '2021', '0000-00-00', '1', '12', '32', '', NULL, '', '3', '', 30, 'Sah', NULL, NULL, '2020-03-03 17:00:00', NULL, NULL),
+(16, '2016071014', '2020', '0000-00-00', '1', '12', '32', 'aaaaaaaaaaaa', NULL, '', '2', '', 250, 'Tidak sah', NULL, NULL, '2020-03-03 17:00:00', NULL, NULL),
+(17, '2016071014', '2020', '0000-00-00', '1', '12', '32', '', NULL, '', '3', 'JSDP_Poin.pdf', 350, 'Sah', NULL, NULL, '2020-03-11 17:00:00', NULL, NULL),
+(18, '2016071014', '2020', '0000-00-00', '1', '12', '32', '', NULL, '', '3', 'JSDP_Poin1.pdf', 350, 'Sah', NULL, NULL, '2020-03-11 17:00:00', '2020-01-14 02:12:14', 'admin'),
+(19, '2016071014', '2020', '0000-00-00', '1', '12', '32', '', NULL, '', '3', 'JSDP_Poin_(1).pdf', 350, 'Sah', NULL, NULL, '2020-03-11 17:00:00', NULL, NULL),
+(20, '2016071014', '2020', '0000-00-00', '1', '12', '32', '', NULL, '', '2', 'JSDP_Poin_(1)1.pdf', 250, 'Menunggu', NULL, NULL, '2020-03-20 17:00:00', NULL, NULL),
+(21, '2016071014', '2020', '2020-03-03', '13', '27', '85', '', NULL, '', '113', 'JSDP_Poin_(1)14.pdf', 150, 'Menunggu', NULL, NULL, '2020-03-20 17:00:00', NULL, NULL),
+(22, '2016071014', '2014', '2020-01-23', '3', '16', '42', 'aaaaaaa', NULL, 'aaaaa', '5', 'JSDP_Poin_(1)15.pdf', 80, 'Menunggu', NULL, NULL, '2020-03-20 17:00:00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -607,13 +618,13 @@ ALTER TABLE `lingkup`
 -- AUTO_INCREMENT untuk tabel `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `poin`
 --
 ALTER TABLE `poin`
-  MODIFY `no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `program_studi`

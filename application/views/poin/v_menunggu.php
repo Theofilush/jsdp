@@ -204,14 +204,14 @@
                                                                 echo '<span class="">'.$row->status_poin.'</span><br>';  
                                                             }
                                                                                     
-                                                            if($buba == 'administrator' && ($row->status_poin == "Menunggu")) {
+                                                            if ($row->status_poin == "Menunggu") {
                                                             ?>                            
-                                                                <a href="<?php echo site_url(); ?>Menunggu/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
-                                                                <a href="<?php echo site_url(); ?>Menunggu/tolakvalidasi/<?php echo $row->no; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
+                                                                <a href="<?php echo site_url(); ?>Menunggu/validasi/<?php echo $row->no."/".$bubi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                                <a href="<?php echo site_url(); ?>Menunggu/tolakvalidasi/<?php echo $row->no."/".$bubi; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
                                                             <?php
-                                                            } elseif ($buba == 'administrator' && ($row->status_poin ==  "Tidak sah") ) {
+                                                            } else if ($row->status_poin ==  "Tidak sah") {
                                                             ?>
-                                                                <a href="<?php echo site_url(); ?>Menunggu/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                                <a href="<?php echo site_url(); ?>Menunggu/validasi/<?php echo $row->no."/".$bubi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
                                                             <?php
                                                             }
                                                             ?>
@@ -327,14 +327,14 @@
                                                                 echo '<span class="">'.$row->status_poin.'</span><br>';  
                                                             }
                                                                                     
-                                                            if($buba == 'koordinator' && ($row->status_poin == "Menunggu")) {
+                                                            if ($row->status_poin == "Menunggu") {
                                                             ?>                            
-                                                                <a href="<?php echo site_url(); ?>Menunggu/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
-                                                                <a href="<?php echo site_url(); ?>Menunggu/tolakvalidasi/<?php echo $row->no; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
+                                                                <a href="<?php echo site_url(); ?>Menunggu/validasi/<?php echo $row->no."/".$bubi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                                <a href="<?php echo site_url(); ?>Menunggu/tolakvalidasi/<?php echo $row->no."/".$bubi; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
                                                             <?php
-                                                            } elseif ($buba == 'koordinator' && ($row->status_poin ==  "Tidak sah") ) {
+                                                            } else if ($row->status_poin ==  "Tidak sah") {
                                                             ?>
-                                                                <a href="<?php echo site_url(); ?>Menunggu/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                                <a href="<?php echo site_url(); ?>Menunggu/validasi/<?php echo $row->no."/".$bubi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
                                                             <?php
                                                             }
                                                             ?>

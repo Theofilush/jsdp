@@ -244,13 +244,18 @@ class M_dokumen extends CI_Model{
         return $query->result();
     }
 
-    function validasi_poin($id){
+    function validasi_poin($id,$diperiksa_oleh){
+        $this->db->set('diperiksa_oleh', $diperiksa_oleh);
+        $this->db->set('tanggal_periksa', date("Y-m-d H:i:s", strtotime('+5 hours')));
         $this->db->set('status', "Sah");
+        $this->db->set('keterangan', NULL);
         $this->db->where('no',$id);
         return $this->db->update('poin');
     }
 
-    function toval_poin($id){
+    function toval_poin($id,$diperiksa_oleh){
+        $this->db->set('diperiksa_oleh', $diperiksa_oleh);
+        $this->db->set('tanggal_periksa', date("Y-m-d H:i:s", strtotime('+5 hours')));
         $this->db->set('status', "Tidak sah");
         $this->db->where('no',$id);
         return $this->db->update('poin');

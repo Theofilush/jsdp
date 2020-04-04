@@ -279,6 +279,7 @@ class Poin extends CI_Controller {
 
 			$kue = $this->M_login->hak_ak($this->session->userdata('nama'));
 			$Id_user =  $kue[0]->ID_user;
+			$username =  $kue[0]->username;
 			$no = $this->input->post('no', TRUE);
 			$id_mhs = $this->input->post('id_mhs', TRUE);
 
@@ -371,8 +372,8 @@ class Poin extends CI_Controller {
 							'poin' => $per_poin2,
 							'status'=> $status_change,
 							'keterangan'=> $keterangan_poin,
-							'tanggal_periksa'=>date("Y-m-d H:i:s"),
-							'diperiksa_oleh'=> $id_mhs,
+							'tanggal_periksa'=>date("Y-m-d H:i:s", strtotime('+5 hours')),
+							'diperiksa_oleh'=> $username,
 						);
 					} else {
 						$this->db->where('no', $no);
@@ -393,11 +394,11 @@ class Poin extends CI_Controller {
 							'file' => $_upload,
 							'status'=> $status_change,
 							'status'=> $keterangan_poin,
-							'tanggal_periksa'=>date("Y-m-d H:i:s"),
-							'diperiksa_oleh'=> $id_mhs,
+							'tanggal_periksa'=>date("Y-m-d H:i:s", strtotime('+5 hours')),
+							'diperiksa_oleh'=> $username,
 						);
 					}	
-				}else {
+				} else {
 					if ($_upload == "" || $_upload == NULL ) {
 						$data = array(
 							'tahun' => $thn_akademik,
@@ -410,8 +411,8 @@ class Poin extends CI_Controller {
 							'lingkup' => $lingkup,
 							'poin' => $edit_poin,
 							'status'=> $status_change,
-							'tanggal_periksa'=>date("Y-m-d H:i:s"),
-							'diperiksa_oleh'=> $id_mhs,
+							'tanggal_periksa'=>date("Y-m-d H:i:s", strtotime('+5 hours')),
+							'diperiksa_oleh'=> $username,
 						);
 					} else {
 						$this->db->where('no', $no);
@@ -431,8 +432,8 @@ class Poin extends CI_Controller {
 							'poin' => $edit_poin,
 							'file' => $_upload,
 							'status'=> $status_change,
-							'tanggal_periksa'=>date("Y-m-d H:i:s"),
-							'diperiksa_oleh'=> $id_mhs,
+							'tanggal_periksa'=>date("Y-m-d H:i:s", strtotime('+5 hours')),
+							'diperiksa_oleh'=> $username,
 						);
 					}	
 				}
@@ -458,8 +459,8 @@ class Poin extends CI_Controller {
 		redirect('poin');
 	}
 
-	public function validasi($id){
-		$query= $this->M_dokumen->validasi_poin($id);
+	public function validasi($id,$diperiksa_oleh){
+		$query= $this->M_dokumen->validasi_poin($id,$diperiksa_oleh);
 		if ($query) {
 		  redirect("Poin");
 		}
@@ -469,8 +470,8 @@ class Poin extends CI_Controller {
 		}
 	} 
 
-	public function tolakvalidasi($id){
-		$query= $this->M_dokumen->toval_poin($id);
+	public function tolakvalidasi($id,$diperiksa_oleh){
+		$query= $this->M_dokumen->toval_poin($id,$diperiksa_oleh);
 		if ($query) {
 			redirect("Poin");
 		}
