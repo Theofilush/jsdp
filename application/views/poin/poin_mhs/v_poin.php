@@ -93,6 +93,15 @@
                             <!-- <h5 class="hk-sec-title">Data Table</h5>
                             <p class="mb-10">Add advanced interaction controls to HTML tables like <code>search, pagination & selectors</code>. For responsive table just add the <code>responsive: true</code> to your DataTables function. <a href="https://datatables.net/reference/option/" >View all options</a>.</p> -->
                             <div class="table-responsive">
+                            <?php
+                            if($buba == 'administrator' || $buba == 'koordinator'){
+                            ?>
+                            <div class="col-md-12 mb-20 text-center">
+                            	    <a href="<?php echo site_url() ?>Tambahpoin" class="btn btn-light btn-wth-icon icon-wthot-bg btn-rounded icon-right" role="button">
+                                    <span class="btn-text">Tambah Poin JSDP</span><span class="icon-label"><i class="fa fa-plus"></i> </span>
+                                    </a>
+                            </div>
+                            <?php } ?>
                             <table class="table mb-10">
                                 <tbody>
                                     <tr>
@@ -103,7 +112,7 @@
                                     </tr>
                                 </tbody>
                                 <?php
-                                    if ($buba == 'administrator' && $buba == 'koordinator') {
+                                    if ($buba != 'administrator' && $buba != 'koordinator') {
                                 ?>
                                 <tbody>
                                     <tr>

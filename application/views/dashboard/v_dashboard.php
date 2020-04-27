@@ -1,118 +1,47 @@
-
+<?php foreach($da as $row){$buba= $row->author;$bubi= $row->username;$nama_lengkap=$row->nama_lengkap; }  ?>
         <!-- Main Content -->
         <div class="hk-pg-wrapper">
 			<!-- Container -->
             <div class="container-fluid mt-xl-50 mt-sm-30 mt-15">
 				<!-- Row -->
                 <div class="row">
-                    <div class="col-xl-6">
-						<div class="card card-refresh">
-									<div class="refresh-container">
-										<div class="loader-pendulums"></div>
-									</div>
-									<div class="card-header card-header-action">
-										<div>
-											<h6 class="mb-10">Poin JSDP</h6>
-											<p class="font-14 w-80">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-										</div>
-										<div class="d-flex align-items-center card-action-wrap">
-											<a href="#" class="inline-block refresh mr-15">
-												<i class="ion ion-md-radio-button-off"></i>
-											</a>
-											<a href="#" class="inline-block full-screen">
-												<i class="ion ion-md-expand"></i>
-											</a>
-										</div>
-									</div>
-									<div class="card-body">
-										<div id="e_chart_1" style="height: 194px;"></div>
-									</div>
-						</div>
+				<?php if ($this->session->flashdata('notification')) {
+				 ?>
+				<div class="offset-xl-3 col-xl-6">
+					<div class = "alert alert-primary" role = "alert" > <h4 class="alert-heading mb-5">Berhasil</h4>
+						<p><?php echo $this->session->flashdata('notification')?></p>
 					</div>
-					<div class="col-xl-6">
+				</div>
+				<?php } ?>
+                    <div class="offset-xl-3 col-xl-6">
 						<div class="card card-refresh">
 									<div class="refresh-container">
 										<div class="loader-pendulums"></div>
 									</div>
 									<div class="card-header card-header-action">
 										<div>
-											<h6 class="mb-10">Poin JSDP</h6>
-											<p class="font-14 w-80">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+											<h5 class="mb-10">Selamat Datang, <?php echo $nama_lengkap?></h6>
+											<!-- <p class="font-14">Selamat datang di Sisfo Kampus - Universitas Pembangunan Jaya.</p> -->
+											<p class="font-14">Please don't forget to logout after finish your work. Thanks... :)</p>
 										</div>
-										<div class="d-flex align-items-center card-action-wrap">
-											<a href="#" class="inline-block refresh mr-15">
+										<div class="d-flex align-items-end card-action-wrap">
+										<p class="font-14"><?php echo tanggal();?></p>
+											<!-- <a href="#" class="inline-block refresh mr-15">
 												<i class="ion ion-md-radio-button-off"></i>
 											</a>
 											<a href="#" class="inline-block full-screen">
 												<i class="ion ion-md-expand"></i>
-											</a>
+											</a> -->
 										</div>
 									</div>
 									<div class="card-body">
-										<div id="chart_bar" style="height: 194px;"></div>
+										
 									</div>
 						</div>
 					</div>
                 </div>
                 <!-- /Row -->
 
-				<!-- Row -->
-                <!-- <div class="row">
-                    <div class="col-xl-12">
-						<div class="card card-refresh">
-									<div class="refresh-container">
-										<div class="loader-pendulums"></div>
-									</div>
-									<div class="card-header card-header-action">
-										<div>
-											<h6 class="mb-10">XYZ - Stock Analysis (2009 - 2016)</h6>
-											<p class="font-14 w-80">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-										</div>
-										<div class="d-flex align-items-center card-action-wrap">
-											<a href="#" class="inline-block refresh mr-15">
-												<i class="ion ion-md-radio-button-off"></i>
-											</a>
-											<a href="#" class="inline-block full-screen">
-												<i class="ion ion-md-expand"></i>
-											</a>
-										</div>
-									</div>
-									<div class="card-body">
-										<div id="chart_bar" style="height: 194px;"></div>
-									</div>
-						</div>
-					</div>
-                </div> -->
-                <!-- /Row -->
-
-				<!-- Row -->
-                <div class="row">
-                    <div class="col-xl-12">
-						<div class="card card-refresh">
-									<div class="refresh-container">
-										<div class="loader-pendulums"></div>
-									</div>
-									<div class="card-header card-header-action">
-										<div>
-											<h6 class="mb-10">Poin tertinggi Mahasiswa</h6>
-											<p class="font-14 w-80">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-										</div>
-										<div class="d-flex align-items-center card-action-wrap">
-											<a href="#" class="inline-block refresh mr-15">
-												<i class="ion ion-md-radio-button-off"></i>
-											</a>
-											<a href="#" class="inline-block full-screen">
-												<i class="ion ion-md-expand"></i>
-											</a>
-										</div>
-									</div>
-									<div class="card-body">
-										<div id="chart_tahun_ini" style="height: 194px;"></div>
-									</div>
-						</div>
-					</div>
-                </div>
-                <!-- /Row -->
 			</div>
             <!-- /Container -->
 			<!-- Footer -->

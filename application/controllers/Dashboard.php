@@ -26,7 +26,7 @@ class Dashboard extends CI_Controller {
 
 
 		$dataHalaman = array(
-			'title'=>"Dashboard",		
+		  'title'=>"Dashboard",		
 		  'da' => $kue,
 		  'count_sah' => $count_sah,
 		  'count_menunggu' => $count_menunggu,

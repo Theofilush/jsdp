@@ -11,21 +11,25 @@ class M_login extends CI_Model{
     	return $query;
 		//return $this->db->get_where("t_login",$where);
 	}	
+
 	function hak_ak($usan){          
                 $this->db->where("ID_user='$usan' OR email='$usan'");
                 $hasil=$this->db->get('login');
                 return $hasil->result();    	
 	}
+
   	public function simpanUser($data){//function untuk menyimpan pengguna baru yg melakukan signup
 		return $this->db->insert('t_login', $data);
 	}
+
 	function tampil_prodi(){ //query untuk menampilkan skema Penelitian pada form input dana yg bersumber UPJ
                 $this->db->order_by('id_program', 'ASC');
                 $query = $this->db->get('program_studi');        
                 return $query->result();
-	}	
+	}
+
 	function get_prodi(){
-		 //   $query = $this->db->query("SELECT merk,SUM(stok) AS stok FROM barang GROUP BY merk");
+		//$query = $this->db->query("SELECT merk,SUM(stok) AS stok FROM barang GROUP BY merk");
 		//$this->db->order_by('id_program', 'ASC');
 		$this->db->order_by('program_studi', 'ASC');
                 $query = $this->db->get('program_studi');     
@@ -35,7 +39,8 @@ class M_login extends CI_Model{
 			}
 		return $hasil;
 	    	}
-	}	 
+	}
+
     function cek_id($id_user){     
         $this->db->where("ID_user", $id_user);		
 		$query = $this->db->get("t_login");
@@ -45,7 +50,7 @@ class M_login extends CI_Model{
 	public function add_year($data){
         return $this->db->insert($this->tahun, $data);
 	} 
-	
+
 }
 
 ?>
