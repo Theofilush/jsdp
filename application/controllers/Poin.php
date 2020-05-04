@@ -202,6 +202,7 @@ class Poin extends CI_Controller {
 		$SelectSubKegiatan = $this->M_dokumen->select_subkegiatan($id);
 		$SelectLingkup = $this->M_dokumen->select_lingkup($id);
 		$byProdiName = implode((array) $kue[0]->prodi);
+		$query_tampil_tahun = $this->M_dokumen->tampil_tahun();
 
 		$Id_user =  $kue[0]->ID_user;
 		$nama_lengkap =  $kue[0]->nama_lengkap;
@@ -226,6 +227,7 @@ class Poin extends CI_Controller {
 			'nama_lengkap' => $nama_lengkap,
 			'prodi' => $prodi,
 			'status' => $status,
+			'tampil_tahun'=> $query_tampil_tahun,
 			'select_domain' => $SelectDomain,
 			'select_kegiatan' => $SelectKegiatan,
 			'select_subKegiatan' => $SelectSubKegiatan,

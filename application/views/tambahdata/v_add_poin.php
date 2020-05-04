@@ -36,7 +36,16 @@
                                         <div class="form-group row">
                                             <label for="thn_akademik" class="col-sm-2 col-form-label">Tahun Akademik *</label>
                                             <div class="col-sm-10">
-                                                <input class="form-control" type="text" name="thn_akademik"  id="thn_akademik" placeholder="2020" required="required"/>
+                                                <!-- <input class="form-control" type="text" name="thn_akademik"  id="thn_akademik" placeholder="2020" required="required"/> -->
+                                                <select class="form-control select2_ok" style="width: 100%;" data-placeholder="Pilih Tahun" name="thn_akademik">
+                                                        <?php 
+                                                            foreach($tampil_tahun as $row){
+                                                        ?>  
+                                                        <option><?php echo $row->tahun; ?></option>
+                                                        <?php
+                                                            }
+                                                        ?>   
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">

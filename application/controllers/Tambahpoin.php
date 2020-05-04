@@ -16,6 +16,7 @@ class Tambahpoin extends CI_Controller {
 		$usan = $this->session->userdata('nama');
 		$kue = $this->M_login->hak_ak($usan);
 		$domain = $this->M_dokumen->tampil_domain();
+		$query_tampil_tahun = $this->M_dokumen->tampil_tahun();
 
 		//untuk header wajib*****
 		$sah_header = $this->M_dokumen->count_sah_header() ;
@@ -27,12 +28,13 @@ class Tambahpoin extends CI_Controller {
 
 
 		$dataHalaman = array(
-			'title'=>"Dashboard",		
+		  'title'=>"Dashboard",		
 		  'da' => $kue,
 		  'domain' => $domain,
 		  'count_sah' => $count_sah,
 		  'count_menunggu' => $count_menunggu,
 		  'count_tidaksah' => $count_tidaksah,
+		  'tampil_tahun'=> $query_tampil_tahun,
         );
 		$this->load->view('dashboard/v_header',$dataHalaman);
 		$this->load->view('tambahdata/v_add_poin');
@@ -144,4 +146,26 @@ class Tambahpoin extends CI_Controller {
 		}
 	}
 
+	function sub_string($pattern, $subject) 
+	{
+		//echo substr("Hello world",1,8)."<br>";
+		$n = strlen($subject);
+		$m = strlen($pattern);
+	 
+		for ($i = 0; $i < ($n-$m); $i++) {
+			$j = 0;
+			while ($j < $m && $subject[$i+$j] == $pattern[$j]) {
+				$j++;
+			}
+			if ($j == $m) return $i;
+		}
+		return -1;
+	}
+
+	function aaa() 
+	{
+		echo $this->sub_string('d!', 'hello world!');
+	}
+	 
+	
 }

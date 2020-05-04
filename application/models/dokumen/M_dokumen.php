@@ -143,6 +143,12 @@ class M_dokumen extends CI_Model{
         return $query->result();
     }
 
+    function tampil_tahun(){ //query untuk menampilkan tahun pada form input
+        $this->db->order_by('tahun', 'DESC');
+        $query = $this->db->get('tahun'); 
+        return $query->result();
+    }
+
     public function viewByKegiatan($iddom){
         $this->db->where('id_domain', $iddom);
         $result = $this->db->get('kegiatan')->result(); // Tampilkan semua data kegiatan berdasarkan id domain

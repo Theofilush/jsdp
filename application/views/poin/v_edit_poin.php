@@ -31,7 +31,7 @@
                                             'class' => 'form-horizontal form-label-left',
                                             'data-parsley-validate' => '',
                                             'id'=>'demo-form2'
-                                    );                                        
+                                    );
                                         echo form_open_multipart('Poin/updatepoin',$atribut);
                                             foreach ($query as $rou) {    
                                             echo form_hidden('no',$rou->no);
@@ -40,7 +40,17 @@
                                         <div class="form-group row">
                                             <label for="thn_akademik" class="col-sm-2 col-form-label">Tahun Akademik *</label>
                                             <div class="col-sm-10">
-                                                <input class="form-control" type="text" name="thn_akademik"  id="thn_akademik" placeholder="2020" value="<?php echo $rou->tahun; ?>" required="required"/>
+                                                <!-- <input class="form-control" type="text" name="thn_akademik"  id="thn_akademik" placeholder="2020" value="<?php echo $rou->tahun; ?>" required="required"/> -->
+                                                <select class="form-control select2_ok" style="width: 100%;" data-placeholder="Pilih Tahun" name="thn_akademik">
+                                                    <option selected><?php echo $rou->tahun; ?></option> 
+                                                    <?php 
+                                                        foreach($tampil_tahun as $row){
+                                                    ?>  
+                                                    <option><?php echo $row->tahun; ?></option>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -168,7 +178,7 @@
                                                 <input type="text" class="form-control" id="keterangan_poin" name="keterangan_poin" value="<?php echo $rou->keterangan; ?>" placeholder="Bukti file tiak diupload">
                                                 *<small>Kosongkan jika data telah benar. </small><br>
                                             </div>
-                                        </div>                                        
+                                        </div>
                                         <?php
                                         }
                                         ?>
@@ -186,12 +196,10 @@
                                 </div>
                             </div>
                         </section>
-                       
-                       
+
                     </div>
                 </div>
                 <!-- /Row -->
             </div>
             <!-- /Container -->
 
-            
