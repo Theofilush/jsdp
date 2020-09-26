@@ -48,7 +48,7 @@ class Transkip extends CI_Controller {
 			$count_tidaksah = $tidaksah_header[0]->count_tidaksah;
 
 		$dataHalaman = array(
-		  'title'=>"Poin",
+		  'title'=>"Transkip",
 		  'da' => $kue,
 		  'queryAdmin' => $queryAdmin,
 		  'queryMhs' => $queryMhsSah,
@@ -71,7 +71,7 @@ class Transkip extends CI_Controller {
 		  'count_tidaksah' => $count_tidaksah
         );
 		$this->load->view('dashboard/v_header',$dataHalaman);
-		$this->load->view('poin/poin_mhs/v_poin',$dataHalaman);
+		$this->load->view('transkip/v_transkip',$dataHalaman);
 		$this->load->view('dashboard/v_footer');
 	}
 }

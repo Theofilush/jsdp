@@ -162,10 +162,10 @@ class Tambahpoin extends CI_Controller {
 		return -1;
 	}
 
-	function aaa() 
-	{
-		echo $this->sub_string('d!', 'hello world!');
-	}
+	// function aaa() 
+	// {
+	// 	echo $this->sub_string('d!', 'hello world!');
+	// }
 	 
 	
 }

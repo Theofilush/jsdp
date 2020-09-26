@@ -300,51 +300,51 @@
                                                         <?php
                                                     }
                                                 } else if($buba == 'dosen'){
-                                                    foreach($queryDosen as $row){
+                                                    // foreach($queryDosen as $row){
                                                         ?> 
-                                                        <tr>
+                                                        <!-- <tr>
                                                             <td></td>
                                                             <td class="text-center">    
-                                                                <a href="<?php echo site_url().'fileupload/'.$row->file?>" class="btn btn-gradient-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
+                                                                <a href="php echo site_url().'fileupload/'.$row->file?>" class="btn btn-gradient-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
                                                             </td>
-                                                        	<td><?php echo $no++ ?></td>
-                                                        	<!-- <td>
-                                                        		<b><?php echo $row->kegiatan; ?></b><br>
-                                                        		<b hidden><?php echo $row->id_mhs; ?></b><br>
+                                                        	<td>php echo $no++ ?></td>
+                                                        	!-- <td>
+                                                        		<b>php echo $row->kegiatan; ?></b><br>
+                                                        		<b hidden>php echo $row->id_mhs; ?></b><br>
                                                         	</td>
                                                         	<td>
                                                         		<ul class="titiknya">
                                                         			<li>
-                                                        				<?php echo $row->id_mhs;  ?>
+                                                        				php echo $row->id_mhs;  ?>
                                                         			</li>
 
                                                         		</ul>
-                                                        	</td> -->
+                                                        	</td> --
                                                         	<td>
-                                                        		<b class="text-capitalize"><?php echo $row->nama_domain; ?></b><br>
+                                                        		<b class="text-capitalize">php echo $row->nama_domain; ?></b><br>
                                                             </td>
                                                         <td class="text-center text-capitalize">
-                                                            <b><?php echo $row->nama_kegiatan; ?></b> <small>sebagai</small> <b><?php echo $row->nama_subkegiatan; ?></b><br>
+                                                            <b>php echo $row->nama_kegiatan; ?></b> <small>sebagai</small> <b>php echo $row->nama_subkegiatan; ?></b><br>
                                                         </td>
                                                         <td>
-                                                            <?php if($row->detail_kegiatan != NULL) { ?>
-                                                                <b class="text-capitalize"><?php echo $row->detail_kegiatan; ?></b><br>
-                                                            <?php } else if($row->detail_kegiatan == NULL) { ?>
+                                                            php if($row->detail_kegiatan != NULL) { ?>
+                                                                <b class="text-capitalize">php echo $row->detail_kegiatan; ?></b><br>
+                                                            php } else if($row->detail_kegiatan == NULL) { ?>
                                                             -
-                                                            <?php } ?>
+                                                            php } ?>
                                                         </td>
                                                         <td>
                                                             <ul  class="list-ul">
                                                                 <li><b class="text-capitalize"><?php echo $row->nama_lingkup; ?></b><br></li>
-                                                                <?php if($row->tempat != NULL) { ?>
+                                                                php if($row->tempat != NULL) { ?>
                                                                     <li><b class="text-capitalize"><?php echo $row->tempat; ?></b><br></li>
-                                                                <?php } else if($row->tempat == NULL) { ?>
+                                                                php } else if($row->tempat == NULL) { ?>
                                                                     <li><b class="text-capitalize">-</b><br></li>
-                                                                <?php } ?>
+                                                                php } ?>
                                                             </ul> 
                                                         </td>
-                                                        <!-- <td class="text-center"> -->
-                                                            <!-- ?php
+                                                        !-- <td class="text-center"> --
+                                                            !-- ?php
                                                             if ($buba == 'administrator' || ($row->status == "Tidak sah" || $row->status == "Menunggu")) {
                                                                 if($buba == 'administrator'){
                                                                     ?>
@@ -369,16 +369,16 @@
                                                                         }
                                                                 }
                                                             }
-                                                            ?> -->
+                                                            ?> --
 
-                                                            <!-- <a href="?php echo site_url().'fileupload/'.$row->file  ?>"
-                                                               class="btn btn-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a> -->
-                                                        <!-- </td> -->
+                                                            !-- <a href="?php echo site_url().'fileupload/'.$row->file  ?>"
+                                                               class="btn btn-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a> --
+                                                        !-- </td> --
                                                         <td class="text-center">
                                                             <b class="text-capitalize"><?php echo $row->poin; ?></b><br>
                                                         </td>
                                                         <td class="text-center">
-                                                        <?php
+                                                        ?php
                                                             if($row->status == "Tidak sah") {
                                                               echo '<span class="font_color_red">'.$row->status.'</span><br>';                            
                                                             } elseif ($row->status == "Sah" ) {
@@ -389,69 +389,69 @@
                                                         ?>
                                                         </td>  
                                                         <td>
-                                                            <?php if($row->keterangan != NULL) { ?>
-                                                                <b class="text-capitalize"><?php echo $row->keterangan; ?></b><br>
-                                                            <?php } else if($row->keterangan == NULL) { ?>
+                                                            ?php if($row->keterangan != NULL) { ?>
+                                                                <b class="text-capitalize">?php echo $row->keterangan; ?></b><br>
+                                                            ?php } else if($row->keterangan == NULL) { ?>
                                                             -
-                                                            <?php } ?>
+                                                            ?php } ?>
                                                         </td>
-                                                        </tr>
+                                                        </tr> -->
                                                         <?php
-                                                    }
+                                                    // }
                                                 } else if($buba == 'koordinator'){
-                                                    foreach($queryKa as $row){
+                                                    //foreach($queryKa as $row){
                                                         ?> 
-                                                        <tr>
+                                                        <!-- <tr>
                                                             <td></td>
                                                             <td class="text-center">    
-                                                                <?php
+                                                                ?php
                                                                 if ($row->status == "Tidak sah" || $row->status == "Menunggu") {
                                                                     if($buba == 'koordinator'){
                                                                     ?>                                
-                                                                        <a href="<?php echo site_url(); ?>poin/editpoin/<?php echo $row->no; ?>" class="btn btn-gradient-success btn-xs btnnomargin" ><i class="glyphicon glyphicon-pencil"></i></a> 
-                                                                    <?php
+                                                                        <a href="?php echo site_url(); ?>poin/editpoin/?php echo $row->no; ?>" class="btn btn-gradient-success btn-xs btnnomargin" ><i class="glyphicon glyphicon-pencil"></i></a> 
+                                                                    ?php
                                                                     }
                                                                 }
                                                                     ?> 
-                                                                <a href="<?php echo site_url().'fileupload/'.$row->file?>" class="btn btn-gradient-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
+                                                                <a href="?php echo site_url().'fileupload/'.$row->file?>" class="btn btn-gradient-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
                                                             </td>
-                                                        	<td><?php echo $no++ ?></td>
-                                                        	<!-- <td>
-                                                        		<b><?php echo $row->kegiatan; ?></b><br>
-                                                        		<b hidden><?php echo $row->id_mhs; ?></b><br>
+                                                        	<td>?php echo $no++ ?></td>
+                                                        	!-- <td>
+                                                        		<b>?php echo $row->kegiatan; ?></b><br>
+                                                        		<b hidden>?php echo $row->id_mhs; ?></b><br>
                                                         	</td>
                                                         	<td>
                                                         		<ul class="titiknya">
                                                         			<li>
-                                                        				<?php echo $row->id_mhs;  ?>
+                                                        				?php echo $row->id_mhs;  ?>
                                                         			</li>
 
                                                         		</ul>
-                                                        	</td> -->
+                                                        	</td> --
                                                         	<td>
-                                                        		<b class="text-capitalize"><?php echo $row->nama_domain; ?></b><br>
+                                                        		<b class="text-capitalize">?php echo $row->nama_domain; ?></b><br>
                                                             </td>
                                                         <td class="text-center text-capitalize">
-                                                            <b><?php echo $row->nama_kegiatan; ?></b> <small>sebagai</small> <b><?php echo $row->nama_subkegiatan; ?></b><br>
+                                                            <b>?php echo $row->nama_kegiatan; ?></b> <small>sebagai</small> <b>?php echo $row->nama_subkegiatan; ?></b><br>
                                                         </td>
                                                         <td>
-                                                            <?php if($row->detail_kegiatan != NULL) { ?>
-                                                                <b class="text-capitalize"><?php echo $row->detail_kegiatan; ?></b><br>
-                                                            <?php } else if($row->detail_kegiatan == NULL) { ?>
+                                                            ?php if($row->detail_kegiatan != NULL) { ?>
+                                                                <b class="text-capitalize">?php echo $row->detail_kegiatan; ?></b><br>
+                                                            ?php } else if($row->detail_kegiatan == NULL) { ?>
                                                             -
-                                                            <?php } ?>
+                                                            ?php } ?>
                                                         </td>
                                                         <td>
                                                             <ul  class="list-ul">
-                                                                <li><b class="text-capitalize"><?php echo $row->nama_lingkup; ?></b><br></li>
-                                                                <?php if($row->tempat != NULL) { ?>
-                                                                    <li><b class="text-capitalize"><?php echo $row->tempat; ?></b><br></li>
-                                                                <?php } else if($row->tempat == NULL) { ?>
+                                                                <li><b class="text-capitalize">?php echo $row->nama_lingkup; ?></b><br></li>
+                                                                ?php if($row->tempat != NULL) { ?>
+                                                                    <li><b class="text-capitalize">?php echo $row->tempat; ?></b><br></li>
+                                                                ?php } else if($row->tempat == NULL) { ?>
                                                                     <li><b class="text-capitalize">-</b><br></li>
-                                                                <?php } ?>
+                                                                ?php } ?>
                                                             </ul> 
                                                         </td>
-                                                        <!-- <td class="text-center"> -->
+                                                        !-- <td class="text-center"> -->
                                                             <!-- ?php
                                                             if ($buba == 'administrator' || ($row->status == "Tidak sah" || $row->status == "Menunggu")) {
                                                                 if($buba == 'administrator'){
@@ -481,12 +481,12 @@
 
                                                             <!-- <a href="?php echo site_url().'fileupload/'.$row->file  ?>"
                                                                class="btn btn-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a> -->
-                                                        <!-- </td> -->
+                                                        <!-- </td> --
                                                         <td class="text-center">
-                                                            <b class="text-capitalize"><?php echo $row->poin; ?></b><br>
+                                                            <b class="text-capitalize">?php echo $row->poin; ?></b><br>
                                                         </td>
                                                         <td class="text-center">
-                                                        <?php
+                                                        ?php
                                                             if($row->status == "Tidak sah") {
                                                               echo '<span class="font_color_red">'.$row->status.'</span><br>';                            
                                                             } elseif ($row->status == "Sah" ) {
@@ -497,26 +497,26 @@
                                                                                     
                                                             if($buba == 'koordinator' && ($row->status == "Menunggu")) {
                                                             ?>                            
-                                                                <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
-                                                                <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/tolakvalidasi/<?php echo $row->no; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
-                                                            <?php
+                                                                <a href="?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                                <a href="?php echo site_url(); ?>publikasi/PublikasiJurnal/tolakvalidasi/?php echo $row->no; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
+                                                            ?php
                                                             } elseif ($buba == 'koordinator' && ($row->status ==  "Tidak sah") ) {
                                                             ?>
-                                                                <a href="<?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
-                                                            <?php
+                                                                <a href="?php echo site_url(); ?>publikasi/PublikasiJurnal/validasi/?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                            ?php
                                                             }
                                                             ?>
                                                         </td>  
                                                         <td>
-                                                            <?php if($row->keterangan != NULL) { ?>
-                                                                <b class="text-capitalize"><?php echo $row->keterangan; ?></b><br>
-                                                            <?php } else if($row->keterangan == NULL) { ?>
+                                                            ?php if($row->keterangan != NULL) { ?>
+                                                                <b class="text-capitalize">?php echo $row->keterangan; ?></b><br>
+                                                            ?php } else if($row->keterangan == NULL) { ?>
                                                             -
-                                                            <?php } ?>
+                                                            ?php } ?>
                                                         </td>
-                                                        </tr>
+                                                        </tr> -->
                                                         <?php
-                                                    }
+                                                    // }
                                                 }
                                                 ?>
                                             </tbody>
