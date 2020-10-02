@@ -5,11 +5,9 @@
     $prodii = $querie['prodi']; 
     $statuss = $querie['author']; 
     }
-    if ($querySearch == null ) { 
+    if ($bio_nim == null ) { 
         $id_userr = $nama_lengkapp = $prodii = $statuss = "-";
-        //echo $this->session->flashdata('notification_no_kegiatan');
     }
-    //print_r($bio_nim);exit();
 ?>
 <!-- Main Content -->
 <div class="hk-pg-wrapper">
