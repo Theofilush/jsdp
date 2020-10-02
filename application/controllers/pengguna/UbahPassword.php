@@ -10,8 +10,7 @@ class UbahPassword extends CI_Controller {
 			redirect(site_url("login"));
 		} 
 	}
-	public function index()
-	{ 
+	public function index(){ 
         $usan = $this->session->userdata('nama');
 		$kue = $this->M_login->hak_ak($usan);
 		$Id_user =  $kue[0]->ID_user;

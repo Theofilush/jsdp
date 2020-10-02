@@ -15,7 +15,6 @@ class Dashboard extends CI_Controller {
 	{
 		$usan = $this->session->userdata('nama');
 		$kue = $this->M_login->hak_ak($usan);
-
 		//untuk header wajib*****
 		$sah_header = $this->M_dokumen->count_sah_header() ;
 			$count_sah = $sah_header[0]->count_sah;
