@@ -30,13 +30,11 @@ class Poin extends CI_Controller {
 		
 		$querySearch = $this->M_dokumen->get_keyword($keyword);
 		$bio_nim = $this->M_dokumen->cek_nim($keyword)->result_array();
-		print_r($bio_nim);
 
 		if ( $abc == "baru sekali") {
 			$querySearcha = "belum diisi";
 		} elseif ($abc == "udah ada keywordnya" ) {
 			$querySearcha = "udah diisi tapi salah";
-			
 			$cek = $this->M_dokumen->cek_nim($keyword)->num_rows();
 			if($cek > 0){
 				if ( $querySearch == null || $querySearch == '' ) {
