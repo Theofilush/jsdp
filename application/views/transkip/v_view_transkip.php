@@ -15,7 +15,7 @@
             <nav class="hk-breadcrumb" aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-light bg-transparent">
                     <li class="breadcrumb-item"><a href="<?php echo site_url(); ?>">JSDP</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Poin JSDP</li>
+                    <li class="breadcrumb-item active" aria-current="page">Transkip JSDP</li>
                 </ol>
             </nav>
             <!-- /Breadcrumb -->
@@ -25,9 +25,10 @@
 
                 <!-- Title -->
                 <div class="hk-pg-header">
-                    <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="database"></i></span></span>Poin JSDP Mahasiswa</h4>
+                    <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="database"></i></span></span>Transkip JSDP Mahasiswa</h4>
                 </div>
                 <!-- /Title -->
+                
 
                 <div class="row">
                     <div class="col-xl-12">
@@ -35,7 +36,7 @@
                             <!-- <h5 class="hk-sec-title">Data Table</h5>
                             <p class="mb-10">Add advanced interaction controls to HTML tables like <code>search, pagination & selectors</code>. For responsive table just add the <code>responsive: true</code> to your DataTables function. <a href="https://datatables.net/reference/option/" >View all options</a>.</p> -->
                                     <label>Search : </label>
-                                    <?php echo form_open('Poin/index', 'class="form-inline"') ?>
+                                    <?php echo form_open('Transkip/index', 'class="form-inline"') ?>
                                         <div class="form-group mr-10">
                                             <label for="inputNIM">NIM &nbsp;</label>
                                             <div class="input-group">
@@ -57,7 +58,7 @@
                         </section>
                     </div>
                 </div>
-
+                
                 <!-- Row -->
                 <div class="row">
                     <div class="col-xl-12">
@@ -65,31 +66,24 @@
                             <!-- <h5 class="hk-sec-title">Data Table</h5>
                             <p class="mb-10">Add advanced interaction controls to HTML tables like <code>search, pagination & selectors</code>. For responsive table just add the <code>responsive: true</code> to your DataTables function. <a href="https://datatables.net/reference/option/" >View all options</a>.</p> -->
                             <div class="table-responsive">
-                            <?php if($buba == 'administrator' || $buba == 'koordinator'){ ?>
-                            <div class="col-md-12 mb-20 text-center">
-                            	    <a href="<?php echo site_url() ?>Tambahpoin" class="btn btn-light btn-wth-icon icon-wthot-bg btn-rounded icon-right" role="button">
-                                    <span class="btn-text">Tambah Poin JSDP</span><span class="icon-label"><i class="fa fa-plus"></i> </span>
-                                    </a>
-                            </div>
-                            <?php } ?>
                             <table class="table mb-10">
                                 <tbody>
                                     <tr>
                                         <td class="text-right py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;">NIM</td>
-                                        <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $id_userr; ?></td>
+                                        <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $id_userr?></td>
                                         <td class="text-right py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;">Nama</td>
-                                        <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $nama_lengkapp; ?></td>
+                                        <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $nama_lengkapp?></td>
                                     </tr>
                                 </tbody>
                                 <?php
-                                    if ($buba != 'administrator' && $buba != 'koordinator') {
+                                    if ($buba == 'administrator' || $buba == 'koordinator') {
                                 ?>
                                 <tbody>
                                     <tr>
                                         <td class="text-right py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;">Program Studi</td>
-                                        <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $prodii; ?></td>
+                                        <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $prodii?></td>
                                         <td class="text-right py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;">Status</td>
-                                        <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $statuss; ?></td>
+                                        <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $statuss?></td>
                                     </tr>
                                 </tbody>
                                 <?php
@@ -124,17 +118,17 @@
                                                         <tr>
                                                             <td></td>
                                                             <td class="text-center">    
-                                                                <a href="<?php echo site_url().'fileupload/'.$row->file?>" class="btn btn-gradient-secondary btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
                                                                 <?php
                                                                 if ($buba == 'administrator' || ($row->status == "Tidak sah" || $row->status == "Menunggu")) {
                                                                     if($buba == 'administrator'){
                                                                     ?>                                
                                                                         <a href="<?php echo site_url(); ?>poin/editpoin/<?php echo $row->no; ?>" class="btn btn-gradient-success btn-xs btnnomargin" ><i class="glyphicon glyphicon-pencil"></i></a> 
-                                                                        <a href="<?php echo site_url(); ?>poin/deletepoin/<?php echo $row->no; ?>" class="btn btn-gradient-danger btn-xs btnnomargin" onClick="return doconfirm();"><i class="glyphicon glyphicon-remove"></i></a>
+                                                                        <a href="<?php echo site_url(); ?>poin/deletedok/<?php echo $row->no; ?>" class="btn btn-gradient-danger btn-xs btnnomargin" onClick="return doconfirm();"><i class="glyphicon glyphicon-remove"></i></a>
                                                                     <?php
                                                                     }
                                                                 }
                                                                     ?> 
+                                                                <a href="<?php echo site_url().'fileupload/'.$row->file?>" class="btn btn-gradient-danger btn-xs btnnomargin"><i class="fa fa-fw fa-file-text"></i></a>
                                                             </td>
                                                         	<td><?php echo $no++ ?></td>
                                                         	<!-- <td>
@@ -216,14 +210,14 @@
                                                                 echo '<span class="">'.$row->status.'</span><br>';  
                                                             }
                                                                                     
-                                                            if ($row->status == "Menunggu") {
+                                                            if($buba == 'administrator' && ($row->status == "Menunggu")) {
                                                             ?>                            
-                                                                <a href="<?php echo site_url(); ?>Poin/validasi/<?php echo $row->no."/".$bubi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
-                                                                <a href="<?php echo site_url(); ?>Poin/tolakvalidasi/<?php echo $row->no."/".$bubi; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
+                                                                <a href="<?php echo site_url(); ?>Poin/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                                <a href="<?php echo site_url(); ?>Poin/tolakvalidasi/<?php echo $row->no; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
                                                             <?php
-                                                            } else if ($row->status ==  "Tidak sah") {
+                                                            } elseif ($buba == 'administrator' && ($row->status ==  "Tidak sah") ) {
                                                             ?>
-                                                                <a href="<?php echo site_url(); ?>Poin/validasi/<?php echo $row->no."/".$bubi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
+                                                                <a href="<?php echo site_url(); ?>Poin/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
                                                             <?php
                                                             }
                                                             ?>
@@ -237,8 +231,7 @@
                                                         </td>
                                                         </tr>
                                                         <?php
-                                                    }
-                                                
+                                                    } 
                                                 ?>
                                             </tbody>
                                         </table>

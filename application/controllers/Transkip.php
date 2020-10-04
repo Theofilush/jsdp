@@ -11,18 +11,59 @@ class Transkip extends CI_Controller {
 		} 	
 	}
 
-	public function index()
-	{
+	public function index(){
 		$usan = $this->session->userdata('nama');
 		$kue = $this->M_login->hak_ak($usan);
 		$Id_user =  $kue[0]->ID_user;
 		$nama_lengkap =  $kue[0]->nama_lengkap;
 		$prodi =  $kue[0]->prodi;
 		$status =  $kue[0]->status;
+		$author = $kue[0]->author;
+
+		$keyword = $this->input->post('keyword');
+		$abc = "baru sekali";
+		if ($keyword == null || $keyword == '' ) {
+			$keyword = '-';
+		}else {
+			$abc = "udah ada keywordnya";
+		}
+		
+		$querySearch = $this->M_dokumen->get_keyword($keyword);
+		$bio_nim = $this->M_dokumen->cek_nim($keyword)->result_array();
+
+		if ( $abc == "baru sekali") {
+			$querySearcha = "belum diisi";
+		} elseif ($abc == "udah ada keywordnya" ) {
+			$querySearcha = "udah diisi tapi salah";
+			$cek = $this->M_dokumen->cek_nim($keyword)->num_rows();
+			if($cek > 0){
+				if ( $querySearch == null || $querySearch == '' ) {
+					$this->session->set_flashdata('notification_no_kegiatan', '<ul class="nav navbar-right panel_toolbox">
+					<li>
+							<div class="alert alert-warning alert-dismissible" style="margin-bottom:0;">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+							<small> Mahasiswa bersangkutan belum menambahkan poin</small>
+					</li>
+					</ul>');
+				} elseif ($querySearch != null || $querySearch != '' ) {
+					$querySearcha = "sudah diisi";
+				}
+			}else {
+				$this->session->set_flashdata('notification_no_kegiatan', '<ul class="nav navbar-right panel_toolbox">
+				<li>
+						<div class="alert alert-warning alert-dismissible" style="margin-bottom:0;">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<small> NIM tidak ditemukan</small>
+				</li>
+				</ul>');
+			}
+			
+		} 
+
 		$queryAdmin = $this->M_dokumen->listPoint_byadmin();
 		$queryMhsSah = $this->M_dokumen->listPointSah_byIdMhs($Id_user);
-		$queryDosen = $this->M_dokumen->listPointViewDosen($Id_user);
-		$queryKa = $this->M_dokumen->listPoint_ka($Id_user);
+		//$queryDosen = $this->M_dokumen->listPointViewDosen($Id_user);
+		//$queryKa = $this->M_dokumen->listPoint_ka($Id_user);
 
 		$total_sah_poin = $this->M_dokumen->total_sah_poin($Id_user);
 		$tsp = $total_sah_poin[0]->jumlah_sah;
@@ -52,8 +93,11 @@ class Transkip extends CI_Controller {
 		  'da' => $kue,
 		  'queryAdmin' => $queryAdmin,
 		  'queryMhs' => $queryMhsSah,
-		  'queryDosen' => $queryDosen,
-		  'queryKa'=> $queryKa,
+		  'querySearch' => $querySearch,
+		  'querySearcha' => $querySearcha,
+		  //'queryDosen' => $queryDosen,
+		  //'queryKa'=> $queryKa,
+		  'bio_nim' => $bio_nim,
 		  'id_user' => $Id_user,
 		  'nama_lengkap' => $nama_lengkap,
 		  'prodi' => $prodi,
@@ -71,7 +115,11 @@ class Transkip extends CI_Controller {
 		  'count_tidaksah' => $count_tidaksah
         );
 		$this->load->view('dashboard/v_header',$dataHalaman);
-		$this->load->view('transkip/v_transkip',$dataHalaman);
+		if ($author == "dosen" || $author == "administrator" || $author == "koordinator") {
+			$this->load->view('transkip/v_view_transkip',$dataHalaman);
+		}else {
+			$this->load->view('transkip/v_transkip',$dataHalaman);
+		}
 		$this->load->view('dashboard/v_footer');
 	}
 }

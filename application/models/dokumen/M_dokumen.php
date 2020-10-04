@@ -90,11 +90,8 @@ class M_dokumen extends CI_Model{
         $this->db->join('kegiatan', 'domain.id_domain = kegiatan.id_domain','inner');
         $this->db->join('subkegiatan', 'kegiatan.id_kegiatan = subkegiatan.id_kegiatan','inner');
         $this->db->join('lingkup', 'subkegiatan.id_subkegiatan = lingkup.id_subkegiatan','inner');
-        $this->db->join('login', 'poin.id_mhs = login.ID_user','inner');
-        //$this->db->where('status !=',"Sah"); 
-        //$this->db->like('ID_user', $keyword);
-        //$this->db->where('ID_user LIKE', '%'.$keyword.'%');
-        $this->db->like('poin.id_mhs', $keyword); 
+        //$this->db->join('login', 'poin.id_mhs = login.ID_user','inner');
+        $this->db->where('poin.id_mhs', $keyword); 
         $this->db->group_by('poin.no'); 
         $query = $this->db->get();
         return $query->result();
@@ -103,9 +100,7 @@ class M_dokumen extends CI_Model{
     function cek_nim($usn){		
 		$this->db->where("ID_user", $usn);
 		$query = $this->db->get("login");
-    	
     	return $query;
-		//return $this->db->get_where("t_login",$where);
 	}
 
     function listEditPoint_byNo($id){
