@@ -111,9 +111,6 @@
                                         <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $nama_lengkap?></td>
                                     </tr>
                                 </tbody>
-                                <?php
-                                    if ($buba != 'administrator' && $buba != 'koordinator') {
-                                ?>
                                 <tbody>
                                     <tr>
                                         <td class="text-right py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;">Program Studi</td>
@@ -122,9 +119,6 @@
                                         <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $status?></td>
                                     </tr>
                                 </tbody>
-                                <?php
-                                    }
-                                ?>
                             </table>
                             </div>
 
@@ -255,6 +249,15 @@
                                                         <?php
                                                     }
                                                 ?>
+                                            </tbody>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="8">
+                                                        <p style="table:1px solid red;text-align: right; font-weight:bold; font-size:1.2em">Jumlah: &nbsp; <?php echo $sum_poin_sah; ?></p>
+                                                    </td>
+                                                    <td></td>
+                                                    
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>

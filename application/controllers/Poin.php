@@ -88,6 +88,16 @@ class Poin extends CI_Controller {
 		$tidaksah_header = $this->M_dokumen->count_tidaksah_header() ;
 			$count_tidaksah = $tidaksah_header[0]->count_tidaksah;
 
+		if ($author == "mahasiswa") {
+			$sumPoinSah = $this->M_dokumen->sum_poin_sah($Id_user);	
+		}else{
+			$sumPoinSah = $this->M_dokumen->sum_poin_sah($keyword);
+		}
+			$sum_poin_sah = $sumPoinSah[0]->poin;
+			if ($sum_poin_sah == null || $sum_poin_sah == "" ) {
+				$sum_poin_sah = "-";
+			}
+
 		$dataHalaman = array(
 		  'title'=>"Poin",
 		  'da' => $kue,
@@ -112,7 +122,8 @@ class Poin extends CI_Controller {
 		  'percent_sisa' => $percent_sisa,
 		  'count_sah' => $count_sah,
 		  'count_menunggu' => $count_menunggu,
-		  'count_tidaksah' => $count_tidaksah
+		  'count_tidaksah' => $count_tidaksah,
+		  'sum_poin_sah' => $sum_poin_sah
 		);
 		$this->load->view('dashboard/v_header',$dataHalaman);
 		if ($author == "dosen" || $author == "administrator" || $author == "koordinator") {

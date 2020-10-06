@@ -97,6 +97,30 @@ class M_dokumen extends CI_Model{
         return $query->result();
     }
 
+    function get_keyword_transkip($keyword){
+        $this->db->select('*');
+        $this->db->from('poin');
+        $this->db->join('domain', 'poin.domain = domain.id_domain','inner');
+        $this->db->join('kegiatan', 'domain.id_domain = kegiatan.id_domain','inner');
+        $this->db->join('subkegiatan', 'kegiatan.id_kegiatan = subkegiatan.id_kegiatan','inner');
+        $this->db->join('lingkup', 'subkegiatan.id_subkegiatan = lingkup.id_subkegiatan','inner');
+        //$this->db->join('login', 'poin.id_mhs = login.ID_user','inner');
+        $this->db->where('poin.id_mhs', $keyword);
+        $this->db->where('poin.status', "Sah");
+        $this->db->group_by('poin.no'); 
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function sum_poin_sah($keyword){
+        $this->db->select_sum('poin.poin');
+        $this->db->from('poin');
+        $this->db->where('poin.id_mhs', $keyword);
+        $this->db->where('poin.status', "Sah");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function cek_nim($usn){		
 		$this->db->where("ID_user", $usn);
 		$query = $this->db->get("login");

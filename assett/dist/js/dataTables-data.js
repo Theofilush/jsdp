@@ -65,6 +65,94 @@ $(document).ready(function() {
         }
     });
 
+    // Inline editing in responsive cell
+    $('#datable__viewTranskip').on('click', 'tbody ul.dtr-details li', function(e) {
+        // Ignore the Responsive control and checkbox columns
+        if ($(this).hasClass('control') || $(this).hasClass('select-checkbox')) {
+            return;
+        }
+
+        // Edit the value, but this method allows clicking on label as well
+        editor.inline($('span.dtr-data', this));
+    });
+
+    /*Export DataTable*/
+    $('#datable__viewTranskip').DataTable({
+        dom: 'Bfrtip',
+        //responsive: true,
+        responsive: {
+            details: {
+                type: 'column'
+            }
+        },
+        columnDefs: [{ className: 'control', orderable: false, targets: 0 },
+            { "width": "8%", "targets": 0 },
+            { "width": "8%", "targets": 2 },
+            { "width": "48%", "targets": 4 },
+            { "width": "8%", "targets": 7 },
+        ],
+        language: {
+            search: "",
+            searchPlaceholder: "Search",
+            sLengthMenu: "_MENU_items"
+        },
+        "pageLength": 100,
+        // "bPaginate": false,
+        // "info": false,
+        // "bFilter": false,
+        buttons: [
+            // 'copy', 'csv', 'excel', 'pdf', 'print'
+            'pageLength', 'excel', 'pdf', 'print'
+        ],
+        "drawCallback": function() {
+            $('.dt-buttons > .btn').addClass('btn-outline-light btn-sm');
+        }
+    });
+
+    // Inline editing in responsive cell
+    $('#datable_transkip').on('click', 'tbody ul.dtr-details li', function(e) {
+        // Ignore the Responsive control and checkbox columns
+        if ($(this).hasClass('control') || $(this).hasClass('select-checkbox')) {
+            return;
+        }
+
+        // Edit the value, but this method allows clicking on label as well
+        editor.inline($('span.dtr-data', this));
+    });
+
+    /*Export DataTable*/
+    $('#datable_transkip').DataTable({
+        dom: 'Bfrtip',
+        //responsive: true,
+        responsive: {
+            details: {
+                type: 'column'
+            }
+        },
+        columnDefs: [{ className: 'control', orderable: false, targets: 0 },
+            { "width": "8%", "targets": 0 },
+            { "width": "8%", "targets": 2 },
+            { "width": "48%", "targets": 4 },
+            { "width": "8%", "targets": 7 },
+        ],
+        language: {
+            search: "",
+            searchPlaceholder: "Search",
+            sLengthMenu: "_MENU_items"
+        },
+        "pageLength": 100,
+        // "bPaginate": false,
+        // "info": false,
+        // "bFilter": false,
+        buttons: [
+            // 'copy', 'csv', 'excel', 'pdf', 'print'
+            'pageLength', 'excel', 'pdf', 'print'
+        ],
+        "drawCallback": function() {
+            $('.dt-buttons > .btn').addClass('btn-outline-light btn-sm');
+        }
+    });
+
     $('#datable_menunggu').DataTable({
         dom: 'Bfrtip',
         //responsive: true,

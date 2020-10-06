@@ -75,9 +75,6 @@
                                         <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $nama_lengkapp?></td>
                                     </tr>
                                 </tbody>
-                                <?php
-                                    if ($buba == 'administrator' || $buba == 'koordinator') {
-                                ?>
                                 <tbody>
                                     <tr>
                                         <td class="text-right py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;">Program Studi</td>
@@ -86,16 +83,13 @@
                                         <td class="py-0" style="width:25%; border-top: 1px dotted black; border-bottom: 1px dotted black;"><?php echo $statuss?></td>
                                     </tr>
                                 </tbody>
-                                <?php
-                                    }
-                                ?>
                             </table>
                             </div>
 
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="table-wrap">
-                                        <table id="datable_3" class="table w-100 table-striped" style="font-size:0.8em;">
+                                        <table id="datable_transkip" class="table w-100 table-striped" style="font-size:0.8em;">
                                             <thead>
                                                 <tr>
                                                     <th class="text-center text-capitalize"></th>
@@ -106,8 +100,6 @@
                                                     <th class="text-center text-capitalize">Tema Kegiatan</th>
                                                     <th class="text-center text-capitalize">Lingkup</th>
                                                     <th class="text-center text-capitalize">Poin</th>
-                                                    <th class="text-center text-capitalize">Status</th>
-                                                    <th class="text-center text-capitalize">Keterangan</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -200,49 +192,35 @@
                                                         <td class="text-center">
                                                             <b class="text-capitalize"><?php echo $row->poin; ?></b><br>
                                                         </td>
-                                                        <td class="text-center">
-                                                        <?php
-                                                            if($row->status == "Tidak sah") {
-                                                              echo '<span class="font_color_red">'.$row->status.'</span><br>';                            
-                                                            } elseif ($row->status == "Sah" ) {
-                                                             echo '<span class="font_color_green">'.$row->status.'</span><br>';                          
-                                                            } elseif ($row->status == "Menunggu") {
-                                                                echo '<span class="">'.$row->status.'</span><br>';  
-                                                            }
-                                                                                    
-                                                            if($buba == 'administrator' && ($row->status == "Menunggu")) {
-                                                            ?>                            
-                                                                <a href="<?php echo site_url(); ?>Poin/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
-                                                                <a href="<?php echo site_url(); ?>Poin/tolakvalidasi/<?php echo $row->no; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
-                                                            <?php
-                                                            } elseif ($buba == 'administrator' && ($row->status ==  "Tidak sah") ) {
-                                                            ?>
-                                                                <a href="<?php echo site_url(); ?>Poin/validasi/<?php echo $row->no; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </td>  
-                                                        <td>
-                                                            <?php if($row->keterangan != NULL) { ?>
-                                                                <b class="text-capitalize"><?php echo $row->keterangan; ?></b><br>
-                                                            <?php } else if($row->keterangan == NULL) { ?>
-                                                            -
-                                                            <?php } ?>
-                                                        </td>
                                                         </tr>
                                                         <?php
                                                     } 
                                                 ?>
+                                            </tbody>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="8">
+                                                        <p style="table:1px solid red;text-align: right; font-weight:bold; font-size:1.2em">Jumlah: &nbsp; <?php echo $sum_poin_sah; ?></p>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </section>
-                       
                     </div>
                 </div>
                 <!-- /Row -->
+
+                 <!-- Row -->
+                 <div class="row">
+                    <div class="col-xl-12">
+                        <section class="hk-sec-wrapper">
+                            
+                        </section>
+                    </div>
+                </div><!-- /Row -->
 
             </div>
             <!-- /Container -->
