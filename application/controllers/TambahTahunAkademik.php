@@ -11,8 +11,7 @@ class TambahTahunAkademik extends CI_Controller {
 		} 
     }
     
-	public function index()
-	{
+	public function index(){
 		$usan = $this->session->userdata('nama');
 		$kue = $this->M_login->hak_ak($usan); 
 		$dataHalaman = array(   		

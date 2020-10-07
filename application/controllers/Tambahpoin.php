@@ -11,8 +11,7 @@ class Tambahpoin extends CI_Controller {
 		} 	
 	}
 
-	public function index()
-	{
+	public function index(){
 		$usan = $this->session->userdata('nama');
 		$kue = $this->M_login->hak_ak($usan);
 		$domain = $this->M_dokumen->tampil_domain();
@@ -146,9 +145,10 @@ class Tambahpoin extends CI_Controller {
 		}
 	}
 
-	function sub_string($pattern, $subject) 
-	{
+	function sub_string($pattern="", $subject="") {
 		//echo substr("Hello world",1,8)."<br>";
+		$subject = "aku seorang petani gandum";
+		$pattern = "u s";
 		$n = strlen($subject);
 		$m = strlen($pattern);
 	 
@@ -156,16 +156,15 @@ class Tambahpoin extends CI_Controller {
 			$j = 0;
 			while ($j < $m && $subject[$i+$j] == $pattern[$j]) {
 				$j++;
+				print_r("<br> subject = ".$subject."<br>");
+				print_r("patern = ".$pattern."<br>");
+				print_r("i = ".$i."<br>");
+				print_r("m = ".$m."<br>");
+				print_r("j = ".$j."<br>");
+				
 			}
 			if ($j == $m) return $i;
 		}
 		return -1;
 	}
-
-	// function aaa() 
-	// {
-	// 	echo $this->sub_string('d!', 'hello world!');
-	// }
-	 
-	
 }

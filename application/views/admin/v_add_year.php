@@ -13,7 +13,7 @@
             <div class="container">
                 <!-- Title -->
                 <div class="hk-pg-header">
-                    <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="align-left"></i></span></span>Edit Poin JSDP Mahasiswa</h4>
+                    <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="align-left"></i></span></span>Tambah tahun akademik</h4>
                 </div>
                 <!-- /Title -->
 
@@ -36,9 +36,9 @@
                                             //echo form_hidden('id',$row->id);
                                     ?>
                                             <div class="form-group row">
-                                                <label for="password" class="col-sm-2 col-form-label">Password</label>
+                                                <label for="password" class="col-sm-2 col-form-label">Tahun akademik</label>
                                                 <div class="col-sm-10">
-                                                    <input id="tahun" name="tahun" type="number" class="form-control col-md-4 col-xs-12" type="text" required="required" placeholder="20201 / 20202">
+                                                    <input id="tahun" name="tahun" type="number" class="form-control col-md-4 col-xs-12" type="text" required="required" placeholder="20201 atau 20202">
                                                 </div>
                                             </div>
                                             <div class="form-group row mb-0 mt-40">
