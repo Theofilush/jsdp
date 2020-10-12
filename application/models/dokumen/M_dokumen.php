@@ -207,6 +207,7 @@ class M_dokumen extends CI_Model{
 
     public function viewByLingkup($iddom){
         $this->db->where('id_subkegiatan', $iddom);
+        $this->db->group_by('nama_lingkup'); 
         $result = $this->db->get('lingkup')->result(); // Tampilkan semua data subkegiatan berdasarkan id kegiatan
         return $result;
     }
@@ -220,6 +221,20 @@ class M_dokumen extends CI_Model{
     function simpanDok_poin($data){
         return $this->db->insert('poin', $data);
     } 
+    
+    function listPointBF($id){
+        $this->db->select('*');
+        $this->db->from('poin');
+        // $this->db->join('domain', 'poin.domain = domain.id_domain','inner');
+        // $this->db->join('kegiatan', 'domain.id_domain = kegiatan.id_domain','inner');
+        // $this->db->join('subkegiatan', 'kegiatan.id_kegiatan = subkegiatan.id_kegiatan','inner');
+        // $this->db->join('lingkup', 'subkegiatan.id_subkegiatan = lingkup.id_subkegiatan','inner');
+        $this->db->where('id_mhs',$id); 
+        //$this->db->where('status','Sah'); 
+        // $this->db->group_by('poin.no'); 
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
     function updateDok_poin($data,$id){
         $this->db->where('no',$id);

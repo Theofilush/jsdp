@@ -16,6 +16,7 @@
                     <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="align-left"></i></span></span>Tambah Poin JSDP Mahasiswa</h4>
                 </div>
                 <!-- /Title -->
+                
 
                 <!-- Row -->
                 <div class="row">
@@ -86,9 +87,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="detail_kegiatan" class="col-sm-2 col-form-label">Detail Kegiatan</label>
+                                            <label for="detail_kegiatan" class="col-sm-2 col-form-label">Detail Kegiatan *</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="detail_kegiatan" name="detail_kegiatan" placeholder="Seminar Mahasiswa Entrepreneurship Tangerang">
+                                                <input type="text" class="form-control" id="detail_kegiatan" name="detail_kegiatan"  required="required" placeholder="Seminar Mahasiswa Entrepreneurship Tangerang">
                                             </div>
                                         </div>
                                         <div class="form-group row">

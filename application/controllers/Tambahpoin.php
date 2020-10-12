@@ -71,7 +71,6 @@ class Tambahpoin extends CI_Controller {
 		$lists = "<option value=''>Pilih...</option>";
 		
 		foreach($lingkups as $data){ $lists .= "<option value='".$data->id_lingkup."'>".$data->nama_lingkup."</option>"; }
-		
 		$callback = array('list_perlingkup'=>$lists);
 		echo json_encode($callback); 
 	}
@@ -133,8 +132,87 @@ class Tambahpoin extends CI_Controller {
 				'poin' => $per_poin2,
 				'file' => $_upload,
 				'status'=> "Menunggu",
-			);       
-			$query= $this->M_dokumen->simpanDok_poin($data);
+			);
+			
+			/** Pengecekan Input menggunakan algoritma BRUTE FORCE */
+			// echo $thn_akademik." ".$tgl_kegiatann." ".$domain." ".$kegiatan." ".$per_poin2." ".
+			// 	$subkegiatan." ".$detail_kegiatan." ".$tempat." ".$lingkup." ".$Id_user."<br>----------------------------------------<br>" ;
+				
+			$queryPoinByNIM = $this->M_dokumen->listPointBF($Id_user);
+
+			//echo $tgl_kegiatann." ".$detail_kegiatan." ".$lingkup."<br>===================================================<br>" ;
+
+			$STglTrue = array();
+			$SnamaKegiatanTrue = array();
+			$SperanTrue = array();
+			foreach ($queryPoinByNIM as $key ) {
+				//echo "<br><br>INI ISI KEY: ".$key['tanggal_kegiatan']." ".$key['detail_kegiatan']." ".$key['lingkup']."<br>" ;
+
+				$subject = $key['tanggal_kegiatan']." ".$key['detail_kegiatan']." ".$key['lingkup']." ";
+				$pattern = $tgl_kegiatann;
+				$n = strlen($subject);
+				$m = strlen($pattern);
+			
+				for ($i = 0; $i < ($n-$m); $i++) {
+					$j = 0;
+					while ($j < $m && $subject[$i+$j] == $pattern[$j]) {
+						$j++;
+						// print_r("<br> subject = ".$subject."<br>"); print_r("patern = ".$pattern."<br>"); print_r("i = ".$i."<br>"); print_r("m = ".$m."<br>"); print_r("j = ".$j."<br>");
+					}
+					if ($j == $m) {
+						//echo "<br>1. kasih variabel : STgl false";
+                        array_push($STglTrue,"false");
+					}
+				}
+
+				$pattern2 = $detail_kegiatan;
+				$m2 = strlen($pattern2);
+			
+				for ($i = 0; $i < ($n-$m2); $i++) {
+					$j = 0;
+					while ($j < $m2 && $subject[$i+$j] == $pattern2[$j]) {
+						$j++;
+						// print_r("<br> subject = ".$subject."<br>"); print_r("patern = ".$pattern2."<br>"); print_r("i = ".$i."<br>"); print_r("m = ".$m2."<br>"); print_r("j = ".$j."<br>");
+					}
+					if ($j == $m2) {
+						//echo "<br>2. kasih variabel : SnamaKegiatan false";
+                        array_push($SnamaKegiatanTrue,"false");
+					}
+				}
+
+				$pattern2 = " ".$lingkup;
+				$m2 = strlen($pattern2);
+			
+				for ($i = 0; $i < ($n-$m2); $i++) {
+					$j = 0;
+					while ($j < $m2 && $subject[$i+$j] == $pattern2[$j]) {
+						$j++;
+						// print_r("<br> subject = ".$subject."<br>"); print_r("patern = ".$pattern2."<br>"); print_r("i = ".$i."<br>"); print_r("m = ".$m2."<br>"); print_r("j = ".$j."<br>");
+					}
+					if ($j == $m2) {
+						//echo "<br>3. kasih variabel : Speran false";
+                        array_push($SperanTrue,"false");
+					}
+				}
+			}
+			// echo "<br><br>";
+            // print_r($STglTrue);echo "<br>";
+            // print_r($SnamaKegiatanTrue);echo "<br>";
+			// print_r($SperanTrue);echo "<br>";
+			// echo count($STglTrue);
+			// echo count($SnamaKegiatanTrue);
+			// echo count($SperanTrue);
+			// echo "<br>";
+			if (count($STglTrue) > 0 && count($SnamaKegiatanTrue) > 0 && count($SperanTrue) > 0 ) {
+				if ($STglTrue[0] == "false" && $SnamaKegiatanTrue[0] == "false" && $SperanTrue[0] == "false") {
+						$this->session->set_flashdata('notification_dobel_act', 'Gagal input, kegiatan sudah pernah dimasukkan.');
+					//	 echo "data sudah pernah dimasukin";
+				}
+			}elseif (count($STglTrue) == 0 || count($SnamaKegiatanTrue) == 0 || count($SperanTrue) == 0 ) {
+				$query= $this->M_dokumen->simpanDok_poin($data);
+				//echo "<p style='color:red'>tersimpan</p>";
+				$this->session->set_flashdata('notification_berhasil_disimpan', 'Poin berhasil dimasukan, silakan menunggu disahkan :)');
+			}
 			 
 			if ($query) {
 				redirect(site_url('Poin'));
@@ -147,8 +225,10 @@ class Tambahpoin extends CI_Controller {
 
 	function sub_string($pattern="", $subject="") {
 		//echo substr("Hello world",1,8)."<br>";
-		$subject = "aku seorang petani gandum";
-		$pattern = "u s";
+		$subject = "2020-10-01 juara 2 lomba cipta cerpen tema galaksi 35";
+		$pattern = " 35";
+		// $subject = "aku seorang petani gandum akulah orangnya";
+		// $pattern = "aku";
 		$n = strlen($subject);
 		$m = strlen($pattern);
 	 
@@ -163,8 +243,19 @@ class Tambahpoin extends CI_Controller {
 				print_r("j = ".$j."<br>");
 				
 			}
-			if ($j == $m) return $i;
+			if ($j == $m) {
+				echo "kasih variabel : dollarINIBRUTEFORCEKETEMUDOBELDATA".$i;
+			}
 		}
-		return -1;
+		return "this true";
+
+
+		// print_r($queryPoinByNIM);echo "<br><br>";
+
+		// echo "<br><br>";
+		// foreach ($queryPoinByNIM as $key ) {
+		// 	echo $key['tahun']." ".$key['tanggal_kegiatan']." ".$key['domain']." ".$key['kegiatan']." ".$key['poin']." ".
+		// 	$key['sub_kegiatan']." ".$key['detail_kegiatan']." ".$key['tempat']." ".$key['lingkup']." ".$key['id_mhs']."<br>" ;
+		// }
 	}
 }

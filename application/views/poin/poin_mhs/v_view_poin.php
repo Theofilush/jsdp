@@ -29,6 +29,24 @@
                 </div>
                 <!-- /Title -->
 
+                <?php if ($this->session->flashdata('notification_dobel_act')) { ?>
+                <div class="alert alert-inv alert-inv-danger alert-wth-icon alert-dismissible fade show" role="alert">
+                    <span class="alert-icon-wrap"><i class="zmdi zmdi-block"></i></span> <p><?php echo $this->session->flashdata('notification_dobel_act')?></p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <?php } 
+                if ($this->session->flashdata('notification_berhasil_disimpan')) { 
+                ?>
+                <div class="alert alert-success alert-wth-icon alert-dismissible fade show" role="alert">
+                    <span class="alert-icon-wrap"><i class="zmdi zmdi-check-circle"></i></span> <p><?php echo $this->session->flashdata('notification_berhasil_disimpan')?></p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <?php } ?>
+
                 <div class="row">
                     <div class="col-xl-12">
                         <section class="hk-sec-wrapper">
