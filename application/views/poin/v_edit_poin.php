@@ -56,7 +56,7 @@
                                         <div class="form-group row">
                                             <label for="tgl_kegiatan" class="col-sm-2 col-form-label">Tanggal Kegiatan *</label>
                                             <div class="col-sm-10">
-                                                <input class="form-control" type="text" name="tgl_kegiatan" id="tgl_kegiatan" required="required" />
+                                                <input class="form-control" type="text" name="tgl_kegiatan" id="tgl_kegiatan" value="<?php echo date('m/d/yy', strtotime($rou->tanggal_kegiatan)); ?>" required="required" />
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -66,7 +66,6 @@
                                                 <?php  foreach($select_domain as $row){
                                                             echo "<option value=".$row->id_domain.">".$row->nama_domain."</option>";
                                                         } 
-
                                                 foreach($domain as $row){
                                                 ?>
                                                     <option value="<?php echo $row->id_domain; ?>"><?php echo $row->nama_domain; ?></option>
