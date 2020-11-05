@@ -228,12 +228,12 @@
                                                                 echo '<span class="">'.$row->status.'</span><br>';  
                                                             }
                                                                                     
-                                                            if ($row->status == "Menunggu") {
+                                                            if ($row->status == "Menunggu" && $buba!="dosen") {
                                                             ?>                            
                                                                 <a href="<?php echo site_url(); ?>Poin/validasi/<?php echo $row->no."/".$bubi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
                                                                 <a href="<?php echo site_url(); ?>Poin/tolakvalidasi/<?php echo $row->no."/".$bubi; ?>" class="btn btn-xs btn-hitam btnnomargin"><i class="fa fa-times"></i></a>
                                                             <?php
-                                                            } else if ($row->status ==  "Tidak sah") {
+                                                            } else if ($row->status ==  "Tidak sah"  && $buba!="dosen") {
                                                             ?>
                                                                 <a href="<?php echo site_url(); ?>Poin/validasi/<?php echo $row->no."/".$bubi; ?>" class="btn bg-purple btn-xs btnnomargin"><i class="fa fa-thumbs-up"></i></a>
                                                             <?php
