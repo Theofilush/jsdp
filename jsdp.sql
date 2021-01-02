@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Sep 2020 pada 11.04
+-- Waktu pembuatan: 02 Jan 2021 pada 19.27
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.9
 
@@ -336,7 +336,7 @@ CREATE TABLE `login` (
 INSERT INTO `login` (`id`, `ID_user`, `username`, `nama_lengkap`, `prodi`, `email`, `password`, `status`, `author`) VALUES
 (1, '9999999998', 'admin', 'admin', 'Teknik Sipil', 'admin@upj.ac.id', '$2y$12$qzCd/DZweNWvYwzu26uVl.t06q0UrSTQ/MhQgaJrszJ24vDzpEmnO', 'Aktif', 'administrator'),
 (2, '9999999997', 'admin1', 'admin1', 'Teknik Sipil', 'admin1@upj.ac.id', '$2y$12$hnVN4pXpsR58wdWsbRx94.2pv/R8aseFIdBTgHGeCFNeMGPRmtn0G', 'Aktif', 'administrator'),
-(3, '9999999999', 'dosen', 'dosen', 'Akuntansi', 'dosen@upj.ac.id', '$2y$12$.J2zWQHTzhrAJ1093nTfYOBjR.bZHM3nzOgp8TYKasWJ1a3738mm6', 'Aktif', 'dosen'),
+(3, '9999999999', 'dosen', 'dosen', 'Akuntansi', 'dosen@upj.ac.id', '$2y$05$F3n6fhCnwOkTTnfpNTHXwuNj4zFcsU.hamWdoJ9.5UP2pMVuGmCvS', 'Aktif', 'dosen'),
 (4, '2016071013', 'mhs a', 'mahasiswa bisa lebih a', 'Informatika', 'mhs@upj.ac.id', '$2y$12$czoGtR7qYymPT0/G.mOFcuK7cB.qln5HcKXCuONbZRN0.979/vj6q', 'Aktif', 'mahasiswa'),
 (5, '2016071014', 'mhs ku 2', 'mahasiswa bisa lebih bisa', 'Informatika', 'mhs2@upj.ac.id', '$2y$12$czoGtR7qYymPT0/G.mOFcuK7cB.qln5HcKXCuONbZRN0.979/vj6q', 'Aktif', 'mahasiswa'),
 (6, '9999999996', 'koordinator', 'koordinator a', 'Teknik Sipil', 'koordinator@upj.ac.id', '$2y$12$pmPZhILHN4s72Jw4J1qsueSlqnzinhOdnxCz1cX89mFORIdBiQvYy', 'Aktif', 'koordinator'),
@@ -422,7 +422,7 @@ CREATE TABLE `poin` (
   `domain` varchar(50) NOT NULL,
   `kegiatan` varchar(50) NOT NULL,
   `sub_kegiatan` varchar(50) NOT NULL,
-  `detail_kegiatan` varchar(50) DEFAULT NULL,
+  `detail_kegiatan` varchar(500) DEFAULT NULL,
   `peran` varchar(50) DEFAULT NULL,
   `tempat` varchar(50) NOT NULL,
   `lingkup` varchar(50) NOT NULL,
@@ -461,7 +461,24 @@ INSERT INTO `poin` (`no`, `id_mhs`, `tahun`, `tanggal_kegiatan`, `domain`, `kegi
 (19, '2016071014', '2020', '0000-00-00', '1', '12', '32', '', NULL, '', '3', 'JSDP_Poin_(1).pdf', 350, 'Sah', NULL, NULL, '2020-03-11 17:00:00', NULL, NULL),
 (20, '2016071014', '2020', '0000-00-00', '1', '12', '32', '', NULL, '', '2', 'JSDP_Poin_(1)1.pdf', 250, 'Menunggu', NULL, NULL, '2020-03-20 17:00:00', NULL, NULL),
 (21, '2016071014', '2020', '2020-03-03', '13', '27', '85', '', NULL, '', '113', 'JSDP_Poin_(1)14.pdf', 150, 'Menunggu', NULL, NULL, '2020-03-20 17:00:00', NULL, NULL),
-(22, '2016071014', '2014', '2020-01-23', '3', '16', '42', 'aaaaaaa', NULL, 'aaaaa', '5', 'JSDP_Poin_(1)15.pdf', 80, 'Menunggu', NULL, NULL, '2020-03-20 17:00:00', NULL, NULL);
+(22, '2016071014', '2014', '2020-01-23', '3', '16', '42', 'aaaaaaa', NULL, 'aaaaa', '5', 'JSDP_Poin_(1)15.pdf', 80, 'Menunggu', NULL, NULL, '2020-03-20 17:00:00', NULL, NULL),
+(23, '9999999998', '20162', '2020-09-26', '1', '9', '26', 'abcdefghij', NULL, 'zyxwvuts', '143', 'Award_of_Webinar_Oracle_-_IOT_Internet_of_Things.pdf', 50, 'Sah', '', NULL, '2020-09-26 13:44:08', '2020-09-26 13:44:50', 'admin'),
+(24, '2016031019', '20162', '2020-10-04', '10', '24', '73', 'asdos pengantar bisnis', NULL, 'upj', '167', 'Certificate_Dicoding_Android_Developer_Day_-_Tokopedia.pdf', 50, 'Sah', NULL, NULL, '2020-10-04 14:24:27', '2020-10-04 14:29:34', 'koordinator'),
+(25, '2016071014', '20162', '2020-10-01', '5', '18', '47', 'ketua konferensi nasional X', NULL, 'jakarta', '161', 'Award_of_Webinar_Oracle_-_Blockchain.pdf', 40, 'Menunggu', NULL, NULL, '2020-10-05 03:04:11', NULL, NULL),
+(26, '2016071014', '20162', '2020-10-05', '6', '20', '55', 'peserta pelatihan pembuatan surat', NULL, 'jakarta', '62', 'Award_of_Webinar_Oracle_-_IOT_Internet_of_Things.pdf', 4, 'Menunggu', NULL, NULL, '2020-10-05 03:06:02', NULL, NULL),
+(27, '2016071014', '20162', '2020-10-02', '7', '21', '59', 'lomba baca puisi ', NULL, 'jakarta', '37', 'source_code.pdf', 5, 'Sah', NULL, NULL, '2020-10-05 18:09:44', '2020-10-05 18:12:57', 'koordinator'),
+(28, '9999999996', '20202', '2020-10-01', '9', '23', '69', 'resensi buku android abcde', NULL, 'upj', '95', 'Arty_Aprilia_20103244002.pdf', 20, 'Menunggu', NULL, NULL, '2020-10-08 07:16:46', NULL, NULL),
+(29, '2016031019', '20202', '2020-10-01', '7', '21', '58', 'juara 2 lomba cipta cerpen tema galaksi', NULL, 'ZR publisher', '35', 'Certificate_Dicoding_Android_Developer_Day_-_Tokopedia67.pdf', 20, 'Menunggu', NULL, NULL, '2020-10-08 20:58:40', NULL, NULL),
+(88, '2016031019', '20202', '2020-10-12', '9', '23', '68', 'jurnal publikasi teknologi', NULL, '', '93', '0', 100, 'Menunggu', NULL, NULL, '2020-10-11 18:04:37', NULL, NULL),
+(89, '2016031019', '20202', '2020-10-01', '7', '21', '58', 'juara 2 lomba cipta puisi tema keluarga', NULL, '', '35', 'Award_of_Webinar_Oracle_-_Blockchain3.pdf', 20, 'Menunggu', NULL, NULL, '2020-10-11 19:09:00', NULL, NULL),
+(90, '2016031019', '20202', '2020-09-29', '8', '22', '63', 'pengmas desa cijuru', NULL, '', '49', 'Award_of_Webinar_Oracle_-_IOT_Internet_of_Things7.pdf', 20, 'Menunggu', NULL, NULL, '2020-10-12 04:55:03', NULL, NULL),
+(93, '2016031019', '20202', '2020-10-12', '3', '16', '43', 'komunitas penulis 34 buku menakjubkan', NULL, 'malang', '8', 'Certificate_Dicoding_DSC_Event_Developer_Meetup10.pdf', 60, 'Menunggu', NULL, NULL, '2020-10-12 05:39:07', NULL, NULL),
+(94, '2016031019', '20202', '2020-10-02', '3', '16', '42', 'Komunitas Penulis ', NULL, '', '5', 'Award_of_Webinar_Oracle_-_Blockchain.pdf', 80, 'Menunggu', NULL, NULL, '2020-10-22 08:32:39', NULL, NULL),
+(95, '2016031019', '20202', '2020-10-22', '7', '21', '58', 'juara 2 lomba cipta puisi', NULL, '', '34', 'Certificate_Dicoding_Android_Developer_Day_-_Tokopedia.pdf', 10, 'Menunggu', NULL, NULL, '2020-10-22 08:41:57', NULL, NULL),
+(96, '2016031019', '20202', '2020-10-20', '6', '20', '57', 'seminar arsitektur bersama bpk achmad silaban bertema \"membangun biro arsitektur\"', NULL, '', '32', 'Certificate_Dicoding_DSC_Event_Developer_Meetup.pdf', 7, 'Menunggu', NULL, NULL, '2020-10-25 17:06:08', NULL, NULL),
+(97, '2016031019', '20202', '2020-10-20', '6', '20', '57', 'seminar arsitektur bersama bpk achmad silaban', NULL, '', '31', 'Certificate_Dicoding_Android_Developer_Day_-_Tokopedia2.pdf', 4, 'Menunggu', NULL, NULL, '2020-10-25 17:10:20', NULL, NULL),
+(98, '2016031019', '20202', '2020-10-01', '7', '21', '58', 'lomba puisi: juara 2 dengan tema keluarga', NULL, '', '35', '2013-1-00929-IF_Bab1001.pdf', 20, 'Menunggu', NULL, NULL, '2020-11-29 19:36:07', NULL, NULL),
+(99, '2016031019', '20202', '2020-12-13', '3', '16', '43', 'komunitas sepede tua', NULL, 'tangerang', '7', '2014Inti2339-210XVol3No1ImplementasiAlgoritmaBruteForce1.pdf', 40, 'Menunggu', NULL, NULL, '2020-12-12 20:35:32', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -609,6 +626,24 @@ CREATE TABLE `tahun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data untuk tabel `tahun`
+--
+
+INSERT INTO `tahun` (`id_tahun`, `tahun`) VALUES
+(1, '20151'),
+(2, '20152'),
+(3, '20161'),
+(4, '20162'),
+(5, '20171'),
+(6, '20172'),
+(7, '20181'),
+(8, '20182'),
+(9, '20191'),
+(10, '20192'),
+(11, '20201'),
+(12, '20202');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -706,7 +741,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT untuk tabel `poin`
 --
 ALTER TABLE `poin`
-  MODIFY `no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT untuk tabel `program_studi`
@@ -724,7 +759,7 @@ ALTER TABLE `subkegiatan`
 -- AUTO_INCREMENT untuk tabel `tahun`
 --
 ALTER TABLE `tahun`
-  MODIFY `id_tahun` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tahun` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
